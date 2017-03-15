@@ -1,0 +1,42 @@
+
+Implementa Spring Boot Config Server che puo essere usato dal Spring Boot application
+a bootstrap per leggere configurazioni.
+
+Usa client in licensing-service_chapter3 per testare.
+
+
+Spring Boot e' release indipendentemente da Spring Cloud.
+
+Vedi http://projects.spring.io/spring-cloud/ per la compatibility matrix!!
+
+
+#########  application.yml
+ port:8888   => su che porta i clients devono connettersi 
+ 
+ uri: https://github.com/carnellj/config-repo/      => dove e' git repo con config clients
+ 
+ searchPaths: licensingservice,organizationservice  => configurazioni possibili disponibili clients.
+ Ogni entry rappresenta una singola applicazione configurata.
+ 
+ 
+ Nel caso si vogli storare le configs in local filesystem:
+ 
+  searchLocations: file:///configurationserver_chapter3/src/main/resources/config/licensingservice/,
+                               file:///configurationserver_chapter3/src/main/resources/config/organizationservice
+ 
+ 
+ Ogni configurazione ha 4 versioni :icensingservice.yml,licensingservice-dev.yml,licensingservice-prod.yml,licensingservice-aws-dev.yml
+
+
+Le configurazioni si possono trovare :
+
+http://localhost:8888/licensingservice/default
+http://localhost:8888/licensingservice/dev
+http://localhost:8888/licensingservice/prod
+
+
+
+
+
+
+

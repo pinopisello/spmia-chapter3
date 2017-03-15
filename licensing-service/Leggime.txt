@@ -1,0 +1,6 @@
+Questa Spring Boot app si connette allo Spring Cloud Config Server definito in configurationserver_chapter3
+
+
+
+
+
