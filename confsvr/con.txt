@@ -1,0 +1,487 @@
+[DEBUG] properties used {spring-batch.version=3.0.7.RELEASE, file.encoding.pkg=sun.io, undertow.version=1.3.26.Final, httpclient.version=4.5.2, webjars-locator.version=0.32, java.home=/Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre, hibernate.version=5.0.11.Final, spring-security-oauth.version=2.0.12.RELEASE, groovy.version=2.4.7, spring-social-linkedin.version=1.0.2.RELEASE, classworlds.conf=/Users/glocon/Miei/local_git/nike_repo/Spring_Microservices_in_Action/.metadata/.plugins/org.eclipse.m2e.launching/launches/m2conf5278461114093004175.tmp, java.endorsed.dirs=/Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/endorsed, jmustache.version=1.12, env.LOGNAME=glocon, spring-cloud-connectors.version=1.2.3.RELEASE, env.JAVA_STARTED_ON_FIRST_THREAD_31533=1, mockito.version=1.10.19, json.version=20140107, sun.os.patch.level=unknown, java.vendor.url=http://java.oracle.com/, bitronix.version=2.1.4, java.version=1.8.0_65, commons-beanutils.version=1.9.3, atomikos.version=3.9.3, gradle.version=1.12, jersey.version=2.23.2, jaxen.version=1.1.6, java.vendor.url.bug=http://bugreport.sun.com/bugreport/, caffeine.version=2.3.5, couchbase-cache-client.version=2.0.0, sun-mail.version=1.5.6, wsdl4j.version=1.6.3, jedis.version=2.8.2, javax-mail.version=1.5.6, lombok.version=1.16.12, user.name=glocon, sun.io.unicode.encoding=UnicodeBig, sun.jnu.encoding=UTF-8, java.runtime.name=Java(TM) SE Runtime Environment, activemq.version=5.13.5, spring-security-jwt.version=1.0.5.RELEASE, spring-mobile.version=1.1.5.RELEASE, commons-dbcp.version=1.4, java.specification.name=Java Platform API Specification, log4j2.version=2.6.2, aspectj.version=1.8.9, user.timezone=America/Los_Angeles, janino.version=2.7.8, path.separator=:, tomcat.version=8.5.11, postgresql.version=9.4.1212.jre7, file.encoding=UTF-8, statsd-client.version=3.1.0, env.HOME=/Users/glocon, sun.java.command=org.codehaus.plexus.classworlds.launcher.Launcher -B -X -e spring-boot:run, velocity.version=1.7, spring-social-twitter.version=1.1.2.RELEASE, flyway.version=3.2.1, snakeyaml.version=1.17, thymeleaf-extras-conditionalcomments.version=2.1.2.RELEASE, resource.delimiter=@, hikaricp.version=2.4.7, assertj.version=2.5.0, nekohtml.version=1.9.22, jest.version=2.0.4, java.io.tmpdir=/var/folders/3g/tm3c22l943q28f_6bsh6xq1wdz_hdh/T/, javax-transaction.version=1.2, hazelcast.version=3.6.7, mariadb.version=1.4.6, glassfish-el.version=3.0.0, user.language=en, dockerCertPath=/Users/glocon/.docker/machine/machines/default, line.separator=
+, crashub.version=1.3.2, thymeleaf-extras-java8time.version=2.1.0.RELEASE, spring-security.version=4.1.4.RELEASE, spring-social.version=1.1.4.RELEASE, solr.version=5.5.3, docker.image.tag=chapter3, gemfire.version=8.2.0, java.vm.info=mixed mode, java.vm.specification.name=Java Virtual Machine Specification, neo4j-ogm.version=2.0.6, servlet-api.version=3.1.0, project.reporting.outputEncoding=UTF-8, joda-time.version=2.9.7, hibernate-validator.version=5.2.4.Final, env.__CF_USER_TEXT_ENCODING=0x1BF541B0:0x0:0x0, jaybird.version=2.2.12, commons-collections.version=3.2.2, liquibase.version=3.5.3, hikaricp-java6.version=2.3.13, embedded-mongo.version=1.50.5, hornetq.version=2.4.7.Final, querydsl.version=4.1.4, spring-integration.version=4.3.7.RELEASE, java.awt.printerjob=sun.lwawt.macosx.CPrinterJob, mongodb.version=3.2.2, commons-codec.version=1.10, antlr2.version=2.7.7, xml-apis.version=1.4.01, jms-api.version=1.1-rev-1, env.XPC_FLAGS=0x0, jetty-el.version=8.0.33, selenium.version=2.53.1, jetty.version=9.3.16.v20170120, ehcache.version=2.10.3, gopherProxySet=false, spring-integration-java-dsl.version=1.1.4.RELEASE, spring-retry.version=1.1.5.RELEASE, os.name=Mac OS X, java.specification.vendor=Oracle Corporation, ehcache3.version=3.1.3, java.vm.name=Java HotSpot(TM) 64-Bit Server VM, simple-json.version=1.1.1, java.library.path=/Users/glocon/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:., couchbase-client.version=2.2.8, env.PATH=/usr/bin:/bin:/usr/sbin:/sbin, narayana.version=5.3.5.Final, java.class.version=52.0, maven.multiModuleProjectDirectory=/Users/glocon/Miei/local_git/nike_repo/Spring_Microservices_in_Action/spmia-chapter3/confsvr, infinispan.version=8.2.5.Final, freemarker.version=2.3.25-incubating, httpasyncclient.version=4.1.2, thymeleaf-extras-springsecurity4.version=2.1.3.RELEASE, spring-social-facebook.version=2.0.3.RELEASE, artemis.version=1.3.0, classmate.version=1.3.3, m2e.workspace.state=/Users/glocon/Miei/local_git/nike_repo/Spring_Microservices_in_Action/.metadata/.plugins/org.eclipse.m2e.core/workspacestate.properties, spring-plugin.version=1.2.0.RELEASE, spring.version=4.3.6.RELEASE, env.JAVA_MAIN_CLASS_36598=org.codehaus.plexus.classworlds.launcher.Launcher, sun.boot.library.path=/Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib, project.build.sourceEncoding=UTF-8, sun.management.compiler=HotSpot 64-Bit Tiered Compilers, java.awt.graphicsenv=sun.awt.CGraphicsEnvironment, env.USER=glocon, commons-dbcp2.version=2.1.1, htmlunit.version=2.21, jboss-transaction-spi.version=7.3.4.Final, hamcrest.version=1.3, junit.version=4.12, javax-cache.version=1.0.0, java.vm.specification.version=1.8, jtds.version=1.3.1, mysql.version=5.1.40, slf4j.version=1.7.22, awt.toolkit=sun.lwawt.macosx.LWCToolkit, sun.cpu.isalist=, java.ext.dirs=/Users/glocon/Library/Java/Extensions:/Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/ext:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java, derby.version=10.12.1.1, os.version=10.10.5, dockerTlsVerify=1, velocity-tools.version=2.0, thymeleaf-layout-dialect.version=1.4.0, user.home=/Users/glocon, docker.image.name=pinopisello/tmx-confsvr, java.vm.vendor=Oracle Corporation, jooq.version=3.8.6, logback.version=1.1.9, env.XPC_SERVICE_NAME=org.eclipse.platform.ide.145724, user.dir=/Users/glocon/Miei/local_git/nike_repo/Spring_Microservices_in_Action/spmia-chapter3/confsvr, spring-restdocs.version=1.1.2.RELEASE, jsonassert.version=1.3.0, spring-session.version=1.2.2.RELEASE, elasticsearch.version=2.4.4, sun.cpu.endian=little, dockerHost=https://192.168.99.100:2376, httpcore.version=4.4.6, start-class=com.thoughtmechanix.confsvr.ConfigServerApplication, sqlite-jdbc.version=3.8.11.2, env.TMPDIR=/var/folders/3g/tm3c22l943q28f_6bsh6xq1wdz_hdh/T/, dom4j.version=1.6.1, java.vm.version=25.65-b01, env.APP_ICON_31533=../Resources/Eclipse.icns, org.slf4j.simpleLogger.defaultLogLevel=debug, java.class.path=/Users/glocon/Miei/Libraries/eclipse/Eclipse_Neon.app/Contents/Eclipse/plugins/org.eclipse.m2e.maven.runtime_1.7.0.20160603-1931/jars/plexus-classworlds-2.5.2.jar, thymeleaf-extras-data-attribute.version=1.3, jdom2.version=2.0.6, jetty-jsp.version=2.2.0.v201112011158, javassist.version=3.20.0-GA, os.arch=x86_64, maven.build.version=Apache Maven 3.3.9 (bb52d8502b132ec0a5a3f4c09453c07478323dc5; 2015-11-10T08:41:47-08:00), env.Apple_PubSub_Socket_Render=/private/tmp/com.apple.launchd.rOpJgeMMKH/Render, json-path.version=2.2.0, spring-hateoas.version=0.20.0.RELEASE, sendgrid.version=2.2.2, spring-data-releasetrain.version=Hopper-SR7, spring-ws.version=2.3.1.RELEASE, sun.java.launcher=SUN_STANDARD, dropwizard-metrics.version=3.1.2, commons-pool.version=1.6, jboss-logging.version=3.3.0.Final, jstl.version=1.2, webjars-hal-browser.version=9f96c74, java.vm.specification.vendor=Oracle Corporation, file.separator=/, gson.version=2.7, h2.version=1.4.193, cassandra-driver.version=2.1.9, jolokia.version=1.3.5, java.runtime.version=1.8.0_65-b17, sun.boot.class.path=/Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/resources.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/rt.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/sunrsasign.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/jsse.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/jce.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/charsets.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/jfr.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/classes, env.SSH_AUTH_SOCK=/private/tmp/com.apple.launchd.VZZpEp1HU2/Listeners, commons-digester.version=2.1, appengine.version=1.9.48, jackson.version=2.8.6, maven.version=3.3.9, jna.version=4.2.2, user.country=US, env.SHELL=/bin/bash, maven.home=/Users/glocon/Miei/local_git/nike_repo/Spring_Microservices_in_Action/spmia-chapter3/confsvr/EMBEDDED, maven.compiler.target=1.8, thymeleaf.version=2.1.5.RELEASE, spring-loaded.version=1.2.6.RELEASE, reactor-spring.version=2.0.7.RELEASE, commons-pool2.version=2.4.2, reactor.version=2.0.8.RELEASE, spock.version=1.0-groovy-2.4, java.vendor=Oracle Corporation, spring-amqp.version=1.6.7.RELEASE, maven.compiler.source=1.8, hsqldb.version=2.3.3, java.specification.version=1.8, sun.arch.data.model=64}
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[DEBUG] resource with targetPath null
+directory /Users/glocon/Miei/local_git/nike_repo/Spring_Microservices_in_Action/spmia-chapter3/confsvr/src/main/resources
+excludes []
+includes [**/application*.yml, **/application*.properties]
+[DEBUG] ignoreDelta true
+[INFO] Copying 1 resource
+[DEBUG] file application.yml has a filtered file extension
+[DEBUG] filtering /Users/glocon/Miei/local_git/nike_repo/Spring_Microservices_in_Action/spmia-chapter3/confsvr/src/main/resources/application.yml to /Users/glocon/Miei/local_git/nike_repo/Spring_Microservices_in_Action/spmia-chapter3/confsvr/target/classes/application.yml
+[DEBUG] resource with targetPath null
+directory /Users/glocon/Miei/local_git/nike_repo/Spring_Microservices_in_Action/spmia-chapter3/confsvr/src/main/resources
+excludes [**/application*.yml, **/application*.properties]
+includes []
+[DEBUG] ignoreDelta true
+[INFO] Copying 5 resources
+[DEBUG] file bootstrap.yml has a filtered file extension
+[DEBUG] copy /Users/glocon/Miei/local_git/nike_repo/Spring_Microservices_in_Action/spmia-chapter3/confsvr/src/main/resources/bootstrap.yml to /Users/glocon/Miei/local_git/nike_repo/Spring_Microservices_in_Action/spmia-chapter3/confsvr/target/classes/bootstrap.yml
+[DEBUG] file licensingservice-dev.yml has a filtered file extension
+[DEBUG] copy /Users/glocon/Miei/local_git/nike_repo/Spring_Microservices_in_Action/spmia-chapter3/confsvr/src/main/resources/config/licensingservice/licensingservice-dev.yml to /Users/glocon/Miei/local_git/nike_repo/Spring_Microservices_in_Action/spmia-chapter3/confsvr/target/classes/config/licensingservice/licensingservice-dev.yml
+[DEBUG] file licensingservice-prod.yml has a filtered file extension
+[DEBUG] copy /Users/glocon/Miei/local_git/nike_repo/Spring_Microservices_in_Action/spmia-chapter3/confsvr/src/main/resources/config/licensingservice/licensingservice-prod.yml to /Users/glocon/Miei/local_git/nike_repo/Spring_Microservices_in_Action/spmia-chapter3/confsvr/target/classes/config/licensingservice/licensingservice-prod.yml
+[DEBUG] file licensingservice.yml has a filtered file extension
+[DEBUG] copy /Users/glocon/Miei/local_git/nike_repo/Spring_Microservices_in_Action/spmia-chapter3/confsvr/src/main/resources/config/licensingservice/licensingservice.yml to /Users/glocon/Miei/local_git/nike_repo/Spring_Microservices_in_Action/spmia-chapter3/confsvr/target/classes/config/licensingservice/licensingservice.yml
+[DEBUG] file organizationservice.yml has a filtered file extension
+[DEBUG] copy /Users/glocon/Miei/local_git/nike_repo/Spring_Microservices_in_Action/spmia-chapter3/confsvr/src/main/resources/config/organizationservice/organizationservice.yml to /Users/glocon/Miei/local_git/nike_repo/Spring_Microservices_in_Action/spmia-chapter3/confsvr/target/classes/config/organizationservice/organizationservice.yml
+[DEBUG] no use filter components
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.1:compile (default-compile) @ configurationserver ---
+[DEBUG] Dependency collection stats: {ConflictMarker.analyzeTime=1, ConflictMarker.markTime=0, ConflictMarker.nodeCount=160, ConflictIdSorter.graphTime=0, ConflictIdSorter.topsortTime=0, ConflictIdSorter.conflictIdCount=43, ConflictIdSorter.conflictIdCycleCount=0, ConflictResolver.totalTime=2, ConflictResolver.conflictItemCount=63, DefaultDependencyCollector.collectTime=110, DefaultDependencyCollector.transformTime=3}
+[DEBUG] org.apache.maven.plugins:maven-compiler-plugin:jar:3.1:
+[DEBUG]    org.apache.maven:maven-plugin-api:jar:2.0.9:compile
+[DEBUG]    org.apache.maven:maven-artifact:jar:2.0.9:compile
+[DEBUG]       org.codehaus.plexus:plexus-utils:jar:1.5.1:compile
+[DEBUG]    org.apache.maven:maven-core:jar:2.0.9:compile
+[DEBUG]       org.apache.maven:maven-settings:jar:2.0.9:compile
+[DEBUG]       org.apache.maven:maven-plugin-parameter-documenter:jar:2.0.9:compile
+[DEBUG]       org.apache.maven:maven-profile:jar:2.0.9:compile
+[DEBUG]       org.apache.maven:maven-model:jar:2.0.9:compile
+[DEBUG]       org.apache.maven:maven-repository-metadata:jar:2.0.9:compile
+[DEBUG]       org.apache.maven:maven-error-diagnostics:jar:2.0.9:compile
+[DEBUG]       org.apache.maven:maven-project:jar:2.0.9:compile
+[DEBUG]          org.apache.maven:maven-plugin-registry:jar:2.0.9:compile
+[DEBUG]       org.apache.maven:maven-plugin-descriptor:jar:2.0.9:compile
+[DEBUG]       org.apache.maven:maven-artifact-manager:jar:2.0.9:compile
+[DEBUG]       org.apache.maven:maven-monitor:jar:2.0.9:compile
+[DEBUG]    org.apache.maven:maven-toolchain:jar:1.0:compile
+[DEBUG]    org.apache.maven.shared:maven-shared-utils:jar:0.1:compile
+[DEBUG]       com.google.code.findbugs:jsr305:jar:2.0.1:compile
+[DEBUG]    org.apache.maven.shared:maven-shared-incremental:jar:1.1:compile
+[DEBUG]       org.codehaus.plexus:plexus-component-annotations:jar:1.5.5:compile
+[DEBUG]    org.codehaus.plexus:plexus-compiler-api:jar:2.2:compile
+[DEBUG]    org.codehaus.plexus:plexus-compiler-manager:jar:2.2:compile
+[DEBUG]    org.codehaus.plexus:plexus-compiler-javac:jar:2.2:runtime
+[DEBUG]    org.codehaus.plexus:plexus-container-default:jar:1.5.5:compile
+[DEBUG]       org.codehaus.plexus:plexus-classworlds:jar:2.2.2:compile
+[DEBUG]       org.apache.xbean:xbean-reflect:jar:3.4:compile
+[DEBUG]          log4j:log4j:jar:1.2.12:compile
+[DEBUG]          commons-logging:commons-logging-api:jar:1.1:compile
+[DEBUG]       com.google.collections:google-collections:jar:1.0:compile
+[DEBUG]       junit:junit:jar:3.8.2:compile
+[DEBUG] Created new class realm plugin>org.apache.maven.plugins:maven-compiler-plugin:3.1
+[DEBUG] Importing foreign packages into class realm plugin>org.apache.maven.plugins:maven-compiler-plugin:3.1
+[DEBUG]   Imported:  < maven.api
+[DEBUG] Populating class realm plugin>org.apache.maven.plugins:maven-compiler-plugin:3.1
+[DEBUG]   Included: org.apache.maven.plugins:maven-compiler-plugin:jar:3.1
+[DEBUG]   Included: org.codehaus.plexus:plexus-utils:jar:1.5.1
+[DEBUG]   Included: org.apache.maven.shared:maven-shared-utils:jar:0.1
+[DEBUG]   Included: com.google.code.findbugs:jsr305:jar:2.0.1
+[DEBUG]   Included: org.apache.maven.shared:maven-shared-incremental:jar:1.1
+[DEBUG]   Included: org.codehaus.plexus:plexus-component-annotations:jar:1.5.5
+[DEBUG]   Included: org.codehaus.plexus:plexus-compiler-api:jar:2.2
+[DEBUG]   Included: org.codehaus.plexus:plexus-compiler-manager:jar:2.2
+[DEBUG]   Included: org.codehaus.plexus:plexus-compiler-javac:jar:2.2
+[DEBUG]   Included: org.apache.xbean:xbean-reflect:jar:3.4
+[DEBUG]   Included: log4j:log4j:jar:1.2.12
+[DEBUG]   Included: commons-logging:commons-logging-api:jar:1.1
+[DEBUG]   Included: com.google.collections:google-collections:jar:1.0
+[DEBUG]   Included: junit:junit:jar:3.8.2
+[DEBUG] Configuring mojo org.apache.maven.plugins:maven-compiler-plugin:3.1:compile from plugin realm ClassRealm[plugin>org.apache.maven.plugins:maven-compiler-plugin:3.1, parent: sun.misc.Launcher$AppClassLoader@33909752]
+[DEBUG] Configuring mojo 'org.apache.maven.plugins:maven-compiler-plugin:3.1:compile' with basic configurator -->
+[DEBUG]   (f) basedir = /Users/glocon/Miei/local_git/nike_repo/Spring_Microservices_in_Action/spmia-chapter3/confsvr
+[DEBUG]   (f) buildDirectory = /Users/glocon/Miei/local_git/nike_repo/Spring_Microservices_in_Action/spmia-chapter3/confsvr/target
+[DEBUG]   (f) classpathElements = [/Users/glocon/Miei/local_git/nike_repo/Spring_Microservices_in_Action/spmia-chapter3/confsvr/target/classes, /Users/glocon/.m2/repository/org/springframework/cloud/spring-cloud-config-server/1.2.2.RELEASE/spring-cloud-config-server-1.2.2.RELEASE.jar, /Users/glocon/.m2/repository/org/springframework/cloud/spring-cloud-config-client/1.2.2.RELEASE/spring-cloud-config-client-1.2.2.RELEASE.jar, /Users/glocon/.m2/repository/org/springframework/boot/spring-boot-autoconfigure/1.4.4.RELEASE/spring-boot-autoconfigure-1.4.4.RELEASE.jar, /Users/glocon/.m2/repository/org/springframework/boot/spring-boot/1.4.4.RELEASE/spring-boot-1.4.4.RELEASE.jar, /Users/glocon/.m2/repository/org/springframework/cloud/spring-cloud-commons/1.1.7.RELEASE/spring-cloud-commons-1.1.7.RELEASE.jar, /Users/glocon/.m2/repository/org/springframework/cloud/spring-cloud-context/1.1.7.RELEASE/spring-cloud-context-1.1.7.RELEASE.jar, /Users/glocon/.m2/repository/org/springframework/spring-web/4.3.6.RELEASE/spring-web-4.3.6.RELEASE.jar, /Users/glocon/.m2/repository/org/springframework/spring-aop/4.3.6.RELEASE/spring-aop-4.3.6.RELEASE.jar, /Users/glocon/.m2/repository/org/springframework/spring-beans/4.3.6.RELEASE/spring-beans-4.3.6.RELEASE.jar, /Users/glocon/.m2/repository/org/springframework/spring-context/4.3.6.RELEASE/spring-context-4.3.6.RELEASE.jar, /Users/glocon/.m2/repository/org/springframework/spring-core/4.3.6.RELEASE/spring-core-4.3.6.RELEASE.jar, /Users/glocon/.m2/repository/com/fasterxml/jackson/core/jackson-annotations/2.8.6/jackson-annotations-2.8.6.jar, /Users/glocon/.m2/repository/org/springframework/boot/spring-boot-starter-actuator/1.4.4.RELEASE/spring-boot-starter-actuator-1.4.4.RELEASE.jar, /Users/glocon/.m2/repository/org/springframework/boot/spring-boot-starter/1.4.4.RELEASE/spring-boot-starter-1.4.4.RELEASE.jar, /Users/glocon/.m2/repository/org/springframework/boot/spring-boot-starter-logging/1.4.4.RELEASE/spring-boot-starter-logging-1.4.4.RELEASE.jar, /Users/glocon/.m2/repository/ch/qos/logback/logback-classic/1.1.9/logback-classic-1.1.9.jar, /Users/glocon/.m2/repository/ch/qos/logback/logback-core/1.1.9/logback-core-1.1.9.jar, /Users/glocon/.m2/repository/org/slf4j/slf4j-api/1.7.22/slf4j-api-1.7.22.jar, /Users/glocon/.m2/repository/org/slf4j/jcl-over-slf4j/1.7.22/jcl-over-slf4j-1.7.22.jar, /Users/glocon/.m2/repository/org/slf4j/jul-to-slf4j/1.7.22/jul-to-slf4j-1.7.22.jar, /Users/glocon/.m2/repository/org/slf4j/log4j-over-slf4j/1.7.22/log4j-over-slf4j-1.7.22.jar, /Users/glocon/.m2/repository/org/springframework/boot/spring-boot-actuator/1.4.4.RELEASE/spring-boot-actuator-1.4.4.RELEASE.jar, /Users/glocon/.m2/repository/org/springframework/boot/spring-boot-starter-web/1.4.4.RELEASE/spring-boot-starter-web-1.4.4.RELEASE.jar, /Users/glocon/.m2/repository/org/springframework/boot/spring-boot-starter-tomcat/1.4.4.RELEASE/spring-boot-starter-tomcat-1.4.4.RELEASE.jar, /Users/glocon/.m2/repository/org/apache/tomcat/embed/tomcat-embed-core/8.5.11/tomcat-embed-core-8.5.11.jar, /Users/glocon/.m2/repository/org/apache/tomcat/embed/tomcat-embed-el/8.5.11/tomcat-embed-el-8.5.11.jar, /Users/glocon/.m2/repository/org/apache/tomcat/embed/tomcat-embed-websocket/8.5.11/tomcat-embed-websocket-8.5.11.jar, /Users/glocon/.m2/repository/org/hibernate/hibernate-validator/5.2.4.Final/hibernate-validator-5.2.4.Final.jar, /Users/glocon/.m2/repository/javax/validation/validation-api/1.1.0.Final/validation-api-1.1.0.Final.jar, /Users/glocon/.m2/repository/org/jboss/logging/jboss-logging/3.3.0.Final/jboss-logging-3.3.0.Final.jar, /Users/glocon/.m2/repository/com/fasterxml/classmate/1.3.3/classmate-1.3.3.jar, /Users/glocon/.m2/repository/org/springframework/spring-webmvc/4.3.6.RELEASE/spring-webmvc-4.3.6.RELEASE.jar, /Users/glocon/.m2/repository/org/springframework/spring-expression/4.3.6.RELEASE/spring-expression-4.3.6.RELEASE.jar, /Users/glocon/.m2/repository/org/springframework/security/spring-security-crypto/4.1.4.RELEASE/spring-security-crypto-4.1.4.RELEASE.jar, /Users/glocon/.m2/repository/org/springframework/security/spring-security-rsa/1.0.3.RELEASE/spring-security-rsa-1.0.3.RELEASE.jar, /Users/glocon/.m2/repository/org/bouncycastle/bcpkix-jdk15on/1.55/bcpkix-jdk15on-1.55.jar, /Users/glocon/.m2/repository/org/bouncycastle/bcprov-jdk15on/1.55/bcprov-jdk15on-1.55.jar, /Users/glocon/.m2/repository/org/eclipse/jgit/org.eclipse.jgit/3.5.3.201412180710-r/org.eclipse.jgit-3.5.3.201412180710-r.jar, /Users/glocon/.m2/repository/com/jcraft/jsch/0.1.50/jsch-0.1.50.jar, /Users/glocon/.m2/repository/com/googlecode/javaewah/JavaEWAH/0.7.9/JavaEWAH-0.7.9.jar, /Users/glocon/.m2/repository/org/apache/httpcomponents/httpclient/4.5.2/httpclient-4.5.2.jar, /Users/glocon/.m2/repository/org/apache/httpcomponents/httpcore/4.4.6/httpcore-4.4.6.jar, /Users/glocon/.m2/repository/commons-codec/commons-codec/1.10/commons-codec-1.10.jar, /Users/glocon/.m2/repository/org/yaml/snakeyaml/1.17/snakeyaml-1.17.jar, /Users/glocon/.m2/repository/org/springframework/cloud/spring-cloud-starter-config/1.2.2.RELEASE/spring-cloud-starter-config-1.2.2.RELEASE.jar, /Users/glocon/.m2/repository/org/springframework/cloud/spring-cloud-starter/1.1.7.RELEASE/spring-cloud-starter-1.1.7.RELEASE.jar, /Users/glocon/.m2/repository/com/fasterxml/jackson/core/jackson-databind/2.8.6/jackson-databind-2.8.6.jar, /Users/glocon/.m2/repository/com/fasterxml/jackson/core/jackson-core/2.8.6/jackson-core-2.8.6.jar]
+[DEBUG]   (f) compileSourceRoots = [/Users/glocon/Miei/local_git/nike_repo/Spring_Microservices_in_Action/spmia-chapter3/confsvr/src/main/java]
+[DEBUG]   (f) compilerId = javac
+[DEBUG]   (f) debug = true
+[DEBUG]   (f) encoding = UTF-8
+[DEBUG]   (f) failOnError = true
+[DEBUG]   (f) forceJavacCompilerUse = false
+[DEBUG]   (f) fork = false
+[DEBUG]   (f) generatedSourcesDirectory = /Users/glocon/Miei/local_git/nike_repo/Spring_Microservices_in_Action/spmia-chapter3/confsvr/target/generated-sources/annotations
+[DEBUG]   (f) mojoExecution = org.apache.maven.plugins:maven-compiler-plugin:3.1:compile {execution: default-compile}
+[DEBUG]   (f) optimize = false
+[DEBUG]   (f) outputDirectory = /Users/glocon/Miei/local_git/nike_repo/Spring_Microservices_in_Action/spmia-chapter3/confsvr/target/classes
+[DEBUG]   (f) projectArtifact = com.thoughtmechanix:configurationserver:jar:0.0.1-SNAPSHOT
+[DEBUG]   (f) showDeprecation = false
+[DEBUG]   (f) showWarnings = false
+[DEBUG]   (f) skipMultiThreadWarning = false
+[DEBUG]   (f) source = 1.8
+[DEBUG]   (f) staleMillis = 0
+[DEBUG]   (f) target = 1.8
+[DEBUG]   (f) useIncrementalCompilation = true
+[DEBUG]   (f) verbose = false
+[DEBUG]   (f) mavenSession = org.apache.maven.execution.MavenSession@5b800468
+[DEBUG]   (f) session = org.apache.maven.execution.MavenSession@5b800468
+[DEBUG] -- end configuration --
+[DEBUG] Using compiler 'javac'.
+[DEBUG] Source directories: [/Users/glocon/Miei/local_git/nike_repo/Spring_Microservices_in_Action/spmia-chapter3/confsvr/src/main/java]
+[DEBUG] Classpath: [/Users/glocon/Miei/local_git/nike_repo/Spring_Microservices_in_Action/spmia-chapter3/confsvr/target/classes
+ /Users/glocon/.m2/repository/org/springframework/cloud/spring-cloud-config-server/1.2.2.RELEASE/spring-cloud-config-server-1.2.2.RELEASE.jar
+ /Users/glocon/.m2/repository/org/springframework/cloud/spring-cloud-config-client/1.2.2.RELEASE/spring-cloud-config-client-1.2.2.RELEASE.jar
+ /Users/glocon/.m2/repository/org/springframework/boot/spring-boot-autoconfigure/1.4.4.RELEASE/spring-boot-autoconfigure-1.4.4.RELEASE.jar
+ /Users/glocon/.m2/repository/org/springframework/boot/spring-boot/1.4.4.RELEASE/spring-boot-1.4.4.RELEASE.jar
+ /Users/glocon/.m2/repository/org/springframework/cloud/spring-cloud-commons/1.1.7.RELEASE/spring-cloud-commons-1.1.7.RELEASE.jar
+ /Users/glocon/.m2/repository/org/springframework/cloud/spring-cloud-context/1.1.7.RELEASE/spring-cloud-context-1.1.7.RELEASE.jar
+ /Users/glocon/.m2/repository/org/springframework/spring-web/4.3.6.RELEASE/spring-web-4.3.6.RELEASE.jar
+ /Users/glocon/.m2/repository/org/springframework/spring-aop/4.3.6.RELEASE/spring-aop-4.3.6.RELEASE.jar
+ /Users/glocon/.m2/repository/org/springframework/spring-beans/4.3.6.RELEASE/spring-beans-4.3.6.RELEASE.jar
+ /Users/glocon/.m2/repository/org/springframework/spring-context/4.3.6.RELEASE/spring-context-4.3.6.RELEASE.jar
+ /Users/glocon/.m2/repository/org/springframework/spring-core/4.3.6.RELEASE/spring-core-4.3.6.RELEASE.jar
+ /Users/glocon/.m2/repository/com/fasterxml/jackson/core/jackson-annotations/2.8.6/jackson-annotations-2.8.6.jar
+ /Users/glocon/.m2/repository/org/springframework/boot/spring-boot-starter-actuator/1.4.4.RELEASE/spring-boot-starter-actuator-1.4.4.RELEASE.jar
+ /Users/glocon/.m2/repository/org/springframework/boot/spring-boot-starter/1.4.4.RELEASE/spring-boot-starter-1.4.4.RELEASE.jar
+ /Users/glocon/.m2/repository/org/springframework/boot/spring-boot-starter-logging/1.4.4.RELEASE/spring-boot-starter-logging-1.4.4.RELEASE.jar
+ /Users/glocon/.m2/repository/ch/qos/logback/logback-classic/1.1.9/logback-classic-1.1.9.jar
+ /Users/glocon/.m2/repository/ch/qos/logback/logback-core/1.1.9/logback-core-1.1.9.jar
+ /Users/glocon/.m2/repository/org/slf4j/slf4j-api/1.7.22/slf4j-api-1.7.22.jar
+ /Users/glocon/.m2/repository/org/slf4j/jcl-over-slf4j/1.7.22/jcl-over-slf4j-1.7.22.jar
+ /Users/glocon/.m2/repository/org/slf4j/jul-to-slf4j/1.7.22/jul-to-slf4j-1.7.22.jar
+ /Users/glocon/.m2/repository/org/slf4j/log4j-over-slf4j/1.7.22/log4j-over-slf4j-1.7.22.jar
+ /Users/glocon/.m2/repository/org/springframework/boot/spring-boot-actuator/1.4.4.RELEASE/spring-boot-actuator-1.4.4.RELEASE.jar
+ /Users/glocon/.m2/repository/org/springframework/boot/spring-boot-starter-web/1.4.4.RELEASE/spring-boot-starter-web-1.4.4.RELEASE.jar
+ /Users/glocon/.m2/repository/org/springframework/boot/spring-boot-starter-tomcat/1.4.4.RELEASE/spring-boot-starter-tomcat-1.4.4.RELEASE.jar
+ /Users/glocon/.m2/repository/org/apache/tomcat/embed/tomcat-embed-core/8.5.11/tomcat-embed-core-8.5.11.jar
+ /Users/glocon/.m2/repository/org/apache/tomcat/embed/tomcat-embed-el/8.5.11/tomcat-embed-el-8.5.11.jar
+ /Users/glocon/.m2/repository/org/apache/tomcat/embed/tomcat-embed-websocket/8.5.11/tomcat-embed-websocket-8.5.11.jar
+ /Users/glocon/.m2/repository/org/hibernate/hibernate-validator/5.2.4.Final/hibernate-validator-5.2.4.Final.jar
+ /Users/glocon/.m2/repository/javax/validation/validation-api/1.1.0.Final/validation-api-1.1.0.Final.jar
+ /Users/glocon/.m2/repository/org/jboss/logging/jboss-logging/3.3.0.Final/jboss-logging-3.3.0.Final.jar
+ /Users/glocon/.m2/repository/com/fasterxml/classmate/1.3.3/classmate-1.3.3.jar
+ /Users/glocon/.m2/repository/org/springframework/spring-webmvc/4.3.6.RELEASE/spring-webmvc-4.3.6.RELEASE.jar
+ /Users/glocon/.m2/repository/org/springframework/spring-expression/4.3.6.RELEASE/spring-expression-4.3.6.RELEASE.jar
+ /Users/glocon/.m2/repository/org/springframework/security/spring-security-crypto/4.1.4.RELEASE/spring-security-crypto-4.1.4.RELEASE.jar
+ /Users/glocon/.m2/repository/org/springframework/security/spring-security-rsa/1.0.3.RELEASE/spring-security-rsa-1.0.3.RELEASE.jar
+ /Users/glocon/.m2/repository/org/bouncycastle/bcpkix-jdk15on/1.55/bcpkix-jdk15on-1.55.jar
+ /Users/glocon/.m2/repository/org/bouncycastle/bcprov-jdk15on/1.55/bcprov-jdk15on-1.55.jar
+ /Users/glocon/.m2/repository/org/eclipse/jgit/org.eclipse.jgit/3.5.3.201412180710-r/org.eclipse.jgit-3.5.3.201412180710-r.jar
+ /Users/glocon/.m2/repository/com/jcraft/jsch/0.1.50/jsch-0.1.50.jar
+ /Users/glocon/.m2/repository/com/googlecode/javaewah/JavaEWAH/0.7.9/JavaEWAH-0.7.9.jar
+ /Users/glocon/.m2/repository/org/apache/httpcomponents/httpclient/4.5.2/httpclient-4.5.2.jar
+ /Users/glocon/.m2/repository/org/apache/httpcomponents/httpcore/4.4.6/httpcore-4.4.6.jar
+ /Users/glocon/.m2/repository/commons-codec/commons-codec/1.10/commons-codec-1.10.jar
+ /Users/glocon/.m2/repository/org/yaml/snakeyaml/1.17/snakeyaml-1.17.jar
+ /Users/glocon/.m2/repository/org/springframework/cloud/spring-cloud-starter-config/1.2.2.RELEASE/spring-cloud-starter-config-1.2.2.RELEASE.jar
+ /Users/glocon/.m2/repository/org/springframework/cloud/spring-cloud-starter/1.1.7.RELEASE/spring-cloud-starter-1.1.7.RELEASE.jar
+ /Users/glocon/.m2/repository/com/fasterxml/jackson/core/jackson-databind/2.8.6/jackson-databind-2.8.6.jar
+ /Users/glocon/.m2/repository/com/fasterxml/jackson/core/jackson-core/2.8.6/jackson-core-2.8.6.jar]
+[DEBUG] Output directory: /Users/glocon/Miei/local_git/nike_repo/Spring_Microservices_in_Action/spmia-chapter3/confsvr/target/classes
+[DEBUG] CompilerReuseStrategy: reuseCreated
+[DEBUG] useIncrementalCompilation enabled
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ configurationserver ---
+[DEBUG] Configuring mojo org.apache.maven.plugins:maven-resources-plugin:2.6:testResources from plugin realm ClassRealm[plugin>org.apache.maven.plugins:maven-resources-plugin:2.6, parent: sun.misc.Launcher$AppClassLoader@33909752]
+[DEBUG] Configuring mojo 'org.apache.maven.plugins:maven-resources-plugin:2.6:testResources' with basic configurator -->
+[DEBUG]   (f) buildFilters = []
+[DEBUG]   (s) delimiters = [@]
+[DEBUG]   (f) encoding = UTF-8
+[DEBUG]   (f) escapeWindowsPaths = true
+[DEBUG]   (s) includeEmptyDirs = false
+[DEBUG]   (s) outputDirectory = /Users/glocon/Miei/local_git/nike_repo/Spring_Microservices_in_Action/spmia-chapter3/confsvr/target/test-classes
+[DEBUG]   (s) overwrite = false
+[DEBUG]   (f) project = MavenProject: com.thoughtmechanix:configurationserver:0.0.1-SNAPSHOT @ /Users/glocon/Miei/local_git/nike_repo/Spring_Microservices_in_Action/spmia-chapter3/confsvr/pom.xml
+[DEBUG]   (s) resources = [Resource {targetPath: null, filtering: false, FileSet {directory: /Users/glocon/Miei/local_git/nike_repo/Spring_Microservices_in_Action/spmia-chapter3/confsvr/src/test/resources, PatternSet [includes: {}, excludes: {}]}}]
+[DEBUG]   (f) session = org.apache.maven.execution.MavenSession@5b800468
+[DEBUG]   (f) supportMultiLineFiltering = false
+[DEBUG]   (f) useBuildFilters = true
+[DEBUG]   (s) useDefaultDelimiters = false
+[DEBUG] -- end configuration --
+[DEBUG] properties used {spring-batch.version=3.0.7.RELEASE, file.encoding.pkg=sun.io, undertow.version=1.3.26.Final, httpclient.version=4.5.2, webjars-locator.version=0.32, java.home=/Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre, hibernate.version=5.0.11.Final, spring-security-oauth.version=2.0.12.RELEASE, groovy.version=2.4.7, spring-social-linkedin.version=1.0.2.RELEASE, classworlds.conf=/Users/glocon/Miei/local_git/nike_repo/Spring_Microservices_in_Action/.metadata/.plugins/org.eclipse.m2e.launching/launches/m2conf5278461114093004175.tmp, java.endorsed.dirs=/Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/endorsed, jmustache.version=1.12, env.LOGNAME=glocon, spring-cloud-connectors.version=1.2.3.RELEASE, env.JAVA_STARTED_ON_FIRST_THREAD_31533=1, mockito.version=1.10.19, json.version=20140107, sun.os.patch.level=unknown, java.vendor.url=http://java.oracle.com/, bitronix.version=2.1.4, java.version=1.8.0_65, commons-beanutils.version=1.9.3, atomikos.version=3.9.3, gradle.version=1.12, jersey.version=2.23.2, jaxen.version=1.1.6, java.vendor.url.bug=http://bugreport.sun.com/bugreport/, caffeine.version=2.3.5, couchbase-cache-client.version=2.0.0, sun-mail.version=1.5.6, wsdl4j.version=1.6.3, jedis.version=2.8.2, javax-mail.version=1.5.6, lombok.version=1.16.12, user.name=glocon, sun.io.unicode.encoding=UnicodeBig, sun.jnu.encoding=UTF-8, java.runtime.name=Java(TM) SE Runtime Environment, activemq.version=5.13.5, spring-security-jwt.version=1.0.5.RELEASE, spring-mobile.version=1.1.5.RELEASE, commons-dbcp.version=1.4, java.specification.name=Java Platform API Specification, log4j2.version=2.6.2, aspectj.version=1.8.9, user.timezone=America/Los_Angeles, janino.version=2.7.8, path.separator=:, tomcat.version=8.5.11, postgresql.version=9.4.1212.jre7, file.encoding=UTF-8, statsd-client.version=3.1.0, env.HOME=/Users/glocon, sun.java.command=org.codehaus.plexus.classworlds.launcher.Launcher -B -X -e spring-boot:run, velocity.version=1.7, spring-social-twitter.version=1.1.2.RELEASE, flyway.version=3.2.1, snakeyaml.version=1.17, thymeleaf-extras-conditionalcomments.version=2.1.2.RELEASE, resource.delimiter=@, hikaricp.version=2.4.7, assertj.version=2.5.0, nekohtml.version=1.9.22, jest.version=2.0.4, java.io.tmpdir=/var/folders/3g/tm3c22l943q28f_6bsh6xq1wdz_hdh/T/, javax-transaction.version=1.2, hazelcast.version=3.6.7, mariadb.version=1.4.6, glassfish-el.version=3.0.0, user.language=en, dockerCertPath=/Users/glocon/.docker/machine/machines/default, line.separator=
+, crashub.version=1.3.2, thymeleaf-extras-java8time.version=2.1.0.RELEASE, spring-security.version=4.1.4.RELEASE, spring-social.version=1.1.4.RELEASE, solr.version=5.5.3, docker.image.tag=chapter3, gemfire.version=8.2.0, java.vm.info=mixed mode, java.vm.specification.name=Java Virtual Machine Specification, neo4j-ogm.version=2.0.6, servlet-api.version=3.1.0, project.reporting.outputEncoding=UTF-8, joda-time.version=2.9.7, hibernate-validator.version=5.2.4.Final, env.__CF_USER_TEXT_ENCODING=0x1BF541B0:0x0:0x0, jaybird.version=2.2.12, commons-collections.version=3.2.2, liquibase.version=3.5.3, hikaricp-java6.version=2.3.13, embedded-mongo.version=1.50.5, hornetq.version=2.4.7.Final, querydsl.version=4.1.4, spring-integration.version=4.3.7.RELEASE, java.awt.printerjob=sun.lwawt.macosx.CPrinterJob, mongodb.version=3.2.2, commons-codec.version=1.10, antlr2.version=2.7.7, xml-apis.version=1.4.01, jms-api.version=1.1-rev-1, env.XPC_FLAGS=0x0, jetty-el.version=8.0.33, selenium.version=2.53.1, jetty.version=9.3.16.v20170120, ehcache.version=2.10.3, gopherProxySet=false, spring-integration-java-dsl.version=1.1.4.RELEASE, spring-retry.version=1.1.5.RELEASE, os.name=Mac OS X, java.specification.vendor=Oracle Corporation, ehcache3.version=3.1.3, java.vm.name=Java HotSpot(TM) 64-Bit Server VM, simple-json.version=1.1.1, java.library.path=/Users/glocon/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:., couchbase-client.version=2.2.8, env.PATH=/usr/bin:/bin:/usr/sbin:/sbin, narayana.version=5.3.5.Final, java.class.version=52.0, maven.multiModuleProjectDirectory=/Users/glocon/Miei/local_git/nike_repo/Spring_Microservices_in_Action/spmia-chapter3/confsvr, infinispan.version=8.2.5.Final, freemarker.version=2.3.25-incubating, httpasyncclient.version=4.1.2, thymeleaf-extras-springsecurity4.version=2.1.3.RELEASE, spring-social-facebook.version=2.0.3.RELEASE, artemis.version=1.3.0, classmate.version=1.3.3, m2e.workspace.state=/Users/glocon/Miei/local_git/nike_repo/Spring_Microservices_in_Action/.metadata/.plugins/org.eclipse.m2e.core/workspacestate.properties, spring-plugin.version=1.2.0.RELEASE, spring.version=4.3.6.RELEASE, env.JAVA_MAIN_CLASS_36598=org.codehaus.plexus.classworlds.launcher.Launcher, sun.boot.library.path=/Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib, project.build.sourceEncoding=UTF-8, sun.management.compiler=HotSpot 64-Bit Tiered Compilers, java.awt.graphicsenv=sun.awt.CGraphicsEnvironment, env.USER=glocon, commons-dbcp2.version=2.1.1, htmlunit.version=2.21, jboss-transaction-spi.version=7.3.4.Final, hamcrest.version=1.3, junit.version=4.12, javax-cache.version=1.0.0, java.vm.specification.version=1.8, jtds.version=1.3.1, mysql.version=5.1.40, slf4j.version=1.7.22, awt.toolkit=sun.lwawt.macosx.LWCToolkit, sun.cpu.isalist=, java.ext.dirs=/Users/glocon/Library/Java/Extensions:/Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/ext:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java, derby.version=10.12.1.1, os.version=10.10.5, dockerTlsVerify=1, velocity-tools.version=2.0, thymeleaf-layout-dialect.version=1.4.0, user.home=/Users/glocon, docker.image.name=pinopisello/tmx-confsvr, java.vm.vendor=Oracle Corporation, jooq.version=3.8.6, logback.version=1.1.9, env.XPC_SERVICE_NAME=org.eclipse.platform.ide.145724, user.dir=/Users/glocon/Miei/local_git/nike_repo/Spring_Microservices_in_Action/spmia-chapter3/confsvr, spring-restdocs.version=1.1.2.RELEASE, jsonassert.version=1.3.0, spring-session.version=1.2.2.RELEASE, elasticsearch.version=2.4.4, sun.cpu.endian=little, dockerHost=https://192.168.99.100:2376, httpcore.version=4.4.6, start-class=com.thoughtmechanix.confsvr.ConfigServerApplication, sqlite-jdbc.version=3.8.11.2, env.TMPDIR=/var/folders/3g/tm3c22l943q28f_6bsh6xq1wdz_hdh/T/, dom4j.version=1.6.1, java.vm.version=25.65-b01, env.APP_ICON_31533=../Resources/Eclipse.icns, org.slf4j.simpleLogger.defaultLogLevel=debug, java.class.path=/Users/glocon/Miei/Libraries/eclipse/Eclipse_Neon.app/Contents/Eclipse/plugins/org.eclipse.m2e.maven.runtime_1.7.0.20160603-1931/jars/plexus-classworlds-2.5.2.jar, thymeleaf-extras-data-attribute.version=1.3, jdom2.version=2.0.6, jetty-jsp.version=2.2.0.v201112011158, javassist.version=3.20.0-GA, os.arch=x86_64, maven.build.version=Apache Maven 3.3.9 (bb52d8502b132ec0a5a3f4c09453c07478323dc5; 2015-11-10T08:41:47-08:00), env.Apple_PubSub_Socket_Render=/private/tmp/com.apple.launchd.rOpJgeMMKH/Render, json-path.version=2.2.0, spring-hateoas.version=0.20.0.RELEASE, sendgrid.version=2.2.2, spring-data-releasetrain.version=Hopper-SR7, spring-ws.version=2.3.1.RELEASE, sun.java.launcher=SUN_STANDARD, dropwizard-metrics.version=3.1.2, commons-pool.version=1.6, jboss-logging.version=3.3.0.Final, jstl.version=1.2, webjars-hal-browser.version=9f96c74, java.vm.specification.vendor=Oracle Corporation, file.separator=/, gson.version=2.7, h2.version=1.4.193, cassandra-driver.version=2.1.9, jolokia.version=1.3.5, java.runtime.version=1.8.0_65-b17, sun.boot.class.path=/Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/resources.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/rt.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/sunrsasign.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/jsse.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/jce.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/charsets.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/jfr.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/classes, env.SSH_AUTH_SOCK=/private/tmp/com.apple.launchd.VZZpEp1HU2/Listeners, commons-digester.version=2.1, appengine.version=1.9.48, jackson.version=2.8.6, maven.version=3.3.9, jna.version=4.2.2, user.country=US, env.SHELL=/bin/bash, maven.home=/Users/glocon/Miei/local_git/nike_repo/Spring_Microservices_in_Action/spmia-chapter3/confsvr/EMBEDDED, maven.compiler.target=1.8, thymeleaf.version=2.1.5.RELEASE, spring-loaded.version=1.2.6.RELEASE, reactor-spring.version=2.0.7.RELEASE, commons-pool2.version=2.4.2, reactor.version=2.0.8.RELEASE, spock.version=1.0-groovy-2.4, java.vendor=Oracle Corporation, spring-amqp.version=1.6.7.RELEASE, maven.compiler.source=1.8, hsqldb.version=2.3.3, java.specification.version=1.8, sun.arch.data.model=64}
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[DEBUG] resource with targetPath null
+directory /Users/glocon/Miei/local_git/nike_repo/Spring_Microservices_in_Action/spmia-chapter3/confsvr/src/test/resources
+excludes []
+includes []
+[INFO] skip non existing resourceDirectory /Users/glocon/Miei/local_git/nike_repo/Spring_Microservices_in_Action/spmia-chapter3/confsvr/src/test/resources
+[DEBUG] no use filter components
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.1:testCompile (default-testCompile) @ configurationserver ---
+[DEBUG] Configuring mojo org.apache.maven.plugins:maven-compiler-plugin:3.1:testCompile from plugin realm ClassRealm[plugin>org.apache.maven.plugins:maven-compiler-plugin:3.1, parent: sun.misc.Launcher$AppClassLoader@33909752]
+[DEBUG] Configuring mojo 'org.apache.maven.plugins:maven-compiler-plugin:3.1:testCompile' with basic configurator -->
+[DEBUG]   (f) basedir = /Users/glocon/Miei/local_git/nike_repo/Spring_Microservices_in_Action/spmia-chapter3/confsvr
+[DEBUG]   (f) buildDirectory = /Users/glocon/Miei/local_git/nike_repo/Spring_Microservices_in_Action/spmia-chapter3/confsvr/target
+[DEBUG]   (f) classpathElements = [/Users/glocon/Miei/local_git/nike_repo/Spring_Microservices_in_Action/spmia-chapter3/confsvr/target/test-classes, /Users/glocon/Miei/local_git/nike_repo/Spring_Microservices_in_Action/spmia-chapter3/confsvr/target/classes, /Users/glocon/.m2/repository/org/springframework/cloud/spring-cloud-config-server/1.2.2.RELEASE/spring-cloud-config-server-1.2.2.RELEASE.jar, /Users/glocon/.m2/repository/org/springframework/cloud/spring-cloud-config-client/1.2.2.RELEASE/spring-cloud-config-client-1.2.2.RELEASE.jar, /Users/glocon/.m2/repository/org/springframework/boot/spring-boot-autoconfigure/1.4.4.RELEASE/spring-boot-autoconfigure-1.4.4.RELEASE.jar, /Users/glocon/.m2/repository/org/springframework/boot/spring-boot/1.4.4.RELEASE/spring-boot-1.4.4.RELEASE.jar, /Users/glocon/.m2/repository/org/springframework/cloud/spring-cloud-commons/1.1.7.RELEASE/spring-cloud-commons-1.1.7.RELEASE.jar, /Users/glocon/.m2/repository/org/springframework/cloud/spring-cloud-context/1.1.7.RELEASE/spring-cloud-context-1.1.7.RELEASE.jar, /Users/glocon/.m2/repository/org/springframework/spring-web/4.3.6.RELEASE/spring-web-4.3.6.RELEASE.jar, /Users/glocon/.m2/repository/org/springframework/spring-aop/4.3.6.RELEASE/spring-aop-4.3.6.RELEASE.jar, /Users/glocon/.m2/repository/org/springframework/spring-beans/4.3.6.RELEASE/spring-beans-4.3.6.RELEASE.jar, /Users/glocon/.m2/repository/org/springframework/spring-context/4.3.6.RELEASE/spring-context-4.3.6.RELEASE.jar, /Users/glocon/.m2/repository/org/springframework/spring-core/4.3.6.RELEASE/spring-core-4.3.6.RELEASE.jar, /Users/glocon/.m2/repository/com/fasterxml/jackson/core/jackson-annotations/2.8.6/jackson-annotations-2.8.6.jar, /Users/glocon/.m2/repository/org/springframework/boot/spring-boot-starter-actuator/1.4.4.RELEASE/spring-boot-starter-actuator-1.4.4.RELEASE.jar, /Users/glocon/.m2/repository/org/springframework/boot/spring-boot-starter/1.4.4.RELEASE/spring-boot-starter-1.4.4.RELEASE.jar, /Users/glocon/.m2/repository/org/springframework/boot/spring-boot-starter-logging/1.4.4.RELEASE/spring-boot-starter-logging-1.4.4.RELEASE.jar, /Users/glocon/.m2/repository/ch/qos/logback/logback-classic/1.1.9/logback-classic-1.1.9.jar, /Users/glocon/.m2/repository/ch/qos/logback/logback-core/1.1.9/logback-core-1.1.9.jar, /Users/glocon/.m2/repository/org/slf4j/slf4j-api/1.7.22/slf4j-api-1.7.22.jar, /Users/glocon/.m2/repository/org/slf4j/jcl-over-slf4j/1.7.22/jcl-over-slf4j-1.7.22.jar, /Users/glocon/.m2/repository/org/slf4j/jul-to-slf4j/1.7.22/jul-to-slf4j-1.7.22.jar, /Users/glocon/.m2/repository/org/slf4j/log4j-over-slf4j/1.7.22/log4j-over-slf4j-1.7.22.jar, /Users/glocon/.m2/repository/org/springframework/boot/spring-boot-actuator/1.4.4.RELEASE/spring-boot-actuator-1.4.4.RELEASE.jar, /Users/glocon/.m2/repository/org/springframework/boot/spring-boot-starter-web/1.4.4.RELEASE/spring-boot-starter-web-1.4.4.RELEASE.jar, /Users/glocon/.m2/repository/org/springframework/boot/spring-boot-starter-tomcat/1.4.4.RELEASE/spring-boot-starter-tomcat-1.4.4.RELEASE.jar, /Users/glocon/.m2/repository/org/apache/tomcat/embed/tomcat-embed-core/8.5.11/tomcat-embed-core-8.5.11.jar, /Users/glocon/.m2/repository/org/apache/tomcat/embed/tomcat-embed-el/8.5.11/tomcat-embed-el-8.5.11.jar, /Users/glocon/.m2/repository/org/apache/tomcat/embed/tomcat-embed-websocket/8.5.11/tomcat-embed-websocket-8.5.11.jar, /Users/glocon/.m2/repository/org/hibernate/hibernate-validator/5.2.4.Final/hibernate-validator-5.2.4.Final.jar, /Users/glocon/.m2/repository/javax/validation/validation-api/1.1.0.Final/validation-api-1.1.0.Final.jar, /Users/glocon/.m2/repository/org/jboss/logging/jboss-logging/3.3.0.Final/jboss-logging-3.3.0.Final.jar, /Users/glocon/.m2/repository/com/fasterxml/classmate/1.3.3/classmate-1.3.3.jar, /Users/glocon/.m2/repository/org/springframework/spring-webmvc/4.3.6.RELEASE/spring-webmvc-4.3.6.RELEASE.jar, /Users/glocon/.m2/repository/org/springframework/spring-expression/4.3.6.RELEASE/spring-expression-4.3.6.RELEASE.jar, /Users/glocon/.m2/repository/org/springframework/security/spring-security-crypto/4.1.4.RELEASE/spring-security-crypto-4.1.4.RELEASE.jar, /Users/glocon/.m2/repository/org/springframework/security/spring-security-rsa/1.0.3.RELEASE/spring-security-rsa-1.0.3.RELEASE.jar, /Users/glocon/.m2/repository/org/bouncycastle/bcpkix-jdk15on/1.55/bcpkix-jdk15on-1.55.jar, /Users/glocon/.m2/repository/org/bouncycastle/bcprov-jdk15on/1.55/bcprov-jdk15on-1.55.jar, /Users/glocon/.m2/repository/org/eclipse/jgit/org.eclipse.jgit/3.5.3.201412180710-r/org.eclipse.jgit-3.5.3.201412180710-r.jar, /Users/glocon/.m2/repository/com/jcraft/jsch/0.1.50/jsch-0.1.50.jar, /Users/glocon/.m2/repository/com/googlecode/javaewah/JavaEWAH/0.7.9/JavaEWAH-0.7.9.jar, /Users/glocon/.m2/repository/org/apache/httpcomponents/httpclient/4.5.2/httpclient-4.5.2.jar, /Users/glocon/.m2/repository/org/apache/httpcomponents/httpcore/4.4.6/httpcore-4.4.6.jar, /Users/glocon/.m2/repository/commons-codec/commons-codec/1.10/commons-codec-1.10.jar, /Users/glocon/.m2/repository/org/yaml/snakeyaml/1.17/snakeyaml-1.17.jar, /Users/glocon/.m2/repository/org/springframework/cloud/spring-cloud-starter-config/1.2.2.RELEASE/spring-cloud-starter-config-1.2.2.RELEASE.jar, /Users/glocon/.m2/repository/org/springframework/cloud/spring-cloud-starter/1.1.7.RELEASE/spring-cloud-starter-1.1.7.RELEASE.jar, /Users/glocon/.m2/repository/com/fasterxml/jackson/core/jackson-databind/2.8.6/jackson-databind-2.8.6.jar, /Users/glocon/.m2/repository/com/fasterxml/jackson/core/jackson-core/2.8.6/jackson-core-2.8.6.jar]
+[DEBUG]   (f) compileSourceRoots = [/Users/glocon/Miei/local_git/nike_repo/Spring_Microservices_in_Action/spmia-chapter3/confsvr/src/test/java]
+[DEBUG]   (f) compilerId = javac
+[DEBUG]   (f) debug = true
+[DEBUG]   (f) encoding = UTF-8
+[DEBUG]   (f) failOnError = true
+[DEBUG]   (f) forceJavacCompilerUse = false
+[DEBUG]   (f) fork = false
+[DEBUG]   (f) generatedTestSourcesDirectory = /Users/glocon/Miei/local_git/nike_repo/Spring_Microservices_in_Action/spmia-chapter3/confsvr/target/generated-test-sources/test-annotations
+[DEBUG]   (f) mojoExecution = org.apache.maven.plugins:maven-compiler-plugin:3.1:testCompile {execution: default-testCompile}
+[DEBUG]   (f) optimize = false
+[DEBUG]   (f) outputDirectory = /Users/glocon/Miei/local_git/nike_repo/Spring_Microservices_in_Action/spmia-chapter3/confsvr/target/test-classes
+[DEBUG]   (f) showDeprecation = false
+[DEBUG]   (f) showWarnings = false
+[DEBUG]   (f) skipMultiThreadWarning = false
+[DEBUG]   (f) source = 1.8
+[DEBUG]   (f) staleMillis = 0
+[DEBUG]   (f) target = 1.8
+[DEBUG]   (f) useIncrementalCompilation = true
+[DEBUG]   (f) verbose = false
+[DEBUG]   (f) mavenSession = org.apache.maven.execution.MavenSession@5b800468
+[DEBUG]   (f) session = org.apache.maven.execution.MavenSession@5b800468
+[DEBUG] -- end configuration --
+[DEBUG] Using compiler 'javac'.
+[INFO] No sources to compile
+[INFO] 
+[INFO] <<< spring-boot-maven-plugin:1.4.4.RELEASE:run (default-cli) < test-compile @ configurationserver <<<
+[DEBUG] Dependency collection stats: {ConflictMarker.analyzeTime=0, ConflictMarker.markTime=0, ConflictMarker.nodeCount=114, ConflictIdSorter.graphTime=1, ConflictIdSorter.topsortTime=0, ConflictIdSorter.conflictIdCount=48, ConflictIdSorter.conflictIdCycleCount=0, ConflictResolver.totalTime=2, ConflictResolver.conflictItemCount=88, DefaultDependencyCollector.collectTime=6, DefaultDependencyCollector.transformTime=3}
+[DEBUG] com.thoughtmechanix:configurationserver:jar:0.0.1-SNAPSHOT
+[DEBUG]    org.springframework.cloud:spring-cloud-config-server:jar:1.2.2.RELEASE:compile
+[DEBUG]       org.springframework.cloud:spring-cloud-config-client:jar:1.2.2.RELEASE:compile
+[DEBUG]          org.springframework.boot:spring-boot-autoconfigure:jar:1.4.4.RELEASE:compile (version managed from 1.4.1.RELEASE by org.springframework.boot:spring-boot-dependencies:1.4.4.RELEASE)
+[DEBUG]             org.springframework.boot:spring-boot:jar:1.4.4.RELEASE:compile
+[DEBUG]          org.springframework.cloud:spring-cloud-commons:jar:1.1.7.RELEASE:compile (version managed from 1.1.5.RELEASE by org.springframework.cloud:spring-cloud-commons-dependencies:1.1.7.RELEASE)
+[DEBUG]          org.springframework.cloud:spring-cloud-context:jar:1.1.7.RELEASE:compile (version managed from 1.1.5.RELEASE by org.springframework.cloud:spring-cloud-commons-dependencies:1.1.7.RELEASE)
+[DEBUG]          org.springframework:spring-web:jar:4.3.6.RELEASE:compile (version managed from 4.3.3.RELEASE by org.springframework:spring-framework-bom:4.3.6.RELEASE)
+[DEBUG]             org.springframework:spring-aop:jar:4.3.6.RELEASE:compile
+[DEBUG]             org.springframework:spring-beans:jar:4.3.6.RELEASE:compile
+[DEBUG]             org.springframework:spring-context:jar:4.3.6.RELEASE:compile
+[DEBUG]             org.springframework:spring-core:jar:4.3.6.RELEASE:compile
+[DEBUG]          com.fasterxml.jackson.core:jackson-annotations:jar:2.8.6:compile (version managed from 2.8.3 by org.springframework.boot:spring-boot-dependencies:1.4.4.RELEASE)
+[DEBUG]       org.springframework.boot:spring-boot-starter-actuator:jar:1.4.4.RELEASE:compile (version managed from 1.4.1.RELEASE by org.springframework.boot:spring-boot-dependencies:1.4.4.RELEASE)
+[DEBUG]          org.springframework.boot:spring-boot-starter:jar:1.4.4.RELEASE:compile
+[DEBUG]             org.springframework.boot:spring-boot-starter-logging:jar:1.4.4.RELEASE:compile
+[DEBUG]                ch.qos.logback:logback-classic:jar:1.1.9:compile
+[DEBUG]                   ch.qos.logback:logback-core:jar:1.1.9:compile
+[DEBUG]                   org.slf4j:slf4j-api:jar:1.7.22:compile
+[DEBUG]                org.slf4j:jcl-over-slf4j:jar:1.7.22:compile
+[DEBUG]                org.slf4j:jul-to-slf4j:jar:1.7.22:compile
+[DEBUG]                org.slf4j:log4j-over-slf4j:jar:1.7.22:compile
+[DEBUG]          org.springframework.boot:spring-boot-actuator:jar:1.4.4.RELEASE:compile
+[DEBUG]       org.springframework.boot:spring-boot-starter-web:jar:1.4.4.RELEASE:compile (version managed from 1.4.1.RELEASE by org.springframework.boot:spring-boot-dependencies:1.4.4.RELEASE)
+[DEBUG]          org.springframework.boot:spring-boot-starter-tomcat:jar:1.4.4.RELEASE:compile
+[DEBUG]             org.apache.tomcat.embed:tomcat-embed-core:jar:8.5.11:compile
+[DEBUG]             org.apache.tomcat.embed:tomcat-embed-el:jar:8.5.11:compile
+[DEBUG]             org.apache.tomcat.embed:tomcat-embed-websocket:jar:8.5.11:compile
+[DEBUG]          org.hibernate:hibernate-validator:jar:5.2.4.Final:compile
+[DEBUG]             javax.validation:validation-api:jar:1.1.0.Final:compile
+[DEBUG]             org.jboss.logging:jboss-logging:jar:3.3.0.Final:compile (version managed from 3.2.1.Final by org.springframework.boot:spring-boot-dependencies:1.4.4.RELEASE)
+[DEBUG]             com.fasterxml:classmate:jar:1.3.3:compile (version managed from 1.1.0 by org.springframework.boot:spring-boot-dependencies:1.4.4.RELEASE)
+[DEBUG]          org.springframework:spring-webmvc:jar:4.3.6.RELEASE:compile
+[DEBUG]             org.springframework:spring-expression:jar:4.3.6.RELEASE:compile
+[DEBUG]       org.springframework.security:spring-security-crypto:jar:4.1.4.RELEASE:compile (version managed from 4.1.3.RELEASE by org.springframework.security:spring-security-bom:4.1.4.RELEASE)
+[DEBUG]       org.springframework.security:spring-security-rsa:jar:1.0.3.RELEASE:compile
+[DEBUG]          org.bouncycastle:bcpkix-jdk15on:jar:1.55:compile
+[DEBUG]             org.bouncycastle:bcprov-jdk15on:jar:1.55:compile
+[DEBUG]       org.eclipse.jgit:org.eclipse.jgit:jar:3.5.3.201412180710-r:compile
+[DEBUG]          com.jcraft:jsch:jar:0.1.50:compile
+[DEBUG]          com.googlecode.javaewah:JavaEWAH:jar:0.7.9:compile
+[DEBUG]          org.apache.httpcomponents:httpclient:jar:4.5.2:compile (version managed from 4.1.3 by org.springframework.boot:spring-boot-dependencies:1.4.4.RELEASE)
+[DEBUG]             org.apache.httpcomponents:httpcore:jar:4.4.6:compile (version managed from 4.4.4 by org.springframework.boot:spring-boot-dependencies:1.4.4.RELEASE)
+[DEBUG]             commons-codec:commons-codec:jar:1.10:compile (version managed from 1.9 by org.springframework.boot:spring-boot-dependencies:1.4.4.RELEASE)
+[DEBUG]       org.yaml:snakeyaml:jar:1.17:compile
+[DEBUG]    org.springframework.cloud:spring-cloud-starter-config:jar:1.2.2.RELEASE:compile
+[DEBUG]       org.springframework.cloud:spring-cloud-starter:jar:1.1.7.RELEASE:compile (version managed from 1.1.5.RELEASE by org.springframework.cloud:spring-cloud-commons-dependencies:1.1.7.RELEASE)
+[DEBUG]       com.fasterxml.jackson.core:jackson-databind:jar:2.8.6:compile (version managed from 2.8.3 by org.springframework.boot:spring-boot-dependencies:1.4.4.RELEASE)
+[DEBUG]          com.fasterxml.jackson.core:jackson-core:jar:2.8.6:compile
+[INFO] 
+[INFO] --- spring-boot-maven-plugin:1.4.4.RELEASE:run (default-cli) @ configurationserver ---
+[DEBUG] Dependency collection stats: {ConflictMarker.analyzeTime=1, ConflictMarker.markTime=0, ConflictMarker.nodeCount=339, ConflictIdSorter.graphTime=0, ConflictIdSorter.topsortTime=0, ConflictIdSorter.conflictIdCount=67, ConflictIdSorter.conflictIdCycleCount=0, ConflictResolver.totalTime=3, ConflictResolver.conflictItemCount=161, DefaultDependencyCollector.collectTime=171, DefaultDependencyCollector.transformTime=4}
+[DEBUG] org.springframework.boot:spring-boot-maven-plugin:jar:1.4.4.RELEASE:
+[DEBUG]    org.springframework.boot:spring-boot-loader-tools:jar:1.4.4.RELEASE:compile
+[DEBUG]       org.springframework:spring-core:jar:4.3.6.RELEASE:compile
+[DEBUG]          commons-logging:commons-logging:jar:1.2:compile
+[DEBUG]    org.apache.maven:maven-archiver:jar:2.6:compile
+[DEBUG]       org.apache.maven.shared:maven-shared-utils:jar:0.7:compile
+[DEBUG]          com.google.code.findbugs:jsr305:jar:2.0.1:compile
+[DEBUG]       org.codehaus.plexus:plexus-interpolation:jar:1.21:compile
+[DEBUG]    org.apache.maven:maven-artifact:jar:3.1.1:compile
+[DEBUG]    org.apache.maven:maven-core:jar:3.1.1:compile
+[DEBUG]       org.apache.maven:maven-settings-builder:jar:3.1.1:compile
+[DEBUG]       org.apache.maven:maven-repository-metadata:jar:3.1.1:compile
+[DEBUG]       org.apache.maven:maven-model-builder:jar:3.1.1:compile
+[DEBUG]       org.apache.maven:maven-aether-provider:jar:3.2.1:compile
+[DEBUG]          org.eclipse.aether:aether-spi:jar:1.0.2.v20150114:compile
+[DEBUG]       org.eclipse.aether:aether-impl:jar:1.0.2.v20150114:compile
+[DEBUG]       org.eclipse.aether:aether-api:jar:1.0.2.v20150114:compile
+[DEBUG]       org.eclipse.aether:aether-util:jar:1.0.2.v20150114:compile
+[DEBUG]       org.eclipse.sisu:org.eclipse.sisu.plexus:jar:0.0.0.M5:compile
+[DEBUG]          javax.enterprise:cdi-api:jar:1.0:compile
+[DEBUG]             javax.annotation:jsr250-api:jar:1.0:compile
+[DEBUG]             javax.inject:javax.inject:jar:1:compile
+[DEBUG]          org.sonatype.sisu:sisu-guice:jar:no_aop:3.1.0:compile
+[DEBUG]             aopalliance:aopalliance:jar:1.0:compile
+[DEBUG]          org.eclipse.sisu:org.eclipse.sisu.inject:jar:0.0.0.M5:compile
+[DEBUG]       org.codehaus.plexus:plexus-classworlds:jar:2.5.1:compile
+[DEBUG]       org.codehaus.plexus:plexus-component-annotations:jar:1.5.5:compile
+[DEBUG]       org.sonatype.plexus:plexus-sec-dispatcher:jar:1.3:compile
+[DEBUG]          org.sonatype.plexus:plexus-cipher:jar:1.4:compile
+[DEBUG]    org.apache.maven:maven-model:jar:3.1.1:compile
+[DEBUG]    org.apache.maven:maven-plugin-api:jar:3.1.1:compile
+[DEBUG]    org.apache.maven:maven-settings:jar:3.1.1:compile
+[DEBUG]    org.apache.maven.shared:maven-common-artifact-filters:jar:1.4:compile
+[DEBUG]       org.apache.maven:maven-project:jar:2.0.8:compile
+[DEBUG]          org.apache.maven:maven-profile:jar:2.0.8:compile
+[DEBUG]          org.apache.maven:maven-artifact-manager:jar:2.0.8:compile
+[DEBUG]          org.apache.maven:maven-plugin-registry:jar:2.0.8:compile
+[DEBUG]       org.codehaus.plexus:plexus-container-default:jar:1.5.5:compile
+[DEBUG]          org.apache.xbean:xbean-reflect:jar:3.4:compile
+[DEBUG]             log4j:log4j:jar:1.2.17:compile
+[DEBUG]             commons-logging:commons-logging-api:jar:1.1:compile
+[DEBUG]          com.google.collections:google-collections:jar:1.0:compile
+[DEBUG]          junit:junit:jar:4.12:compile
+[DEBUG]             org.hamcrest:hamcrest-core:jar:1.3:compile
+[DEBUG]    org.codehaus.plexus:plexus-archiver:jar:2.8.1:compile
+[DEBUG]       org.codehaus.plexus:plexus-io:jar:2.3.2:compile
+[DEBUG]       org.apache.commons:commons-compress:jar:1.9:compile
+[DEBUG]    org.codehaus.plexus:plexus-utils:jar:3.0.20:compile
+[DEBUG]    org.sonatype.plexus:plexus-build-api:jar:0.0.7:compile
+[DEBUG]    org.apache.maven.plugins:maven-shade-plugin:jar:2.2:compile
+[DEBUG]       org.apache.maven:maven-compat:jar:3.0:compile
+[DEBUG]          org.sonatype.sisu:sisu-inject-plexus:jar:1.4.2:compile
+[DEBUG]             org.sonatype.sisu:sisu-inject-bean:jar:1.4.2:compile
+[DEBUG]                org.sonatype.sisu:sisu-guice:jar:noaop:2.1.7:compile
+[DEBUG]          org.apache.maven.wagon:wagon-provider-api:jar:1.0-beta-6:compile
+[DEBUG]       asm:asm:jar:3.3.1:compile
+[DEBUG]       asm:asm-commons:jar:3.3.1:compile
+[DEBUG]          asm:asm-tree:jar:3.3.1:compile
+[DEBUG]       org.jdom:jdom:jar:1.1:compile
+[DEBUG]       org.apache.maven.shared:maven-dependency-tree:jar:2.1:compile
+[DEBUG]       org.vafer:jdependency:jar:0.7:compile
+[DEBUG]          commons-io:commons-io:jar:1.3.2:compile
+[DEBUG]          asm:asm-analysis:jar:3.2:compile
+[DEBUG]          asm:asm-util:jar:3.2:compile
+[DEBUG]       com.google.guava:guava:jar:18.0:compile
+[DEBUG] Created new class realm plugin>org.springframework.boot:spring-boot-maven-plugin:1.4.4.RELEASE
+[DEBUG] Importing foreign packages into class realm plugin>org.springframework.boot:spring-boot-maven-plugin:1.4.4.RELEASE
+[DEBUG]   Imported:  < maven.api
+[DEBUG] Populating class realm plugin>org.springframework.boot:spring-boot-maven-plugin:1.4.4.RELEASE
+[DEBUG]   Included: org.springframework.boot:spring-boot-maven-plugin:jar:1.4.4.RELEASE
+[DEBUG]   Included: org.springframework.boot:spring-boot-loader-tools:jar:1.4.4.RELEASE
+[DEBUG]   Included: org.springframework:spring-core:jar:4.3.6.RELEASE
+[DEBUG]   Included: commons-logging:commons-logging:jar:1.2
+[DEBUG]   Included: org.apache.maven:maven-archiver:jar:2.6
+[DEBUG]   Included: org.apache.maven.shared:maven-shared-utils:jar:0.7
+[DEBUG]   Included: com.google.code.findbugs:jsr305:jar:2.0.1
+[DEBUG]   Included: org.codehaus.plexus:plexus-interpolation:jar:1.21
+[DEBUG]   Included: org.eclipse.aether:aether-util:jar:1.0.2.v20150114
+[DEBUG]   Included: javax.enterprise:cdi-api:jar:1.0
+[DEBUG]   Included: javax.annotation:jsr250-api:jar:1.0
+[DEBUG]   Included: org.sonatype.sisu:sisu-guice:jar:no_aop:3.1.0
+[DEBUG]   Included: aopalliance:aopalliance:jar:1.0
+[DEBUG]   Included: org.eclipse.sisu:org.eclipse.sisu.inject:jar:0.0.0.M5
+[DEBUG]   Included: org.codehaus.plexus:plexus-component-annotations:jar:1.5.5
+[DEBUG]   Included: org.sonatype.plexus:plexus-sec-dispatcher:jar:1.3
+[DEBUG]   Included: org.sonatype.plexus:plexus-cipher:jar:1.4
+[DEBUG]   Included: org.apache.maven.shared:maven-common-artifact-filters:jar:1.4
+[DEBUG]   Included: org.apache.xbean:xbean-reflect:jar:3.4
+[DEBUG]   Included: log4j:log4j:jar:1.2.17
+[DEBUG]   Included: commons-logging:commons-logging-api:jar:1.1
+[DEBUG]   Included: com.google.collections:google-collections:jar:1.0
+[DEBUG]   Included: junit:junit:jar:4.12
+[DEBUG]   Included: org.hamcrest:hamcrest-core:jar:1.3
+[DEBUG]   Included: org.codehaus.plexus:plexus-archiver:jar:2.8.1
+[DEBUG]   Included: org.codehaus.plexus:plexus-io:jar:2.3.2
+[DEBUG]   Included: org.apache.commons:commons-compress:jar:1.9
+[DEBUG]   Included: org.codehaus.plexus:plexus-utils:jar:3.0.20
+[DEBUG]   Included: org.sonatype.plexus:plexus-build-api:jar:0.0.7
+[DEBUG]   Included: org.apache.maven.plugins:maven-shade-plugin:jar:2.2
+[DEBUG]   Included: org.sonatype.sisu:sisu-inject-bean:jar:1.4.2
+[DEBUG]   Included: org.sonatype.sisu:sisu-guice:jar:noaop:2.1.7
+[DEBUG]   Included: asm:asm:jar:3.3.1
+[DEBUG]   Included: asm:asm-commons:jar:3.3.1
+[DEBUG]   Included: asm:asm-tree:jar:3.3.1
+[DEBUG]   Included: org.jdom:jdom:jar:1.1
+[DEBUG]   Included: org.apache.maven.shared:maven-dependency-tree:jar:2.1
+[DEBUG]   Included: org.vafer:jdependency:jar:0.7
+[DEBUG]   Included: commons-io:commons-io:jar:1.3.2
+[DEBUG]   Included: asm:asm-analysis:jar:3.2
+[DEBUG]   Included: asm:asm-util:jar:3.2
+[DEBUG]   Included: com.google.guava:guava:jar:18.0
+[DEBUG] Configuring mojo org.springframework.boot:spring-boot-maven-plugin:1.4.4.RELEASE:run from plugin realm ClassRealm[plugin>org.springframework.boot:spring-boot-maven-plugin:1.4.4.RELEASE, parent: sun.misc.Launcher$AppClassLoader@33909752]
+[DEBUG] Configuring mojo 'org.springframework.boot:spring-boot-maven-plugin:1.4.4.RELEASE:run' with basic configurator -->
+[DEBUG]   (f) addResources = false
+[DEBUG]   (f) agent = []
+[DEBUG]   (f) arguments = []
+[DEBUG]   (f) classesDirectory = /Users/glocon/Miei/local_git/nike_repo/Spring_Microservices_in_Action/spmia-chapter3/confsvr/target/classes
+[DEBUG]   (f) mainClass = com.thoughtmechanix.confsvr.ConfigServerApplication
+[DEBUG]   (f) profiles = []
+[DEBUG]   (f) project = MavenProject: com.thoughtmechanix:configurationserver:0.0.1-SNAPSHOT @ /Users/glocon/Miei/local_git/nike_repo/Spring_Microservices_in_Action/spmia-chapter3/confsvr/pom.xml
+[DEBUG]   (f) skip = false
+[DEBUG]   (f) useTestClasspath = false
+[DEBUG] -- end configuration --
+2017-03-24 15:15:21.004  INFO 36598 --- [           main] s.c.a.AnnotationConfigApplicationContext : Refreshing org.springframework.context.annotation.AnnotationConfigApplicationContext@3bc933fa: startup date [Fri Mar 24 15:15:21 PDT 2017]; root of context hierarchy
+2017-03-24 15:15:21.231  INFO 36598 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'configurationPropertiesRebinderAutoConfiguration' of type [class org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration$$EnhancerBySpringCGLIB$$f794fd80] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::        (v1.4.4.RELEASE)
+
+2017-03-24 15:15:21.441  INFO 36598 --- [           main] c.t.confsvr.ConfigServerApplication      : The following profiles are active: native
+2017-03-24 15:15:21.447  INFO 36598 --- [           main] ationConfigEmbeddedWebApplicationContext : Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@1ff9288: startup date [Fri Mar 24 15:15:21 PDT 2017]; parent: org.springframework.context.annotation.AnnotationConfigApplicationContext@3bc933fa
+2017-03-24 15:15:21.805  INFO 36598 --- [           main] o.s.core.annotation.AnnotationUtils      : Failed to introspect annotations on [class org.springframework.boot.actuate.autoconfigure.EndpointWebMvcHypermediaManagementContextConfiguration]: java.lang.ArrayStoreException: sun.reflect.annotation.TypeNotPresentExceptionProxy
+2017-03-24 15:15:21.805  INFO 36598 --- [           main] o.s.core.annotation.AnnotationUtils      : Failed to introspect annotations on [class org.springframework.boot.actuate.autoconfigure.EndpointWebMvcHypermediaManagementContextConfiguration]: java.lang.ArrayStoreException: sun.reflect.annotation.TypeNotPresentExceptionProxy
+2017-03-24 15:15:21.978  INFO 36598 --- [           main] o.s.b.f.s.DefaultListableBeanFactory     : Overriding bean definition for bean 'environmentRepository' with a different definition: replacing [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=org.springframework.cloud.config.server.config.EnvironmentRepositoryConfiguration$GitRepositoryConfiguration; factoryMethodName=environmentRepository; initMethodName=null; destroyMethodName=(inferred); defined in class path resource [org/springframework/cloud/config/server/config/EnvironmentRepositoryConfiguration$GitRepositoryConfiguration.class]] with [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=org.springframework.cloud.config.server.config.EnvironmentRepositoryConfiguration$NativeRepositoryConfiguration; factoryMethodName=environmentRepository; initMethodName=null; destroyMethodName=(inferred); defined in class path resource [org/springframework/cloud/config/server/config/EnvironmentRepositoryConfiguration$NativeRepositoryConfiguration.class]]
+2017-03-24 15:15:21.994  WARN 36598 --- [           main] o.s.c.a.ConfigurationClassPostProcessor  : Cannot enhance @Configuration bean definition 'refreshScope' since its singleton instance has been created too early. The typical cause is a non-static @Bean method with a BeanDefinitionRegistryPostProcessor return type: Consider declaring such methods as 'static'.
+2017-03-24 15:15:22.103  INFO 36598 --- [           main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=ae9ea6d5-f415-3e48-bdfc-669fba7eed02
+2017-03-24 15:15:22.140  INFO 36598 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration' of type [class org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration$$EnhancerBySpringCGLIB$$f794fd80] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2017-03-24 15:15:22.331  INFO 36598 --- [           main] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat initialized with port(s): 8888 (http)
+2017-03-24 15:15:22.340  INFO 36598 --- [           main] o.apache.catalina.core.StandardService   : Starting service Tomcat
+2017-03-24 15:15:22.340  INFO 36598 --- [           main] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.11
+2017-03-24 15:15:22.396  INFO 36598 --- [ost-startStop-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2017-03-24 15:15:22.396  INFO 36598 --- [ost-startStop-1] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 950 ms
+2017-03-24 15:15:22.570  INFO 36598 --- [ost-startStop-1] o.s.b.w.servlet.ServletRegistrationBean  : Mapping servlet: 'dispatcherServlet' to [/]
+2017-03-24 15:15:22.574  INFO 36598 --- [ost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'metricsFilter' to: [/*]
+2017-03-24 15:15:22.574  INFO 36598 --- [ost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
+2017-03-24 15:15:22.574  INFO 36598 --- [ost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2017-03-24 15:15:22.574  INFO 36598 --- [ost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2017-03-24 15:15:22.575  INFO 36598 --- [ost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'requestContextFilter' to: [/*]
+2017-03-24 15:15:22.575  INFO 36598 --- [ost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'webRequestLoggingFilter' to: [/*]
+2017-03-24 15:15:22.575  INFO 36598 --- [ost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'applicationContextIdFilter' to: [/*]
+2017-03-24 15:15:22.900  INFO 36598 --- [           main] s.w.s.m.m.a.RequestMappingHandlerAdapter : Looking for @ControllerAdvice: org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@1ff9288: startup date [Fri Mar 24 15:15:21 PDT 2017]; parent: org.springframework.context.annotation.AnnotationConfigApplicationContext@3bc933fa
+2017-03-24 15:15:22.962  INFO 36598 --- [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2017-03-24 15:15:22.962  INFO 36598 --- [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2017-03-24 15:15:22.969  INFO 36598 --- [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/encrypt],methods=[POST]}" onto public java.lang.String org.springframework.cloud.config.server.encryption.EncryptionController.encrypt(java.lang.String,org.springframework.http.MediaType)
+2017-03-24 15:15:22.969  INFO 36598 --- [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/encrypt/{name}/{profiles}],methods=[POST]}" onto public java.lang.String org.springframework.cloud.config.server.encryption.EncryptionController.encrypt(java.lang.String,java.lang.String,java.lang.String,org.springframework.http.MediaType)
+2017-03-24 15:15:22.969  INFO 36598 --- [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/decrypt/{name}/{profiles}],methods=[POST]}" onto public java.lang.String org.springframework.cloud.config.server.encryption.EncryptionController.decrypt(java.lang.String,java.lang.String,java.lang.String,org.springframework.http.MediaType)
+2017-03-24 15:15:22.970  INFO 36598 --- [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/decrypt],methods=[POST]}" onto public java.lang.String org.springframework.cloud.config.server.encryption.EncryptionController.decrypt(java.lang.String,org.springframework.http.MediaType)
+2017-03-24 15:15:22.970  INFO 36598 --- [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/encrypt/status],methods=[GET]}" onto public java.util.Map<java.lang.String, java.lang.Object> org.springframework.cloud.config.server.encryption.EncryptionController.status()
+2017-03-24 15:15:22.970  INFO 36598 --- [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/key],methods=[GET]}" onto public java.lang.String org.springframework.cloud.config.server.encryption.EncryptionController.getPublicKey()
+2017-03-24 15:15:22.970  INFO 36598 --- [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/key/{name}/{profiles}],methods=[GET]}" onto public java.lang.String org.springframework.cloud.config.server.encryption.EncryptionController.getPublicKey(java.lang.String,java.lang.String)
+2017-03-24 15:15:22.977  INFO 36598 --- [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/{label}/{name}-{profiles}.properties],methods=[GET]}" onto public org.springframework.http.ResponseEntity<java.lang.String> org.springframework.cloud.config.server.environment.EnvironmentController.labelledProperties(java.lang.String,java.lang.String,java.lang.String,boolean) throws java.io.IOException
+2017-03-24 15:15:22.977  INFO 36598 --- [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/{name}-{profiles}.json],methods=[GET]}" onto public org.springframework.http.ResponseEntity<java.lang.String> org.springframework.cloud.config.server.environment.EnvironmentController.jsonProperties(java.lang.String,java.lang.String,boolean) throws java.lang.Exception
+2017-03-24 15:15:22.977  INFO 36598 --- [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/{label}/{name}-{profiles}.json],methods=[GET]}" onto public org.springframework.http.ResponseEntity<java.lang.String> org.springframework.cloud.config.server.environment.EnvironmentController.labelledJsonProperties(java.lang.String,java.lang.String,java.lang.String,boolean) throws java.lang.Exception
+2017-03-24 15:15:22.977  INFO 36598 --- [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/{label}/{name}-{profiles}.yml || /{label}/{name}-{profiles}.yaml],methods=[GET]}" onto public org.springframework.http.ResponseEntity<java.lang.String> org.springframework.cloud.config.server.environment.EnvironmentController.labelledYaml(java.lang.String,java.lang.String,java.lang.String,boolean) throws java.lang.Exception
+2017-03-24 15:15:22.978  INFO 36598 --- [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/{name}-{profiles}.yml || /{name}-{profiles}.yaml],methods=[GET]}" onto public org.springframework.http.ResponseEntity<java.lang.String> org.springframework.cloud.config.server.environment.EnvironmentController.yaml(java.lang.String,java.lang.String,boolean) throws java.lang.Exception
+2017-03-24 15:15:22.978  INFO 36598 --- [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/{name}/{profiles:.*[^-].*}],methods=[GET]}" onto public org.springframework.cloud.config.environment.Environment org.springframework.cloud.config.server.environment.EnvironmentController.defaultLabel(java.lang.String,java.lang.String)
+2017-03-24 15:15:22.978  INFO 36598 --- [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/{name}/{profiles}/{label:.*}],methods=[GET]}" onto public org.springframework.cloud.config.environment.Environment org.springframework.cloud.config.server.environment.EnvironmentController.labelled(java.lang.String,java.lang.String,java.lang.String)
+2017-03-24 15:15:22.978  INFO 36598 --- [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/{name}-{profiles}.properties],methods=[GET]}" onto public org.springframework.http.ResponseEntity<java.lang.String> org.springframework.cloud.config.server.environment.EnvironmentController.properties(java.lang.String,java.lang.String,boolean) throws java.io.IOException
+2017-03-24 15:15:22.982  INFO 36598 --- [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/{name}/{profile}/{label}/**],methods=[GET]}" onto public java.lang.String org.springframework.cloud.config.server.resource.ResourceController.resolve(java.lang.String,java.lang.String,java.lang.String,javax.servlet.http.HttpServletRequest) throws java.io.IOException
+2017-03-24 15:15:22.982  INFO 36598 --- [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/{name}/{profile}/{label}/**],methods=[GET],produces=[application/octet-stream]}" onto public synchronized byte[] org.springframework.cloud.config.server.resource.ResourceController.binary(java.lang.String,java.lang.String,java.lang.String,javax.servlet.http.HttpServletRequest) throws java.io.IOException
+2017-03-24 15:15:23.011  INFO 36598 --- [           main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2017-03-24 15:15:23.011  INFO 36598 --- [           main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2017-03-24 15:15:23.050  INFO 36598 --- [           main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2017-03-24 15:15:23.397  INFO 36598 --- [           main] o.s.b.a.e.mvc.EndpointHandlerMapping     : Mapped "{[/refresh || /refresh.json],methods=[POST]}" onto public java.lang.Object org.springframework.cloud.endpoint.GenericPostableMvcEndpoint.invoke()
+2017-03-24 15:15:23.397  INFO 36598 --- [           main] o.s.b.a.e.mvc.EndpointHandlerMapping     : Mapped "{[/resume || /resume.json],methods=[POST]}" onto public java.lang.Object org.springframework.cloud.endpoint.GenericPostableMvcEndpoint.invoke()
+2017-03-24 15:15:23.399  INFO 36598 --- [           main] o.s.b.a.e.mvc.EndpointHandlerMapping     : Mapped "{[/info || /info.json],methods=[GET],produces=[application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()
+2017-03-24 15:15:23.399  INFO 36598 --- [           main] o.s.b.a.e.mvc.EndpointHandlerMapping     : Mapped "{[/env],methods=[POST]}" onto public java.lang.Object org.springframework.cloud.context.environment.EnvironmentManagerMvcEndpoint.value(java.util.Map<java.lang.String, java.lang.String>)
+2017-03-24 15:15:23.399  INFO 36598 --- [           main] o.s.b.a.e.mvc.EndpointHandlerMapping     : Mapped "{[/env/reset],methods=[POST]}" onto public java.util.Map<java.lang.String, java.lang.Object> org.springframework.cloud.context.environment.EnvironmentManagerMvcEndpoint.reset()
+2017-03-24 15:15:23.400  INFO 36598 --- [           main] o.s.b.a.e.mvc.EndpointHandlerMapping     : Mapped "{[/heapdump || /heapdump.json],methods=[GET],produces=[application/octet-stream]}" onto public void org.springframework.boot.actuate.endpoint.mvc.HeapdumpMvcEndpoint.invoke(boolean,javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse) throws java.io.IOException,javax.servlet.ServletException
+2017-03-24 15:15:23.400  INFO 36598 --- [           main] o.s.b.a.e.mvc.EndpointHandlerMapping     : Mapped "{[/autoconfig || /autoconfig.json],methods=[GET],produces=[application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()
+2017-03-24 15:15:23.401  INFO 36598 --- [           main] o.s.b.a.e.mvc.EndpointHandlerMapping     : Mapped "{[/metrics/{name:.*}],methods=[GET],produces=[application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.MetricsMvcEndpoint.value(java.lang.String)
+2017-03-24 15:15:23.401  INFO 36598 --- [           main] o.s.b.a.e.mvc.EndpointHandlerMapping     : Mapped "{[/metrics || /metrics.json],methods=[GET],produces=[application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()
+2017-03-24 15:15:23.401  INFO 36598 --- [           main] o.s.b.a.e.mvc.EndpointHandlerMapping     : Mapped "{[/trace || /trace.json],methods=[GET],produces=[application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()
+2017-03-24 15:15:23.402  INFO 36598 --- [           main] o.s.b.a.e.mvc.EndpointHandlerMapping     : Mapped "{[/env/{name:.*}],methods=[GET],produces=[application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EnvironmentMvcEndpoint.value(java.lang.String)
+2017-03-24 15:15:23.402  INFO 36598 --- [           main] o.s.b.a.e.mvc.EndpointHandlerMapping     : Mapped "{[/env || /env.json],methods=[GET],produces=[application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()
+2017-03-24 15:15:23.402  INFO 36598 --- [           main] o.s.b.a.e.mvc.EndpointHandlerMapping     : Mapped "{[/dump || /dump.json],methods=[GET],produces=[application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()
+2017-03-24 15:15:23.404  INFO 36598 --- [           main] o.s.b.a.e.mvc.EndpointHandlerMapping     : Mapped "{[/mappings || /mappings.json],methods=[GET],produces=[application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()
+2017-03-24 15:15:23.405  INFO 36598 --- [           main] o.s.b.a.e.mvc.EndpointHandlerMapping     : Mapped "{[/configprops || /configprops.json],methods=[GET],produces=[application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()
+2017-03-24 15:15:23.405  INFO 36598 --- [           main] o.s.b.a.e.mvc.EndpointHandlerMapping     : Mapped "{[/pause || /pause.json],methods=[POST]}" onto public java.lang.Object org.springframework.cloud.endpoint.GenericPostableMvcEndpoint.invoke()
+2017-03-24 15:15:23.405  INFO 36598 --- [           main] o.s.b.a.e.mvc.EndpointHandlerMapping     : Mapped "{[/health || /health.json],produces=[application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.HealthMvcEndpoint.invoke(java.security.Principal)
+2017-03-24 15:15:23.406  INFO 36598 --- [           main] o.s.b.a.e.mvc.EndpointHandlerMapping     : Mapped "{[/restart || /restart.json],methods=[POST]}" onto public java.lang.Object org.springframework.cloud.context.restart.RestartMvcEndpoint.invoke()
+2017-03-24 15:15:23.406  INFO 36598 --- [           main] o.s.b.a.e.mvc.EndpointHandlerMapping     : Mapped "{[/beans || /beans.json],methods=[GET],produces=[application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()
+2017-03-24 15:15:23.526  INFO 36598 --- [           main] o.s.j.e.a.AnnotationMBeanExporter        : Registering beans for JMX exposure on startup
+2017-03-24 15:15:23.533  INFO 36598 --- [           main] o.s.j.e.a.AnnotationMBeanExporter        : Bean with name 'configurationPropertiesRebinder' has been autodetected for JMX exposure
+2017-03-24 15:15:23.534  INFO 36598 --- [           main] o.s.j.e.a.AnnotationMBeanExporter        : Bean with name 'refreshEndpoint' has been autodetected for JMX exposure
+2017-03-24 15:15:23.534  INFO 36598 --- [           main] o.s.j.e.a.AnnotationMBeanExporter        : Bean with name 'restartEndpoint' has been autodetected for JMX exposure
+2017-03-24 15:15:23.535  INFO 36598 --- [           main] o.s.j.e.a.AnnotationMBeanExporter        : Bean with name 'refreshScope' has been autodetected for JMX exposure
+2017-03-24 15:15:23.535  INFO 36598 --- [           main] o.s.j.e.a.AnnotationMBeanExporter        : Bean with name 'environmentManager' has been autodetected for JMX exposure
+2017-03-24 15:15:23.537  INFO 36598 --- [           main] o.s.j.e.a.AnnotationMBeanExporter        : Located managed bean 'environmentManager': registering with JMX server as MBean [org.springframework.cloud.context.environment:name=environmentManager,type=EnvironmentManager]
+2017-03-24 15:15:23.547  INFO 36598 --- [           main] o.s.j.e.a.AnnotationMBeanExporter        : Located managed bean 'restartEndpoint': registering with JMX server as MBean [org.springframework.cloud.context.restart:name=restartEndpoint,type=RestartEndpoint]
+2017-03-24 15:15:23.557  INFO 36598 --- [           main] o.s.j.e.a.AnnotationMBeanExporter        : Located managed bean 'refreshScope': registering with JMX server as MBean [org.springframework.cloud.context.scope.refresh:name=refreshScope,type=RefreshScope]
+2017-03-24 15:15:23.563  INFO 36598 --- [           main] o.s.j.e.a.AnnotationMBeanExporter        : Located managed bean 'configurationPropertiesRebinder': registering with JMX server as MBean [org.springframework.cloud.context.properties:name=configurationPropertiesRebinder,context=1ff9288,type=ConfigurationPropertiesRebinder]
+2017-03-24 15:15:23.569  INFO 36598 --- [           main] o.s.j.e.a.AnnotationMBeanExporter        : Located managed bean 'refreshEndpoint': registering with JMX server as MBean [org.springframework.cloud.endpoint:name=refreshEndpoint,type=RefreshEndpoint]
+2017-03-24 15:15:23.651  INFO 36598 --- [           main] o.s.c.support.DefaultLifecycleProcessor  : Starting beans in phase 0
+2017-03-24 15:15:23.729  INFO 36598 --- [           main] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat started on port(s): 8888 (http)
+2017-03-24 15:15:23.733  INFO 36598 --- [           main] c.t.confsvr.ConfigServerApplication      : Started ConfigServerApplication in 3.279 seconds (JVM running for 5.553)

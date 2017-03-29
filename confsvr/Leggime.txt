@@ -1,42 +1,193 @@
 
 Implementa Spring Boot Config Server che puo essere usato dal Spring Boot application
-a bootstrap per leggere configurazioni.
+a bootstrap per leggere configurazioni per microservices.
+Al posto di Spring Boot Config Server si puo usare invece:Etcd,Eureka,Consul,Zookeepers
+
 
 Usa client in licensing-service_chapter3 per testare.
 
 
 Spring Boot e' release indipendentemente da Spring Cloud.
 
-Vedi http://projects.spring.io/spring-cloud/ per la compatibility matrix!!
+Spring Cloud riunisce sotto un unico cappello tutti i proggetti indipendenti spring cloud 
+ognuno con propria cadenza e riunisce le release compatibili sotto nomi unici come <version>Camden.SR5</version>
+in questo proggetto pom.
+
+http://projects.spring.io/spring-cloud/ per la compatibility matrix!!
 
 
-#########  application.yml
+spring-cloud-config-server  =>include spring-boot-starter-web (spring-beans,spring-core,tomcat,etc)
+spring-cloud-starter-config 
+
+La configurazione di questo  Spring Boot Config Server e' letta da src/main/resources/application.yml
+
+                             ###                  application.yml             ###
+ 
  port:8888   => su che porta i clients devono connettersi 
  
  uri: https://github.com/carnellj/config-repo/      => dove e' git repo con config clients
  
- searchPaths: licensingservice,organizationservice  => configurazioni possibili disponibili clients.
- Ogni entry rappresenta una singola applicazione configurata.
- 
- 
- Nel caso si vogli storare le configs in local filesystem:
+ searchPaths: licensingservice,organizationservice  => subfolders di uri contenenti configurazioni possibili disponibili clients.
+ 													   Ogni entry rappresenta una singola applicazione configurata.
+                                                       Ex licensingservice =>https://github.com/carnellj/config-repo/licensingservice/licensingservice.yml
+ 																			https://github.com/carnellj/config-repo/licensingservice/licensingservice-prod.yml
+ 																			https://github.com/carnellj/config-repo/licensingservice/licensingservice-dev.yml
+ 																			https://github.com/carnellj/config-repo/licensingservice/licensingservice-aws-dev.yml
+ 																			
+ 																			
+ 																			
+  Nel caso si vogli storare le configs in local filesystem si puo usare 'native:' invece di  'git:'  e specificare i folders in searchLocations:
  
   searchLocations: file:///configurationserver_chapter3/src/main/resources/config/licensingservice/,
-                               file:///configurationserver_chapter3/src/main/resources/config/organizationservice
+                   ile:///configurationserver_chapter3/src/main/resources/config/organizationservice
  
- 
- Ogni configurazione ha 4 versioni :icensingservice.yml,licensingservice-dev.yml,licensingservice-prod.yml,licensingservice-aws-dev.yml
+Una searchLocations, un folder, un set conf files  per ogni app!!
+Ogni configurazione ha 4 versioni :icensingservice.yml,licensingservice-dev.yml,licensingservice-prod.yml,licensingservice-aws-dev.yml
 
 
-Le configurazioni si possono trovare :
+Quando il server e' online le configurazioni si possono trovare :
 
 http://localhost:8888/licensingservice/default
 http://localhost:8888/licensingservice/dev
 http://localhost:8888/licensingservice/prod
 
 
+								             ####    POM   ####
+mvn spring-boot:run  => RunMojo.runWithMavenJvm(String startClassName...) =>  ConfigServerApplication.main()  =>  SpringApplication.run(ConfigServerApplication.class)
+ 
+ConfigServerApplication e' scelta da RunMojo come start class grazie a  <start-class>com.thoughtmechanix.confsvr.ConfigServerApplication</start-class>  nel pom.xml
+
+
+                                      SpringApplication  Spring bootstrap 
+
+
+@EnableAutoConfiguration
+
+SpringApplication definisce come default org.springframework.context.annotation.AnnotationConfigApplicationContext [vedi nella classe stessa].
+Questo e' il primo context che viene creato.
+Un secondo context e' AnnotationConfigEmbeddedWebApplicationContext.
+Esso estende EmbeddedWebApplicationContext ed in createEmbeddedServletContainer() cerca un bean del type EmbeddedServletContainerFactory.class
+e se non lo trova espode con "Unable to start EmbeddedWebApplicationContext due to missing EmbeddedServletContainerFactory bean".
+L annotazione @EnableAutoConfiguration permette a spring di includere  TomcatEmbeddedServletContainerFactory (che implementa EmbeddedServletContainerFactory)
+ nel context e da qui TomcatEmbeddedServletContainerFactory.getEmbeddedServletContainer() tomcat viene configurato in 
+ TomcatEmbeddedServletContainer(Tomcat tomcat, boolean autoStart)
+Tomcat e' finalmente lanciati in  TomcatEmbeddedServletContainer.start() che e' chiamato AnnotationConfigEmbeddedWebApplicationContext.finishRefresh() come ultimo atto.
+ 
+ 
+@EnableConfigServer
+
+Senza questa annotazione, il server ritorna 404 per le config urls .
 
 
 
 
 
+													###  Bootstrap   ###
+
+SpringApplication.run(ConfigServerApplication.class)  => SpringApplication.initialize(ConfigServerApplication.class)
+
+SpringApplication.mainApplicationClass= ConfigServerApplication
+SpringApplication.webEnvironment =      true (se javax.servlet.Servlet e ConfigurableWebApplicationContext sono ambo presenti nel classpath)
+SpringApplication.initializers =        (cerca in ogni jar nel classpath nei file META-INF/spring.factories una entry key = org.springframework.context.ApplicationContextInitializer)
+
+								  spring-boot.jar   				ConfigurationWarningsApplicationContextInitializer,ContextIdApplicationContextInitializer,DelegatingApplicationContextInitializer,
+								                                    ServerPortInfoApplicationContextInitializer                     
+                                  spring-boot-autoconfigure.jar     SharedMetadataReaderFactoryContextInitializer,AutoConfigurationReportLoggingInitializer
+
+
+
+SpringApplication.listeners = (cerca in ogni jar nel classpath nei file META-INF/spring.factories una entry key = org.springframework.context.ApplicationListener)
+								   spring-boot.jar                  ClearCachesApplicationListener,ParentContextCloserApplicationListener,FileEncodingApplicationListener,
+								   									AnsiOutputApplicationListener,ConfigFileApplicationListener,DelegatingApplicationListener,
+								   									LiquibaseServiceLocatorApplicationListener,ClasspathLoggingApplicationListener,LoggingApplicationListener
+								   spring-cloud-config-server.jar   ConfigServerBootstrapApplicationListener
+								   spring-boot-autoconfigure.jar    BackgroundPreinitializer
+								   spring-cloud-context.jar         BootstrapApplicationListener,LoggingSystemShutdownListener,RestartListener
+								   
+								   
+SpringApplication.run(ConfigServerApplication.class)  =>	SpringApplication.getRunListeners()
+                                   spring-boot.jar                  EventPublishingRunListener
+					   
+								   EventPublishingRunListener.started().multicastEvent(new ApplicationStartedEvent())								   
+
+SpringApplication.run(ConfigServerApplication.class)  =>  SpringApplication.prepareEnvironment(EventPublishingRunListener)
+                     									         ConfigurableEnvironment environment =  new  StandardServletEnvironment ()
+                     									         EventPublishingRunListener.multicastEvent(new ApplicationEnvironmentPreparedEvent())
+                     									                                BootstrapApplicationListener.onApplicationEvent(ApplicationEnvironmentPreparedEvent()
+                     									                                        BootstrapApplicationListener.bootstrapServiceContext()
+                     									                                        		               names  = (cerca in ogni jar nel classpath nei file META-INF/spring.factories una entry key = org.springframework.cloud.bootstrap.BootstrapConfiguration )
+                     									                                        		               spring-cloud-config-client.jar    ConfigServiceBootstrapConfiguration,DiscoveryClientConfigServiceBootstrapConfiguration
+                     									                                        			           spring-cloud-config-server.jar    ConfigServerBootstrapConfiguration
+                     									                                        		               spring-cloud-context.jar			 PropertySourceBootstrapConfiguration,EncryptionBootstrapConfiguration,ConfigurationPropertiesRebinderAutoConfiguration,PropertyPlaceholderAutoConfiguration
+                     									                                        			           builder = new SpringApplicationBuilder() => new SpringApplicationBuilder() =>SpringApplication.initialize() => setInitializers()
+						                     									                                        																								(cerca ed instanzia  in ogni jar nel classpath nei file META-INF/spring.factories una entry key = org.springframework.context.ApplicationContextInitializer )
+						                     									                                        																								spring-boot.jar 				   ConfigurationWarningsApplicationContextInitializer,ContextIdApplicationContextInitializer,DelegatingApplicationContextInitializer,ServerPortInfoApplicationContextInitializer
+						                     									                                        																								spring-boot-autoconfigure.jar      SharedMetadataReaderFactoryContextInitializer,AutoConfigurationReportLoggingInitializer
+						                     									                                        																								 =>setListeners()
+						                     									                                        																								 (cerca ed instanzia  in ogni jar nel classpath nei file META-INF/spring.factories una entry key = org.springframework.context.ApplicationListener )
+						                     									                                        																							     spring-boot.jar   					ClearCachesApplicationListener,	ParentContextCloserApplicationListener,	 FileEncodingApplicationListener,AnsiOutputApplicationListener,ConfigFileApplicationListener,DelegatingApplicationListener
+						                     									                                        																							     									LiquibaseServiceLocatorApplicationListener,ClasspathLoggingApplicationListener,LoggingApplicationListener,
+						                     									                                        																								 spring-cloud-config-server.jar     ConfigServerBootstrapApplicationListener
+						                     									                                        																								 spring-boot-autoconfigure.jar      BackgroundPreinitializer
+						                     									                                        																								 spring-cloud-context.jar           BootstrapApplicationListener,LoggingSystemShutdownListener,RestartListener,,
+						                     									                                        																								 
+                     									                                        						 																		
+                     									                                        						builder.sources =	[classes estratte da "names"]	
+                     									                                        						builder.run()  =>  SpringApplication.run() => 
+                     									                                        																		listeners = getRunListeners(args);
+                     									                                        																		(cerca ed instanzia  in ogni jar nel classpath nei file META-INF/spring.factories una entry key = org.springframework.boot.SpringApplicationRunListener )
+                     									                                        																		
+                     									                                        																		spring-boot.jar 			     EventPublishingRunListener
+                     									                                        																		spring-cloud-config-client.jar   SpringApplicationRunListener
+                     									                                        																		spring-cloud-config-server.jar   SpringApplicationRunListener
+                     									                                        																		spring-beans.jar 				 SpringApplicationRunListener
+                     									                                        																		spring-boot-autoconfigure.jar    SpringApplicationRunListener
+                     									                                        																		
+                     									                                        																   => prepareEnvironment(listeners) => listeners.environmentPrepared() => ConfigFileApplicationListener.onApplicationEnvironmentPreparedEvent()=> 
+                     									                                        																   																																				  postProcessors = loadPostProcessors() (cerca ed instanzia  in ogni jar nel classpath nei file META-INF/spring.factories una entry key = org.springframework.boot.env.EnvironmentPostProcessor )
+                     									                                        																   																																				  spring-boot.jar            ConfigFileApplicationListener,CloudFoundryVcapEnvironmentPostProcessor,SpringApplicationJsonEnvironmentPostProcessor
+                     									                                        																   																																				  spring-cloud-commons.jar   HostInfoEnvironmentPostProcessor
+                     									                                        																   																																				  SpringApplicationJsonEnvironmentPostProcessor.postProcessEnvironment() 
+                     									                                        																   																																				  CloudFoundryVcapEnvironmentPostProcessor.postProcessEnvironment()
+                     									                                        																   																																				  HostInfoEnvironmentPostProcessor.postProcessEnvironment()
+                     									                                        																   																																				  SpringApplicationJsonEnvironmentPostProcessor.postProcessEnvironment()
+                     									                                        																   																																				  ConfigFileApplicationListener.postProcessEnvironment()  => ConfigFileApplicationListener.Loader.load() => 
+                     									                                        																   																																				  																											propertiesLoader = new PropertySourcesLoader()  => propertiesLoader.loaders =>
+                     									                                        																   																																				  																																														  [cerca ed instanzia  in ogni jar nel classpath nei file META-INF/spring.factories una entry key =  org.springframework.boot.env.PropertySourceLoader]
+                     									                                        																   																																				  																											getSearchLocations() =>file:./config/, file:./, classpath:/config/, classpath:/																			  spring-boot.jar   PropertiesPropertySourceLoader,YamlPropertySourceLoader
+                     									                                        																   																																				  																											Cerca in tali locations :bootstrap.xml,.yml,.yaml,.properties e application.xml,.yml,.yaml,.properties
+                     									                                        																   																																				  																											Trova classpath:/bootstrap.yml e application.yml
+                     									                                        																   																																				  																										  
+                     									                                        																   																																				  																										    handleProfileProperties() => native e' definito come profile in application.yml
+                     									                                        																   																																				  																										                                 ConfigFileApplicationListener.environemt.setActiveProfiles("native")
+                     									                                        																   																																				  
+						                  EnvironmentPostProcesso
+                     									                                        																   																																				
+                     									                                        																   
+                     									                                        																   
+                     									                                        																   
+                     									                                        																   																																				
+                     									                                        																   
+                     									                                        																   
+                     									                                        																   
+                     									                                        																		
+						                     									                            
+                     									                                        																		
+                     									                                        																		
+                     									                                        																		
+                     									                                        						
+                     									                                        						
+                     									                                        						
+                     									                                        						
+                     									                                        						
+                     									                                        																						
+                     									                                
+                     									                                
+                     									  
+                     									  
+                     						
+                     						
+                     						
+                     						
+                     						
+                     						
