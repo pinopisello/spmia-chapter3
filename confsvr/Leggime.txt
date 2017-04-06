@@ -110,84 +110,365 @@ SpringApplication.run(ConfigServerApplication.class)  =>	SpringApplication.getRu
 					   
 								   EventPublishingRunListener.started().multicastEvent(new ApplicationStartedEvent())								   
 
-SpringApplication.run(ConfigServerApplication.class)  =>  SpringApplication.prepareEnvironment(EventPublishingRunListener)
-                     									         ConfigurableEnvironment environment =  new  StandardServletEnvironment ()
-                     									         EventPublishingRunListener.multicastEvent(new ApplicationEnvironmentPreparedEvent())
-                     									                                BootstrapApplicationListener.onApplicationEvent(ApplicationEnvironmentPreparedEvent()
-                     									                                        BootstrapApplicationListener.bootstrapServiceContext()
-                     									                                        		               names  = (cerca in ogni jar nel classpath nei file META-INF/spring.factories una entry key = org.springframework.cloud.bootstrap.BootstrapConfiguration )
-                     									                                        		               spring-cloud-config-client.jar    ConfigServiceBootstrapConfiguration,DiscoveryClientConfigServiceBootstrapConfiguration
-                     									                                        			           spring-cloud-config-server.jar    ConfigServerBootstrapConfiguration
-                     									                                        		               spring-cloud-context.jar			 PropertySourceBootstrapConfiguration,EncryptionBootstrapConfiguration,ConfigurationPropertiesRebinderAutoConfiguration,PropertyPlaceholderAutoConfiguration
-                     									                                        			           builder = new SpringApplicationBuilder() => new SpringApplicationBuilder() =>SpringApplication.initialize() => setInitializers()
-						                     									                                        																								(cerca ed instanzia  in ogni jar nel classpath nei file META-INF/spring.factories una entry key = org.springframework.context.ApplicationContextInitializer )
-						                     									                                        																								spring-boot.jar 				   ConfigurationWarningsApplicationContextInitializer,ContextIdApplicationContextInitializer,DelegatingApplicationContextInitializer,ServerPortInfoApplicationContextInitializer
-						                     									                                        																								spring-boot-autoconfigure.jar      SharedMetadataReaderFactoryContextInitializer,AutoConfigurationReportLoggingInitializer
-						                     									                                        																								 =>setListeners()
-						                     									                                        																								 (cerca ed instanzia  in ogni jar nel classpath nei file META-INF/spring.factories una entry key = org.springframework.context.ApplicationListener )
-						                     									                                        																							     spring-boot.jar   					ClearCachesApplicationListener,	ParentContextCloserApplicationListener,	 FileEncodingApplicationListener,AnsiOutputApplicationListener,ConfigFileApplicationListener,DelegatingApplicationListener
-						                     									                                        																							     									LiquibaseServiceLocatorApplicationListener,ClasspathLoggingApplicationListener,LoggingApplicationListener,
-						                     									                                        																								 spring-cloud-config-server.jar     ConfigServerBootstrapApplicationListener
-						                     									                                        																								 spring-boot-autoconfigure.jar      BackgroundPreinitializer
-						                     									                                        																								 spring-cloud-context.jar           BootstrapApplicationListener,LoggingSystemShutdownListener,RestartListener,,
-						                     									                                        																								 
-                     									                                        						 																		
-                     									                                        						builder.sources =	[classes estratte da "names"]	
-                     									                                        						builder.run()  =>  SpringApplication.run() => 
-                     									                                        																		listeners = getRunListeners(args);
-                     									                                        																		(cerca ed instanzia  in ogni jar nel classpath nei file META-INF/spring.factories una entry key = org.springframework.boot.SpringApplicationRunListener )
-                     									                                        																		
-                     									                                        																		spring-boot.jar 			     EventPublishingRunListener
-                     									                                        																		spring-cloud-config-client.jar   SpringApplicationRunListener
-                     									                                        																		spring-cloud-config-server.jar   SpringApplicationRunListener
-                     									                                        																		spring-beans.jar 				 SpringApplicationRunListener
-                     									                                        																		spring-boot-autoconfigure.jar    SpringApplicationRunListener
-                     									                                        																		
-                     									                                        																   => prepareEnvironment(listeners) => listeners.environmentPrepared() => ConfigFileApplicationListener.onApplicationEnvironmentPreparedEvent()=> 
-                     									                                        																   																																				  postProcessors = loadPostProcessors() (cerca ed instanzia  in ogni jar nel classpath nei file META-INF/spring.factories una entry key = org.springframework.boot.env.EnvironmentPostProcessor )
-                     									                                        																   																																				  spring-boot.jar            ConfigFileApplicationListener,CloudFoundryVcapEnvironmentPostProcessor,SpringApplicationJsonEnvironmentPostProcessor
-                     									                                        																   																																				  spring-cloud-commons.jar   HostInfoEnvironmentPostProcessor
-                     									                                        																   																																				  SpringApplicationJsonEnvironmentPostProcessor.postProcessEnvironment() 
-                     									                                        																   																																				  CloudFoundryVcapEnvironmentPostProcessor.postProcessEnvironment()
-                     									                                        																   																																				  HostInfoEnvironmentPostProcessor.postProcessEnvironment()
-                     									                                        																   																																				  SpringApplicationJsonEnvironmentPostProcessor.postProcessEnvironment()
-                     									                                        																   																																				  ConfigFileApplicationListener.postProcessEnvironment()  => ConfigFileApplicationListener.Loader.load() => 
-                     									                                        																   																																				  																											propertiesLoader = new PropertySourcesLoader()  => propertiesLoader.loaders =>
-                     									                                        																   																																				  																																														  [cerca ed instanzia  in ogni jar nel classpath nei file META-INF/spring.factories una entry key =  org.springframework.boot.env.PropertySourceLoader]
-                     									                                        																   																																				  																											getSearchLocations() =>file:./config/, file:./, classpath:/config/, classpath:/																			  spring-boot.jar   PropertiesPropertySourceLoader,YamlPropertySourceLoader
-                     									                                        																   																																				  																											Cerca in tali locations :bootstrap.xml,.yml,.yaml,.properties e application.xml,.yml,.yaml,.properties
-                     									                                        																   																																				  																											Trova classpath:/bootstrap.yml e application.yml
-                     									                                        																   																																				  																										  
-                     									                                        																   																																				  																										    handleProfileProperties() => native e' definito come profile in application.yml
-                     									                                        																   																																				  																										                                 ConfigFileApplicationListener.environemt.setActiveProfiles("native")
-                     									                                        																   																																				  
-						                  EnvironmentPostProcesso
-                     									                                        																   																																				
-                     									                                        																   
-                     									                                        																   
-                     									                                        																   
-                     									                                        																   																																				
-                     									                                        																   
-                     									                                        																   
-                     									                                        																   
-                     									                                        																		
-						                     									                            
-                     									                                        																		
-                     									                                        																		
-                     									                                        																		
-                     									                                        						
-                     									                                        						
-                     									                                        						
-                     									                                        						
-                     									                                        						
-                     									                                        																						
-                     									                                
-                     									                                
-                     									  
-                     									  
-                     						
-                     						
-                     						
-                     						
-                     						
-                     						
+																						SpringApplication.run(ConfigServerApplication.class)  =>  SpringApplication.prepareEnvironment(EventPublishingRunListener)
+																																					                     									         ConfigurableEnvironment environment =  new  StandardServletEnvironment ()
+																																					                     									         listeners.environmentPrepared(environment) =>
+																																					                     									         
+																																											                     									                                BootstrapApplicationListener.onApplicationEvent(ApplicationEnvironmentPreparedEvent()
+																																																	                     									                                        BootstrapApplicationListener.bootstrapServiceContext()
+																																																	                     									                                        		               names  = (cerca in ogni jar nel classpath nei file META-INF/spring.factories una entry key = org.springframework.cloud.bootstrap.BootstrapConfiguration )
+																																																	                     									                                        		               spring-cloud-config-client.jar    ConfigServiceBootstrapConfiguration,DiscoveryClientConfigServiceBootstrapConfiguration
+																																																	                     									                                        			           spring-cloud-config-server.jar    ConfigServerBootstrapConfiguration
+																																																	                     									                                        		               spring-cloud-context.jar			 PropertySourceBootstrapConfiguration,EncryptionBootstrapConfiguration,ConfigurationPropertiesRebinderAutoConfiguration,PropertyPlaceholderAutoConfiguration
+																																																	                     									                                        			           Tutte le configuration vanno in SpringApplication.sources
+																																																	                     									                                        			           builder = new SpringApplicationBuilder() => new SpringApplicationBuilder() =>SpringApplication.initialize() => setInitializers()
+																																																							                     									                                        																								(cerca ed instanzia  in ogni jar nel classpath nei file META-INF/spring.factories una entry key = org.springframework.context.ApplicationContextInitializer )
+																																																							                     									                                        																								spring-boot.jar 				   ConfigurationWarningsApplicationContextInitializer,ContextIdApplicationContextInitializer,DelegatingApplicationContextInitializer,ServerPortInfoApplicationContextInitializer
+																																																							                     									                                        																								spring-boot-autoconfigure.jar      SharedMetadataReaderFactoryContextInitializer,AutoConfigurationReportLoggingInitializer
+																																																							                     									                                        																								 =>setListeners()
+																																																							                     									                                        																								 (cerca ed instanzia  in ogni jar nel classpath nei file META-INF/spring.factories una entry key = org.springframework.context.ApplicationListener )
+																																																							                     									                                        																							     spring-boot.jar   					ClearCachesApplicationListener,	ParentContextCloserApplicationListener,	 FileEncodingApplicationListener,AnsiOutputApplicationListener,ConfigFileApplicationListener,DelegatingApplicationListener
+																																																							                     									                                        																							     									LiquibaseServiceLocatorApplicationListener,ClasspathLoggingApplicationListener,LoggingApplicationListener,
+																																																							                     									                                        																								 spring-cloud-config-server.jar     ConfigServerBootstrapApplicationListener
+																																																							                     									                                        																								 spring-boot-autoconfigure.jar      BackgroundPreinitializer
+																																																							                     									                                        																								 spring-cloud-context.jar           BootstrapApplicationListener,LoggingSystemShutdownListener,RestartListener,,
+																																																							                     									                                        																								 
+																																																	                     									                                        						 																		
+																																																	                     									                                        						builder.sources =	[classes estratte da "names"]	
+																																																	                     									                                        						builder.run()  =>  SpringApplication.run() => 
+																																																	                     									                                        																		listeners = getRunListeners(args);
+																																																	                     									                                        																		(cerca ed instanzia  in ogni jar nel classpath nei file META-INF/spring.factories una entry key = org.springframework.boot.SpringApplicationRunListener )
+																																																	                     									                                        																		
+																																																	                     									                                        																		spring-boot.jar 			     EventPublishingRunListener
+																																																	                     									                                        																		spring-cloud-config-client.jar   SpringApplicationRunListener
+																																																	                     									                                        																		spring-cloud-config-server.jar   SpringApplicationRunListener
+																																																	                     									                                        																		spring-beans.jar 				 SpringApplicationRunListener
+																																																	                     									                                        																		spring-boot-autoconfigure.jar    SpringApplicationRunListener
+																																																	                     									                                        																		
+																																																	                     									                                        																       => prepareEnvironment(listeners) => listeners.environmentPrepared() =>    
+																																																	                     									                                        																                                                                            ConfigFileApplicationListener.onApplicationEnvironmentPreparedEvent()=> 
+																																																	                     									                                        																   																																				  postProcessors = loadPostProcessors() (cerca ed instanzia  in ogni jar nel classpath nei file META-INF/spring.factories una entry key = org.springframework.boot.env.EnvironmentPostProcessor )
+																																																	                     									                                        																   																																				  spring-boot.jar            ConfigFileApplicationListener,CloudFoundryVcapEnvironmentPostProcessor,SpringApplicationJsonEnvironmentPostProcessor
+																																																	                     									                                        																   																																				  spring-cloud-commons.jar   HostInfoEnvironmentPostProcessor
+																																																	                     									                                        																   																																				  SpringApplicationJsonEnvironmentPostProcessor.postProcessEnvironment() 
+																																																	                     									                                        																   																																				  CloudFoundryVcapEnvironmentPostProcessor.postProcessEnvironment()
+																																																	                     									                                        																   																																				  HostInfoEnvironmentPostProcessor.postProcessEnvironment()
+																																																	                     									                                        																   																																				  SpringApplicationJsonEnvironmentPostProcessor.postProcessEnvironment()
+																																																	                     									                                        																   																																				  ConfigFileApplicationListener.postProcessEnvironment()  => ConfigFileApplicationListener.Loader.load() => 
+																																																	                     									                                        																   																																				  																											propertiesLoader = new PropertySourcesLoader()  => propertiesLoader.loaders =>
+																																																	                     									                                        					  											=>   createApplicationContext() => BeanUtils.instantiate(AnnotationConfigApplicationContext)																																  																																														  [cerca ed instanzia  in ogni jar nel classpath nei file META-INF/spring.factories una entry key =  org.springframework.boot.env.PropertySourceLoader]
+																																																	                     									                                        																   																							=> new AnnotationConfigApplicationContext()		 [c'e' un ClassPathBeanDefinitionScanner che scanna il classspath dopo...]								  																											getSearchLocations() =>file:./config/, file:./, classpath:/config/, classpath:/																			  spring-boot.jar   PropertiesPropertySourceLoader,YamlPropertySourceLoader
+																																																	                     									                                        																   																																				  																											Cerca in tali locations :bootstrap.xml,.yml,.yaml,.properties e application.xml,.yml,.yaml,.properties
+																																																	                     									                                        																=>  prepareContext()   		   => applyInitializers() 	=> lancia tutti inizializers trovati all inizio.Vedi su.																																	  																											Trova classpath:/bootstrap.yml e application.yml
+																																																	                     									                                        																   																																				  																										  
+																																																	                     									                                        																   														DelegatingApplicationContextInitializer.initialize(context)  			non fa nulla
+																																																	                     									                                        																   														ContextIdApplicationContextInitializer.initialize(context) 	 			=> context.setId("configserver")																		  																										    handleProfileProperties() => native e' definito come profile in application.yml
+																																																	                     									                                        																   														ConfigurationWarningsApplicationContextInitializer.initialize(context)	=> context.addBeanFactoryPostProcessor(new ConfigurationWarningsPostProcessor(new ComponentScanPackageCheck))																				  																										                                 ConfigFileApplicationListener.environemt.setActiveProfiles("native")
+																																																	                     									                                        																   														ServerPortInfoApplicationContextInitializer.initialize(context)         => context.addApplicationListener(ApplicationListener<EmbeddedServletContainerInitializedEvent>() new ApplicationListener<EmbeddedServletContainerInitializedEvent>() {)  [invocato dopo quando servlet container e' up]
+																																																	                     									                                        																   														SharedMetadataReaderFactoryContextInitializer.initialize(context)       => context.addBeanFactoryPostProcessor(new CachingMetadataReaderFactoryPostProcessor());
+																																																	                     									                                        																   														AutoConfigurationReportLoggingInitializer.initialize(context)           => context.addApplicationListener(new AutoConfigurationReportListener());
+																																																	                     									                                        																   														
+																																																	                     									                                        																   														
+																																																	                     									                                        																   							   => listeners.contextPrepared(context)   =>	lancia tutti listeners trovati all inizio.Vedi su.	
+																																																	                     									                                        																   							   												EventPublishingRunListener.contextPrepared(context) => Non fa nulla
+																																																	                     									                                        																   							   												
+																																																	                     									                                        																   							   												
+																																																	                     									                                        																   							   												
+																																																	                     									                                        																   							   => context.getBeanFactory().registerSingleton("springApplicationArguments",DefaultApplicationArguments)												
+																																																	                     									                                        																   							   												
+																																																	                     									                                        																   							   
+																																																	                     									                                        																   							   => load(context, SpringApplication.sources) =>  loader = createBeanDefinitionLoader()  Crea BeanDefinitionLoader contenente :sources , ClassPathBeanDefinitionScanner,AnnotatedBeanDefinitionReader
+																																																	                     									                                        																   							   												   loader.load()  => itera SpringApplication.sources ...
+																																																	                     									                                        																   							   												   					load(ConfigServiceBootstrapConfiguration)  => loader.annotatedReader.registerBean(ConfigServiceBootstrapConfiguration) => ConfigServiceBootstrapConfiguration e' annotata @Configuration e definisce svariati beans tipo:
+																																																	                     									                                        																   							   												   																																				ConfigClientProperties,ConfigServicePropertySourceLocator,RetryConfiguration
+																																																	                     									                                        																   							   												   																																				
+																																																	                     									                                        																   							   												   					load(DiscoveryClientConfigServiceBootstrapConfiguration)  => loader.annotatedReader.registerBean(DiscoveryClientConfigServiceBootstrapConfiguration) => DiscoveryClientConfigServiceBootstrapConfiguration e' annotata @Configuration e definisce 2 listeners:
+																																																	                     									                                        																   							   												   																																											@EventListener(ContextRefreshedEvent.class)  @EventListener(HeartbeatEvent.class)
+																																																	                     									                                        																   							   												   																																											
+																																																	                     									                                        																   							   												   					load(ConfigServerBootstrapConfiguration)  => loader.annotatedReader.registerBean(ConfigServerBootstrapConfiguration) => ConfigServerBootstrapConfiguration e' annotata @Configuration e e definisce svariati beans tipo:
+																																																	                     									                                        																   							   												   																																			LocalPropertySourceLocatorConfiguration ,EnvironmentRepositoryPropertySourceLocator,
+																																																	                     									                                        																   							   												   																																			
+																																																	                     									                                        																   							   												   																																			
+																																																	                     									                                        																   							   												     				load(PropertySourceBootstrapConfiguration)  => loader.annotatedReader.registerBean(PropertySourceBootstrapConfiguration) => PropertySourceBootstrapConfigurations e' annotata @Configuration e implements ApplicationContextInitializer<ConfigurableApplicationContext>
+																																																	                     									                                        																   							   												 																																			   Definisce initialize(ConfigurableApplicationContext applicationContext) che itera propertySourceLocators aggiunge ogni PropertySource ad un CompositePropertySource 
+																																																	                     									                                        																   							   												   											
+																																																	   												     																																																			load(EncryptionBootstrapConfiguration)  => loader.annotatedReader.registerBean(EncryptionBootstrapConfiguration) => EncryptionBootstrapConfiguration e' annotata @Configuration  e definisce svariati beans tipo:TextEncryptor,EnvironmentDecryptApplicationInitializer,FailsafeTextEncryptors
+																																																	                     									                                        																   							                     									                                        																   							   												   																																			
+																																																	                     									                                        																   							   												   																																			
+																																																	                     									                                        										   												     																	load(ConfigurationPropertiesRebinderAutoConfiguration)  => loader.annotatedReader.registerBean(ConfigurationPropertiesRebinderAutoConfiguration) => ConfigurationPropertiesRebinderAutoConfiguration e' annotata @Configuration  e definisce svariati beans tipo: 
+																																																	                     									                                        										   												     																																																						ConfigurationPropertiesBeans,ConfigurationPropertiesRebinder
+																																																	                     									                                        																   							   												   																																											
+																																																	                     									                                        																   							   												   																																											
+																																																	                     									                                        																   						     																	load(PropertyPlaceholderAutoConfiguration)  => loader.annotatedReader.registerBean(PropertyPlaceholderAutoConfiguration) => PropertyPlaceholderAutoConfiguration e' annotata @Configuration  e definisce svariati beans tipo: PropertySourcesPlaceholderConfigurer
+																																																	                     									                                        										   													   											
+																																																	                     									                                        										   													   												   																																											
+																																																	                     									                                        																   							   	=> listeners.contextLoaded(context) => EventPublishingRunListener.contextLoaded() =>	itera tutti SpringApplication.listeners e invoca context.addApplicationListener(listener) 
+																																																	                     									                                        																   							   	                                                                                        ConfigServerBootstrapApplicationListener,BootstrapApplicationListener,LoggingSystemShutdownListener,ConfigFileApplicationListener,AnsiOutputApplicationListener,
+																																																	                     									                                        																   							   	                                                                                        LoggingApplicationListener,ClasspathLoggingApplicationListener,BackgroundPreinitializer,DelegatingApplicationListener,RestartListener,ParentContextCloserApplicationListener
+																																																	                     									                                        																   							   	                                                                                        ClearCachesApplicationListener,FileEncodingApplicationListener,LiquibaseServiceLocatorApplicationListener,,						   																																											
+																																																	                     									                                        																   							   												   					
+																																																	                     									                                        																   							   												   					                        multicastEvent(new ApplicationPreparedEvent()) =>itera tutti SpringApplication.listeners che supportano ApplicationPreparedEvent e invoca onApplicationEvent(ApplicationPreparedEvent)
+																																																	                     									                                        																   							   												   					                        I listners che fanno qualcosa:
+																																																	                     									                                        																   							   												   					                        ConfigFileApplicationListener.onApplicationEvent()  context.addBeanFactoryPostProcessor(new PropertySourceOrderingPostProcessor(context));
+																																																	                     									                                        																   							   												   					                        LoggingApplicationListeneronApplicationEvent()      context.beanFactory.registerSingleton("springBootLoggingSystem", this.loggingSystem);
+																																																	                     									                                        																   							   												   					                        DelegatingApplicationListener                       nulla
+																																																	                     									                                        																   							   												   					                        RestartListener										nulla
+																																																	                     									                                        																   							   												   					                        
+																																																	                     									                                        																   							   												   					                        
+																																																	                     									                                        																   							   												   					                        
+																																																	                     									                                        																	refreshContext()	 =>  SpringApplication.refresh(context) => (AbstractApplicationContext)context.refresh() => beanFactory = context.getBeanFactory()				   												   					                        
+																																																	                     									                                        																   							   									 				        							prepareBeanFactory(beanFactory)
+																																																	                     									                                        																   							   									 				        							invokeBeanFactoryPostProcessors(beanFactory) => PostProcessorRegistrationDelegate.invokeBeanFactoryPostProcessors(beanFactory,context.beanFactoryPostProcessors)
+																																																	                     									                                        																   							   									 				        																			Itera context.beanFactoryPostProcessors
+																																																	                     									                                        																   							   									 				        																			ConfigurationWarningsApplicationContextInitializer.postProcessBeanDefinitionRegistry(beanFactory)   nulla
+																																																	                     									                                        																   							   									 				        																			SharedMetadataReaderFactoryContextInitializer.postProcessBeanDefinitionRegistry(beanFactory)        nulla
+																																																	                     									                                        																   							   									 				        																			ConfigFileApplicationListener.postProcessBeanDefinitionRegistry(beanFactory)
+																																																	                     									                                        																   							   									 				        																			
+																																																	                     									                                        																   							   									 				        							registerBeanPostProcessors(beanFactory)      => PostProcessorRegistrationDelegate.registerBeanPostProcessors(beanFactory  ..) => postProcessorNames = beanFactory.getBeanNamesForType(BeanPostProcessor.class,  												
+																																																	                     									                                        																   							   									 				        																																							AutowiredAnnotationBeanPostProcessor         => beanFactory.addBeanPostProcessor(AutowiredAnnotationBeanPostProcessor);
+																																																	                     									                                        																   							   									 				        																																							RequiredAnnotationBeanPostProcessor          => beanFactory.addBeanPostProcessor(RequiredAnnotationBeanPostProcessor);
+																																																	                     									                                        																   							   									 				        																																							CommonAnnotationBeanPostProcessor            => beanFactory.addBeanPostProcessor(CommonAnnotationBeanPostProcessor);
+																																																	                     									                                        																   							   									 				        																																							ConfigurationPropertiesBindingPostProcessor  => beanFactory.addBeanPostProcessor(ConfigurationPropertiesBindingPostProcessor);
+																																																	                     									                                        																   							   									 				        																																							ConfigurationPropertiesBeans                 => beanFactory.addBeanPostProcessor(ConfigurationPropertiesBeans);
+																																																	                     									                                        																   							   									 				        																																							BeanPostProcessorChecker                     => beanFactory.addBeanPostProcessor(BeanPostProcessorChecker);
+																																																	                     									                                        																   							   									 				        																																							
+																																																	                     									                                        																   							   									 				        							initMessageSource()                          => beanFactory.registerSingleton("messageSource",DelegatingMessageSource)																													
+																																																	                     									                                        																   							   									 				        																			
+																																																	                     									                                        																   							   									 				        																			 
+																																																	                     									                                        																   							   									 				        							finishBeanFactoryInitialization(beanFactory) => DefaultListableBeanFactory.preInstantiateSingletons() => for (DefaultListableBeanFactory.beanDefinitionNames)												
+																																																	                     									                                        																   							   									 				        																																	 Per tutti i beanNames in DefaultListableBeanFactory.beanDefinitionNames si istanziano i beans con DefaultListableBeanFactory.doGetBean(beanName)
+																																																	                     									                                        																   							   									 				        																																	 In genere i singletons sono gia instaziati e storati in DefaultSingletonBeanRegistry.singletonObjects
+																																																	                     									                                        																   							   									 				        																																	 In questa fase i PostProcessors possono modificare il bean definition PRIMA della sua instanziazione.
+																																																	                     									                                        																   							   									 				        																																	 Per esempio il bean ConfigServiceBootstrapConfiguration in AbstractAutowireCapableBeanFactory.populateBean() viene passato a tutti i DefaultListableBeanFactory.beanPostPorcessors
+																																																	                     									                                        																   							   									 				        																																	 che estendono InstantiationAwareBeanPostProcessor come ConfigurationClassPostProcessor .
+																																																	                     									                                        																   							   									 				        																																	 ConfigurationClassPostProcessor.postProcessPropertyValues(bean) injetta beanFactory in ConfigServiceBootstrapConfiguration.
+																																																	                     									                                        																   							   									 				        																																	 
+																																																	                     									                                        																   							   									 				        																																	 
+																																																	                     									                                        																   							   									 				        							finishRefresh()  =>  initLifecycleProcessor() => this.lifecycleProcessor = new DefaultLifecycleProcessor()
+																																																	                     									                                        																   							   									 				        							 												 beanFactory.registerSingleton("lifecycleProcessor", this.lifecycleProcessor);
+																																																	                     									                                        																   							   									 				        							
+																																																	                     									                                        																   							   									 				        							
+																																																	                     									                                        																   							   									 				        							
+																																																	                     									                                        																   							   									 				        												 DefaultLifecycleProcessor.onRefresh() =>   DefaultLifecycleProcessor.startBeans() => getLifecycleBeans() Nulla
+																																																	                     									                                        						
+																																																	                     									                                        																   							   									 				        												 publishEvent(new ContextRefreshedEvent(this)) => SimpleApplicationEventMulticaster.multicastEvent(ContextRefreshedEvent) => 
+																																																	                     									                                        																   							   									 				        												 																																ConfigurationPropertiesBindingPostProcessor.onApplicationEvent() => freeLocalValidator() => LocalValidatorFactoryBean.destroy()
+																																																	                     									                                        																   							   									 				        												 																																RestartListener.onApplicationEvent() => ConfigFileApplicationListener.onApplicationPreparedEvent() => context.addBeanFactoryPostProcessor(new PropertySourceOrderingPostProcessor)
+																																																	                     									                                        																   							   									 				        												 																																
+																																																	                     									                                        	
+																																																	                     									                                        																   							   									 				        												 LiveBeansView.registerApplicationContext(this)  => nulla
+																																																	                     									                                        																   							   									 				        												 
+																																																	                     									                                        																   	afterRefresh(context, applicationArguments) => nulla	
+																																																	                     									                                        																   	listeners.finished(context, null)  =>   EventPublishingRunListener.finished() => context.publishEvent(ApplicationReadyEvent) => 	 				        												 
+																																																	                     									                                        																   							   									 				        												ConfigFileApplicationListener. 
+																																																	                     									                                        																   							   									 				        												 
+																																																	                     									                                        						addAncestorInitializer(application, context) => application.addInitializers(new AncestorInitializer(context))
+																																																	                     									                                        						mergeDefaultProperties() => sembra poco ...
+																																																	                     									                                        						
+																																																	                     									                                        						
+																																																	                     									                                        						
+																																																	                     									                    apply(context, event.getSpringApplication(), environment) => initializers = getOrderedBeansOfType(context,ApplicationContextInitializer.class)	
+																																																	                     									                                       																application.addInitializers(PropertySourceBootstrapConfiguration,EnvironmentDecryptApplicationInitializer,DelegatingEnvironmentDecryptApplicationInitializer)
+																																																	                     									                                       																
+																																																	                     									                                       																
+																																																	                     									                                       																
+																																																	                     									        ConfigFileApplicationListener.onApplicationEvent(ApplicationEnvironmentPreparedEvent)                                																										   									 				        							
+																																																							                     									        ConfigFileApplicationListener.loadPostProcessors() 
+																																																							                     									        SpringApplicationJsonEnvironmentPostProcessor.postProcessEnvironment(environment,application)   nulla
+																																																							                     									        CloudFoundryVcapEnvironmentPostProcessor.postProcessEnvironment(environment,application)        nulla
+																																																							                     									        HostInfoEnvironmentPostProcessor.postProcessEnvironment(environment,application)      			environment.getPropertySources().addLast(new MapPropertySource("springCloudClientHostInfo", {spring.cloud.client.hostname=10.195.163.41, spring.cloud.client.ipAddress=10.195.163.41}));
+																																																							                     									        ConfigFileApplicationListener.postProcessEnvironment(environment,application)			=>addPropertySources(environment, application.getResourceLoader());														   
+																																																				                     									        																																				   new Loader(environment, resourceLoader).load() =>  Loader.load(file:./config/application.properties/.xml/.yml/.yaml)        nulla
+																																																				                     									        																																				   Loader.load(file:./application.properties/.xml/.yml/.yaml)               nulla
+																																																				                     									        																																				   Loader.load(classpath:/config/application.properties/.xml/.yml/.yaml)    nulla
+																																																				                     								AnsiOutputApplicationListener.onApplicationEvent(ApplicationEnvironmentPreparedEven)   nulla        																																				   Loader.load(classpath:/application.properties/.xml/.yml/.yaml)           trovato application.yml!!
+																																																				                     								LoggingApplicationListener.onApplicationEvent(ApplicationEnvironmentPreparedEven)   nulla  
+																																																				                     								ClasspathLoggingApplicationListener.onApplicationEvent(ApplicationEnvironmentPreparedEven)   nulla
+																																																				                     								BackgroundPreinitializer.onApplicationEvent(ApplicationEnvironmentPreparedEven)   nulla
+																																																				                     								DelegatingApplicationListener.onApplicationEvent(ApplicationEnvironmentPreparedEven)   nulla
+																																																				                     								FileEncodingApplicationListener.onApplicationEvent(ApplicationEnvironmentPreparedEven)   nulla
+																																																				                     								
+																																																				                     								
+																																																				                     								
+																																																				                     								
+																																																				                     									        																																				                 														    propertySource = this.propertiesLoader.load(classpath:/application.yml)
+																																																				                     									        																																				                 														    handleProfileProperties(propertySource) =>activeProfiles = native
+																																									    
+																																																				                     									        																																				   Loader.load(file:./config/application-native.properties/.xml/.yml/.yaml) nulla
+																																																				                     									        																																				   Loader.load(file:./application-native.properties/.xml/.yml/.yaml)        nulla
+																																																				                     									        																																				   Loader.load(classpath:/config/application-native.properties/.xml/.yml/.yaml)nulla
+																																																				                     									        																																				   Loader.load(classpath:/application-native.properties/.xml/.yml/.yaml)    nulla
+																																																				                     									        																																			
+																																																				                     									        																			=> bindToSpringApplication(environment, application) =>	binder = new PropertiesConfigurationFactory<SpringApplication>
+																																																				                     									        																																	binder.bindPropertiesToTarget()    nulla
+																																																				                     									        																																	
+																																																				                     									        																																	
+																																																				                     									        																																	
+																																																				                     									        																																																	   
+																																																				                     									        																																					
+																																																				                     									        																																					
+																																																				                     									        																																					
+																																																				                     									        																																					
+																																																				                     									        																																					
+																																																				                     									        																																					
+																																																				                     									        
+																																																				                     									        
+																																																				                     									        
+																																																				                     									        
+																																																	                     									        
+																																																	                     									        
+																																					SpringApplication.printBanner(environment)
+																																					SpringApplication.createApplicationContext() => new AnnotationConfigEmbeddedWebApplicationContext()
+																																				    SpringApplication.prepareContext(context)	 =>										
+																																				                                                    SpringApplication.applyInitializers()     nulla
+																																																	sources = getSources()  [class com.thoughtmechanix.confsvr.ConfigServerApplication]
+																																																	SpringApplication.load(context, sources) =>  loader = createBeanDefinitionLoader(context, sources)	
+																																																												 loader.load() => BeanDefinitionLoader.load(class com.thoughtmechanix.confsvr.ConfigServerApplication)=>BeanDefinitionLoader.annotatedReader.register(class com.thoughtmechanix.confsvr.ConfigServerApplication)
+																																																												 																										AnnotatedBeanDefinitionReader.registerBean(class com.thoughtmechanix.confsvr.ConfigServerApplication)
+																																																 
+																																																 
+																																																	listeners.contextLoaded(context) => EventPublishingRunListener.contextLoaded(context) => 											 
+																																																													                     				    listeners = this.application.getListeners()
+																																																												                     				        context.addApplicationListener(ConfigServerBootstrapApplicationListener/BootstrapApplicationListener/ConfigFileApplicationListener/etc)
+																																																													                     				    ConfigFileApplicationListener.onApplicationPreparedEvent(ApplicationPreparedEvent)=>addPostProcessors(context)=> context.addBeanFactoryPostProcessor(new PropertySourceOrderingPostProcessor(context))
+																																																													                     				    
+																																					SpringApplication.refreshContext(context)     => AnnotationConfigEmbeddedWebApplicationContext.refresh() =>  AbstractApplicationContext.refresh() =>
+																																																																											AbstractApplicationContext.prepareRefresh()=>
+																																																																											                                              GenericWebApplicationContext.initPropertySources() =>
+																																																																																																			    StandardServletEnvironment.initPropertySources() =>
+																																																																																																			    													WebApplicationContextUtils.initServletPropertySources()
+																																																																											
+																																																																											beanFactory = obtainFreshBeanFactory();  nulla
+																																																																											AbstractApplicationContext.prepareBeanFactory(beanFactory)          nulla
+																																																																											AbstractApplicationContext.postProcessBeanFactory(beanFactory)      nulla
+																																																																											AbstractApplicationContext.invokeBeanFactoryPostProcessors(beanFactory) =>
+																																																																																							PostProcessorRegistrationDelegate.invokeBeanFactoryPostProcessors(beanFactory) =>
+																																																																																							 																					ConfigurationWarningsApplicationContextInitializer.postProcessBeanDefinitionRegistry(beanFactory)
+																																																																																							 																					SharedMetadataReaderFactoryContextInitializer
+																																																																																							 																					
+																																																																																							PostProcessorRegistrationDelegate.invokeBeanDefinitionRegistryPostProcessors (ConfigurationClassPostProcessor)	=>
+																																																																																																																				ConfigurationClassPostProcessor.postProcessBeanDefinitionRegistry(beanFactory) =>
+																																																																																																																																								ConfigurationClassPostProcessor.processConfigBeanDefinitions(beanFactory)=>
+																																																																																																																																																								ConfigurationClassBeanDefinitionReader.loadBeanDefinitions(configClasses) legge tutte le definizioni delle configClasses
+																																																																																																																																																																													  e registra tutti i beans definiti.
+																																																																																																																																																																													  Per esempio una configClass e' ConfigServerConfiguration che e' annotata @Configuration
+																																																																																																																																																																													  Definisce @Bean new Marker();
+																																																																																																																																																																													  
+																																																																																																																																																																													  
+																																																																																																																																																																													  
+																																																																																							PostProcessorRegistrationDelegate.invokeBeanDefinitionRegistryPostProcessors (RefreshScope)	=>	RefreshScope.postProcessBeanDefinitionRegistry(beanFactory)	=> RefreshScope.registry = beanFactory																																																						  
+																																																																																																																																																											
+																																																																																							PostProcessorRegistrationDelegate.invokeBeanDefinitionRegistryPostProcessors (ConfigurationClassPostProcessor)	=>		ConfigurationClassPostProcessor.postProcessBeanFactory(beanFactory)	=> beanFactory.addBeanPostProcessor(new ImportAwareBeanPostProcessor(beanFactory));
+																																																																																							
+																																																																																							
+																																																																											AbstractApplicationContext.registerBeanPostProcessors(beanFactory)	=>																																																												                                                       						ConfigurationClassParser.parse(candidates) =>
+																																																																																							PostProcessorRegistrationDelegate.registerBeanPostProcessors(beanFactory)																																																	                                                       																		ConfigurationClassParser.processConfigurationClass(com.thoughtmechanix.confsvr.ConfigServerApplication)	scansiona la classe e tutte le annotazioni!!!						
+																																																																																																										=> beanFactory.addBeanPostProcessor(ConfigurationPropertiesBindingPostProcessor)	
+																																																																																																										beanFactory.addBeanPostProcessor(CommonAnnotationBeanPostProcessor)
+																																																																																																										beanFactory.addBeanPostProcessor(AutowiredAnnotationBeanPostProcessor)
+																																																																																																										beanFactory.addBeanPostProcessor(RequiredAnnotationBeanPostProcessor)
+																																																																																																										beanFactory.addBeanPostProcessor(ScheduledAnnotationBeanPostProcessor)
+																																																																																																										beanFactory.addBeanPostProcessor(EmbeddedServletContainerCustomizerBeanPostProcessor)
+																																																																																																										beanFactory.addBeanPostProcessor(ErrorPageRegistrarBeanPostProcessor)
+																																																																																																										beanFactory.addBeanPostProcessor(ConfigurationPropertiesBeans)
+																																																																																																										beanFactory.addBeanPostProcessor(CommonAnnotationBeanPostProcessor)
+																																																																																																										beanFactory.addBeanPostProcessor(ApplicationListenerDetector)
+																																																																																																										
+																																																																											AbstractApplicationContext.initMessageSource()  =>  
+																																																																																									DelegatingMessageSource dms = new DelegatingMessageSource();
+																																																																																									this.messageSource = dms;																	
+																																																																																									beanFactory.registerSingleton("messageSource", this.messageSource);
+																																																																																																										
+																																																																																																										
+																																																																																																										
+																																																																											AbstractApplicationContext.onRefresh()  => EmbeddedWebApplicationContext.createEmbeddedServletContainer() => TomcatEmbeddedServletContainerFactory containerFactory = getEmbeddedServletContainerFactory() =>																															
+																																																																																																																													String[] beanNames = beanFactory.getBeanNamesForType(EmbeddedServletContainerFactory.class);
+																																																																																																																													!!tomcatEmbeddedServletContainerFactory!!!	 Ecco come viene trovato il container!!
+																																																																																																																													
+																																																																																																																
+																																																																																																						this.embeddedServletContainer = containerFactory.getEmbeddedServletContainer() =>
+																																																																																																																											TomcatEmbeddedServletContainerFactory.getEmbeddedServletContainer() => 
+																																																																																																																																													Tomcat tomcat = new Tomcat();
+																																																																																																																																													File baseDir = "/var/folders/3g/tm3c22l943q28f_6bsh6xq1wdz_hdh/T/tomcat.3360027045903889914.8888s"
+																																																																																																																																													Connector connector = new Connector(this.protocol)
+																																																																																																																																													TomcatEmbeddedServletContainerFactory.tomcat.getService().addConnector(connector);
+																																																																																																																																													TomcatEmbeddedServletContainerFactory.configureEngine(tomcat.getEngine());
+																																																																																																																																													TomcatEmbeddedServletContainerFactory.prepareContext() =>
+																																																																																																																																													 														  File docBase = createTempDir("tomcat-docbase")  '/var/folders/3g/tm3c22l943q28f_6bsh6xq1wdz_hdh/T/tomcat-docbase.7592819704831291933.8888'
+																																																																																																																																													 														  TomcatEmbeddedContext context = new TomcatEmbeddedContext(); 
+																																																																																																																																													 														  context.setName(getContextPath());
+																																																																																																																																													 														  context.setDocBase(docBase.getAbsolutePath());  /var/folders/3g/tm3c22l943q28f_6bsh6xq1wdz_hdh/T/tomcat-docbase.7592819704831291933.8888
+																																																																																																																																													 														  addDefaultServlet(context)  "org.apache.catalina.servlets.DefaultServlet"
+																																																																																																																																													 														  configureContext(context, initializersToUse) =>
+																																																																																																																																													 														  												  TomcatStarter starter = new TomcatStarter(initializers) EmbeddedWebApplicationContext,ServerProperties$SessionConfiguringInitializer,InitParameterConfiguringServletContextInitializer
+																																																																																																																																													 														  												  context.addServletContainerInitializer(starter, NO_CLASSES);
+																																																																																																																																													 														  												  configureSession(context);
+																																																																																																																																													 														  												  TomcatWebSocketContainerCustomizer.customize()
+																																																																																																																																													 														  												  
+																																																																																																																																													 TomcatEmbeddedServletContainerFactory.getTomcatEmbeddedServletContainer(tomcat) =>   new TomcatEmbeddedServletContainer(tomcat, getPort() >= 0) =>
+																																																																																																																																													 																																					TomcatEmbeddedServletContainer.initialize()
+																																																																																																																																																									 																																					this.tomcat.start()  => 
+																																																																																																																																																									 																																											StandardServer.startInternal()
+																																																																																																																																																									 																																																			=> StandardEngine.start() =>ContainerBase.startInternal()
+																																																																																																																																																									 																																																																	=> ContainerBase.threadStart()  [ContainerBackgroundPorcessor]
+																																																																																																																																																									 																																					
+																																																																																																																																																									 																																					startDaemonAwaitThread() => TomcatEmbeddedServletContainer.this.tomcat.getServer().await()		
+																																																																																																																																																									 																																												awaitThread.start() [Thread[container-0,5,com.thoughtmechanix.confsvr.ConfigServerApplication]]											  												  
+														
+																																																																																																																																																									 														  
+																																																																																																					
+																																																																																																						initPropertySources()	=> GenericWebApplicationContext.initPropertySources() =>
+																																																																																																																											StandardServletEnvironment.initPropertySources() 
+																																																																																																																																								
+																																																																											AbstractApplicationContext.registerListeners()  => nulla
+																																																																											
+																																																																											
+																																																																											AbstractApplicationContext.finishBeanFactoryInitialization(beanFactory) => DefaultListableBeanFactory.preInstantiateSingletons() => itera tutto i elementi in DefaultListableBeanFactory.beanDefinitionNames e instanzia il bean con  AbstractBeanFactory.getBean(beanName).Circa 234 ...
+																																																																																																												
+																																																																																																												
+																																																																																																												  RequestMappingHandlerMapping implements InitializingBean => RequestMappingHandlerMapping.afterPropertiesSet() => AbstractHandlerMethodMapping.initHandlerMethods()  itera tutti i beans del context in cerca di beans annotati @Controller o @RequestMapping (anche negli anchestor ...)   cerando metodi @RequestMapping
+																																																																																																												  																																					                 => detectHandlerMethods (beanName) => AbstractHandlerMethodMapping.registerHandlerMethod() => AbstractHandlerMethodMapping$MappingRegistry.register()  => AbstractHandlerMethodMapping$MappingRegistry.mappingLookup e' la map che contiene i mappings!!
+																																																																																																												  																																					                    Esempio :
+																																																																																																												  																																					                    {[/{label}/{name}-{profiles}.json],methods=[GET]}   EnvironmentController.labelledJsonProperties()
+																																																																																																												  																																					                    {[/key/{name}/{profiles}],methods=[GET]}            EncryptionController.getPublicKey()
+																																																																																																												  																																					                    {[/heapdump || /heapdump.json],methods=[GET]}       HeapdumpMvcEndpoint.invoke()
+																																																																																																												  																																					                    {[/refresh || /refresh.json],methods=[POST]}        GenericPostableMvcEndpoint.invoke()
+																																																																																																												  																																					                    {[/mappings || /mappings.json],methods=[GET]}       EndpointMvcAdapter.invoke()
+
+																																																																																																												  																																					                    
+																																																																																																												  Itera tutti i beans che sono instanceof SmartInitializingSingleton	e chiama il loro afterSingletonsInstantiated()
+																																																																																																												  							   MBeanExporter.afterSingletonsInstantiated()
+																																																																																																												  							   ConfigurationPropertiesRebinderAutoConfiguration.afterSingletonsInstantiated()
+																																																																																																												  							   
+																																																																																																												  							   
+																																																																											AbstractApplicationContext.finishRefresh() => AnnotationConfigEmbeddedWebApplicationContext.finishRefresh()		=> AbstractApplicationContext.finishRefresh() =>	
+																																																																																																																			AbstractApplicationContext.initLifecycleProcessor()																												  							   
+																																																																																																												  							AbstractApplicationContext.publishEvent(ContextRefreshedEvent)
+																																																																																																												  							   
+																																																																																																												  							   																																				                         
+																																																																																																							   EmbeddedWebApplicationContext.startEmbeddedServletContainer()=> TomcatEmbeddedServletContainer localContainer = this.embeddedServletContainer
+																																																																																																							   																   localContainer.start()                     									=> 	TomcatEmbeddedServletContainer.addPreviouslyRemovedConnectors()		  																																					                 
+																																																																																																												  																																					                 							=> Service[] services = this.tomcat.getServer().findServices();   StandardService[Tomcat]
+																																																																																																												  																																																   Connector[] connectors = this.serviceConnectors.get(service);  Connector[HTTP/1.1-8888]
+																																																																																																												  																																																   service.addConnector(connector)    Qui Tomcat comincia a accettare requests!!
+																																																																																																												  																																																   
+																																																																																																												  																																					
+																																																																																																							  	AbstractApplicationContext.publishEvent.(new EmbeddedServletContainerInitializedEvent)		 nulla	  																																					
+																																																																																																												  																																					
+																																																																																																												  																																					
+																																																																																																												  																																					
+																																																																																																												  																																					
+																																																																																																												  																																					
+																																																																																																												
+																																																																																																												
+																																																																																																												 
+																																																																											
+																																																																											
+																																																																																																					
+																																					SpringApplication.afterRefresh()  => nulla
+																																					
+																																					SpringApplication.listeners.finished() => nulla
+																																					
+																																					
+																																					Fine PORCO DIO!!
+																																																																																																																																													
