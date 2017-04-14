@@ -1,0 +1,23 @@
+application.yml e bootstrap.yml sono storate in environment.propertySources col nome applicationConfigurationProperties
+
+
+
+SpringApplication.prepareEnvironment()   => ConfigurableEnvironment environment = getOrCreateEnvironment() => return new StandardServletEnvironment();
+											listeners.environmentPrepared(environment) =>  ... => ConfigFileApplicationListener.onApplicationEvent(ApplicationEnvironmentPreparedEvent) => ConfigFileApplicationListener.addPropertySources(environment, application.getResourceLoader()) =>ConfigFileApplicationListener$Loader.load() => ConfigFileApplicationListener$Loader.loadIntoGroup("classpath:/bootstrap.yml") => propertySource = PropertySourcesLoader.load("bootstrap.yml") => YamlPropertySourceLoader.load("bootstrap.yml") => processor = new YamlPropertySourceLoader$Processor("bootstrap.yml", profile)
+																																																																																																																														  processor.process() => return Map<String, String> result {spring.application.name=configserver}
+																																																																																																																			                 return new MapPropertySource(applicationConfig: [classpath:/bootstrap.yml], {spring.application.name=configserver});
+																																																																																																	                         
+																																																																																																	                          handleProfileProperties(propertySource) => nulla
+																																																																																																	                         
+																																																																																			ConfigFileApplicationListener$Loader.loadIntoGroup("classpath:/application.yml") => propertySource = PropertySourcesLoader.load("application.yml") => YamlPropertySourceLoader.load("application.yml") => processor = new YamlPropertySourceLoader$Processor("application.yml", profile)
+																																																																																																																														  processor.process() => return Map<String, String> result {spring.application.name=configserver}
+																																																																																																																			                     return new MapPropertySource(applicationConfig: [classpath:/application.yml]);														                         					 
+																																																																																																							 		
+																																																																																																							    handleProfileProperties(propertySource) =>  activeProfiles='native'
+																																																																																																							    
+																																																																																			addConfigurationProperties(this.propertiesLoader.getPropertySources()) => this.environment.propertySources.addBefore("defaultProperties", configurationSources)																			    
+																																																																																			Qui le properties definite in application.yml e bootstrap.yml sono storate in environment.propertySources col nome applicationConfigurationProperties																    
+ConfigFileApplicationListener$ConfigurationPropertySources.finishAndRelocate(propertySources)	=> ConfigurationPropertySources removed = (ConfigurationPropertySources) propertySources.get("applicationConfigurationProperties");
+																								   removed.sources viene iterato e properties di bootstrap.yml	e application.yml vengono aggiunte a environment.propertysources con nomi :	"applicationConfig: [classpath:/bootstrap.yml]"	e "applicationConfig: [classpath:/application.yml]"																																																																																															    
+																																																																																																							 		
+																																																																																																																

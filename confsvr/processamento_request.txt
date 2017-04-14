@@ -1,0 +1,152 @@
+http://localhost:8888/licensingservice/dev 
+http://localhost:8888/licensingservice/prod
+http://localhost:8888/licensingservice/default
+
+
+######################	Configurazione 	RequestMappingHandlerMapping con tutti i controllers annotati @RequestMapping	######################
+
+	
+		WebMvcAutoConfiguration$EnableWebMvcConfiguration [spring-webmvc.jar] e' annotata @Configuration e @AutoConfigureAfter(DispatcherServletAutoConfiguration.class) (quindi agisce dopo DispatcherServletAutoConfiguration)
+		Vedi anche spring-webmvc.jar/META-INF/spring.factories
+		Essa ha un factory method RequestMappingHandlerMapping requestMappingHandlerMapping() => WebMvcConfigurationSupport.requestMappingHandlerMapping() => RequestMappingHandlerMapping handlerMapping = new RequestMappingHandlerMapping()
+																																							  handlerMapping.setInterceptors(getInterceptors()) => InterceptorRegistry registry = new InterceptorRegistry()
+																																					  														registry.addInterceptor(new ConversionServiceExposingInterceptor(mvcConversionService()));
+																																					  														registry.addInterceptor(new ResourceUrlProviderExposingInterceptor(mvcResourceUrlProvider()));	
+																																					  														
+																																							  RequestMappingHandlerMapping implements InitializingBean	quindi dopo essere stato instanziato :
+																																							  
+																																							  RequestMappingHandlerMapping.afterPropertiesSet()		=> AbstractHandlerMethodMapping.initHandlerMethods()	=> scansiona tutti i beans e cerca tutti quelli annotati  @Controller.class o @RequestMapping	
+																																							  																												   Per ognuno cerca metodi annotati @RequestMapping
+																																							  																												   Per ogni metodo trovato =>     AbstractHandlerMethodMapping.registerHandlerMethod(handler, invocableMethod, mapping) => AbstractHandlerMethodMappings.mappingRegistry.register(mapping, handler, method);
+																																							  		
+
+      Alla fine RequestMappingHandlerMapping.registry contiene tutti i metodi che rispondono a GET o POST!!
+      
+      
+########################   RequestMappingHandlerMapping in DispatcherServlet   ##########################
+
+      Come finisce in DispatcherServlet?
+      
+      DispatcherServlet.init() => initServletBean() =>  initWebApplicationContext() => onRefresh(wac) => initStrategies(context) => initHandlerMappings(context) => matchingBeans = BeanFactoryUtils.beansOfTypeIncludingAncestors(context, HandlerMapping.class)
+      																																								DispatcherServlet.handlerMappings = matchingBeans
+      																																								Uno dei benas e' RequestMappingHandlerMapping defintito sopra!
+      																																								
+      Quindi DispatcherServlet.handlerMappings contiene RequestMappingHandlerMapping caricato con tutti i request patterns e relativi AbstractHandlerMethodMapping da invocare in caso di match.
+   
+   
+   
+#######################  Porcessamento reuest     ##########################
+   
+DispatcherServlet.doDispatch()   
+mappedHandler = DispatcherServlet.getHandler(HttpServletRequest request) => HandlerExecutionChain handler = RequestMappingHandlerMapping.getHandler(request) => AbstractHandlerMethodMapping.getHandlerInternal() => String lookupPath = getUrlPathHelper().getLookupPathForRequest(request)
+																																																	 "/licensingservice/default"
+																																																	 HandlerMethod handlerMethod = lookupHandlerMethod(lookupPath, request) => List<Match> matches = new ArrayList<Match>();
+																																										 																		   							   List<T> directPathMatches =  this.mappingRegistry.getMappingsByUrl(lookupPath) => this.mappingRegistry.urlLookup.get(urlPath)
+																																											 																		   
+																																																	 																		   directPathMatches == null => this.mappingRegistry.mappingLookup.keySet().get(lookupPath)  mappingLookup e' una Map<RequestMappingInfo,HandlerMethod>
+																																																	 																		   								se uno o piu match e' trovato tra lookupPath e mappingLookup.keySet matches.add(new Match(RequestMappingInfo,HandlerMethod)
+																																																	 																		   
+																																																	 																		   if(matches.notEmpty())
+																																																	 																		   MatchComparator sorta i matches 
+																																																	 																		   Match bestMatch = matches.get(0)
+																																																	 																		   RequestMappingInfoHandlerMapping.handleMatch(bestMatch.mapping, lookupPath, request) => request.setAttribute(HandlerMapping.PATH_WITHIN_HANDLER_MAPPING_ATTRIBUTE, lookupPath);
+																																																	 																		   return bestMatch.handlerMethod;
+																																																	 																		   
+																																																	 Ho un 		handlerMethod!!
+																																																	 handlerMethod.createWithResolvedBean()  => Object handler = this.bean;	 HandlerMethod.bean = "nome bean a che dichiara questo handlermethod"
+																																																	 											handler = this.beanFactory.getBean(beanName);
+																																																	 											return new HandlerMethod(this, handler)
+																																																	 											
+																																																	 											
+																																				Ho un HandlerMethod		!!	
+																																				HandlerExecutionChain chain = AbstractHandlerMethodMapping.getHandlerExecutionChain(handlerMethod, request) =>  lookupPath = this.urlPathHelper.getLookupPathForRequest(request);
+																																																														  		HandlerExecutionChain chain = new HandlerExecutionChain(handlerMethod));
+																																																														  		chain.addInterceptor(RequestMappingHandlerMapping.adaptedInterceptors )
+																																																														        return chain
+																																				Ho una 		HandlerExecutionChain!!
+																																				
+																																																												        
+mappedHandler = HandlerExecutionChain che contiene metodo che processera' request!!	
+
+RequestMappingHandlerAdapter ha = getHandlerAdapter(mappedHandler.getHandler());
+
+RequestMappingHandlerAdapter.handle(processedRequest, response, mappedHandler.getHandler()) => ... =>   ServletInvocableHandlerMethod.invokeAndHandle()  =>
+																																														        
+																																							returnValue = RequestMappingHandlerAdapter.invokeHandlerMethod()
+																																							
+																																							
+																																							Esempio http://localhost:8888/licensingservice/prod  =>  @RequestMapping("/{name}/{profiles:.*[^-].*}")
+																																							                                     						EnvironmentController.defaultLabel()     => Environment environment = this.repository.findOne(name, profiles, label);
+																																																								name =>licensingservice             return environment
+																																																								profiles = prod
+																																																																																																					  
+																																							returnValue = environment!!																																																												  
+																																																														
+																																				             
+																																							HandlerMethodReturnValueHandlerComposite.handleReturnValue(environment)	=> RequestResponseBodyMethodProcessor handler = selectHandler(environment, returnType)
+																																																									   handler.handleReturnValue(environment) =>  	AbstractMessageConverterMethodProcessor.writeWithMessageConverters(environment)	=> List<MediaType> requestedMediaTypes = getAcceptableMediaTypes(request)	
+																																																									   																															   List<MediaType> producibleMediaTypes = getProducibleMediaTypes(request)
+																																																									   																															    selectedMediaType e' trovato in un set di compatibleMediaTypes	
+																																																									   																															   this.messageConverters iterato per un messageConverter.canWrite(valueType, selectedMediaType	)
+																																																						   																															   MappingJackson2HttpMessageConverter.write(	environment) => AbstractJackson2HttpMessageConverter.writeInternal(environment)		=>  JsonGenerator generator = this.objectMapper.getFactory().createGenerator(outputMessage.getBody(), encoding)
+																																																									   																															   																																		com.fasterxml.jackson.databind.ObjectWriter objectWriter = this.objectMapper.writer();	
+																																																									   																															   																																		objectWriter.writeValue(generator, value);		
+																																																									   																															   																																		generator.flush();            
+																																																									   																															   																																		FINE!!
+																																																									   																															   																																		
+																																																									   																															   																																		
+#######################  Definizione dei possibili Environments   #######################																																																									   																															   																																				
+	
+
+Gli environments disponibili sono definiti in :  EnvironmentController.repository  che e' istanza EnvironmentRepository	
+	
+Sopra in EnvironmentController.labelled(@PathVariable String name, @PathVariable String profile) il matching env e' trovato da :
+
+Environment environment = EnvironmentController.repository.findOne(name, profiles, label);	
+
+In spring-cloud-config-server.jar/META-INF/spring.factories indica ConfigServerAutoConfiguration ed essa :
+@Import({ EnvironmentRepositoryConfiguration.class, ResourceRepositoryConfiguration.class,
+		ConfigServerEncryptionConfiguration.class, ConfigServerMvcConfiguration.class })
+
+ConfigServerMvcConfiguration definisce:
+
+	public EnvironmentController environmentController(EnvironmentRepository envRepository, ConfigServerProperties server) {
+		EnvironmentController controller = new EnvironmentController(encrypted(envRepository, server), this.objectMapper);
+	
+Qui envRepository viene passato in EnvironmentController.Ma dove e' creato?
+
+
+EnvironmentRepositoryConfiguration definisce:
+
+	@Configuration
+	@Profile("native")
+	protected static class NativeRepositoryConfiguration{
+	@Bean
+		public NativeEnvironmentRepository environmentRepository() {
+			return new NativeEnvironmentRepository(this.environment);
+		}
+	}
+	
+	
+	"Native" profile e' settato in application.yml con spring.profiles.active [vedi processamento_bootstrap_application_yml.txt].
+	
+	Quindi EnvironmentController.environmentRepository() e' settato da questo metodo su e le propeties definite in application.yml sono storate in environment.propertySources
+
+
+######################   	NativeEnvironmentRepository.findOne(String config, String profile, String label)			####################
+
+Esempio http://localhost:8888/licensingservice/prod  => NativeEnvironmentRepository.findOne("licensingservice", "prod", null) =>  NativeEnvironmentRepository.getEnvironment("prod") => environment = new StandardEnvironment();
+																																														environment.getPropertySources().addFirst(new MapPropertySource("profiles",Collections.<String, Object>singletonMap("spring.profiles.active","prod")));
+																																														outEnvRepo = new PassthruEnvironmentRepository(environment).findOne("licensingservice","prod", null))
+																																														return NativeEnvironmentRepository.clean(outEnvRepo) => getLocations("licensingservice","prod",null)  => itera per tutti i files nei folders indicati in application.yml - searchLocations e cerca il match con licensingservice + prod
+																																																																								in questo caso trova licensingservice/licensingservice.yml e licensingservice/licensingservice-prod.yml
+																																																																								Crea un altro Environment e aggiunge ad esso le PropertySource che matchano!!.
+																																																																								Questo Environment verra' trasformato in json ed inviato al client.
+
+
+
+
+   
+
+
+

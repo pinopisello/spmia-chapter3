@@ -36,6 +36,7 @@ spring:
   cloud:
      config:
        server:
+          # prefix: ciccio   rende service disponibile a http://localhost:8888/ciccio/licensingservice/prod
            native:
               searchLocations: file:////Users/glocon/Miei/local_git/nike_repo/Spring_Microservices_in_Action/spmia-chapter3/confsvr/src/main/resources/config/licensingservice,
                                file:////Users/glocon/Miei/local_git/nike_repo/Spring_Microservices_in_Action/spmia-chapter3/confsvr/src/main/resources/config/organizationservice
