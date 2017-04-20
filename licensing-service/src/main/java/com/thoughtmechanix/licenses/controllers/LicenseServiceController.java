@@ -20,9 +20,7 @@ public class LicenseServiceController {
     @Autowired
     private LicenseService licenseService;
 
-    @Autowired
-    private ServiceConfig serviceConfig;
-
+ 
     @RequestMapping(value="/",method = RequestMethod.GET)
     public List<License> getLicenses( @PathVariable("organizationId") String organizationId) {
 

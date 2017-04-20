@@ -1,0 +1,347 @@
+http://localhost:8888/licensingservice/dev 
+http://localhost:8888/licensingservice/prod
+http://localhost:8888/licensingservice/default
+
+
+######################	Configurazione 	RequestMappingHandlerMapping con tutti i controllers annotati @RequestMapping	######################
+
+	
+		WebMvcAutoConfiguration$EnableWebMvcConfiguration [spring-webmvc.jar] e' annotata @Configuration e @AutoConfigureAfter(DispatcherServletAutoConfiguration.class) (quindi agisce dopo DispatcherServletAutoConfiguration)
+		Vedi anche spring-webmvc.jar/META-INF/spring.factories
+		Essa ha un factory method:
+		
+		@Bean
+		@Primary
+		@Override
+		public RequestMappingHandlerMapping requestMappingHandlerMapping() =>  super.requestMappingHandlerMapping()=>
+													  																	 => WebMvcConfigurationSupport.requestMappingHandlerMapping() => 
+													  																	 																  RequestMappingHandlerMapping handlerMapping = new RequestMappingHandlerMapping() 
+																																														  handlerMapping.setInterceptors(WebMvcConfigurationSupport.getInterceptors()) => 
+																																																						   													DelegatingWebMvcConfiguration.addInterceptors(InterceptorRegistry) 
+	  																																																				   																														=> WebMvcConfigurerComposite..addInterceptors(InterceptorRegistry) 
+																																																						   																																															=> JpaWebMvcConfiguration.addWebRequestInterceptor( new OpenEntityManagerInViewInterceptor())
+																																																						   																																															
+	  OpenEntityManagerInViewInterceptor extends EntityManagerFactoryAccessor implements AsyncWebRequestInterceptor	
+	  
+	  OpenEntityManagerInViewInterceptor viene usato in HandlerExecutionChain (sotto ...) e permette di intercettare le web requests per assegnare jsp manager al thread.
+	  
+      Vedi  @Repository  in  LicenseRepository
+	  
+	  																																																	   																																															
+																																																						   																																															
+																																																						   																																															
+	  RequestMappingHandlerMapping implements InitializingBean	quindi dopo essere stato instanziato :
+	  
+	  RequestMappingHandlerMapping.afterPropertiesSet()		=> RequestMappingInfoHandlerMapping.afterPropertiesSet() =>  AbstractHandlerMethodMapping.afterPropertiesSet()  =>  AbstractHandlerMethodMapping.initHandlerMethods()	=> scansiona tutti i beans e cerca tutti quelli annotati  @Controller.class o @RequestMapping	
+																																																									   Per ognuno cerca metodi annotati @RequestMapping
+																																																									   Per ogni metodo trovato =>     AbstractHandlerMethodMapping.registerHandlerMethod(handler, invocableMethod, mapping) => AbstractHandlerMethodMappings.mappingRegistry.register(mapping, handler, method);
+																																																								
+
+      Alla fine RequestMappingHandlerMapping.registry contiene tutti i metodi che rispondono a GET o POST!!
+		      
+		Il controller e' LicenseServiceController @RequestMapping(value="v1/organizations/{organizationId}/licenses") .
+		
+		I metodi sotto  LicenseServiceController annotati @RequestMapping sono cosi aggiunti in RequestMappingHandlerMapping.registry!!
+		
+		
+		@RequestMapping(value="/",method = RequestMethod.GET)
+		public List<License> getLicenses( @PathVariable("organizationId") String organizationId)
+		
+		@RequestMapping(value="/{licenseId}",method = RequestMethod.GET)
+		public License getLicenses( @PathVariable("organizationId") String organizationId, @PathVariable("licenseId") String licenseId)
+		
+		@RequestMapping(value="{licenseId}",method = RequestMethod.PUT)
+		public String updateLicenses( @PathVariable("licenseId") String licenseId) {
+		
+		@RequestMapping(value="/",method = RequestMethod.POST)
+		public void saveLicenses(@RequestBody License license) {
+		
+		@RequestMapping(value="{licenseId}",method = RequestMethod.DELETE)
+		@ResponseStatus(HttpStatus.NO_CONTENT)
+		public String deleteLicenses( @PathVariable("licenseId") String licenseId) {
+		  
+		
+		
+		Il servizio e' invocabile da: 
+		http://localhost:8080/v1/organizations/e254f8c-c442-4ebe-a82a-e2fc1d1ff78a/licenses/f3831f8c-c338-4ebe-a82a-e2fc1d1ff78a
+		      
+      
+########################   RequestMappingHandlerMapping in DispatcherServlet   ##########################
+
+      Come finisce RequestMappingHandlerMapping.registry in DispatcherServlet?
+      
+      DispatcherServlet.init() => initServletBean() =>  initWebApplicationContext() => onRefresh(wac) => initStrategies(context) => initHandlerMappings(context) => matchingBeans = BeanFactoryUtils.beansOfTypeIncludingAncestors(context, HandlerMapping.class)
+      																																								DispatcherServlet.handlerMappings = matchingBeans
+      																																								Uno dei benas e' RequestMappingHandlerMapping defintito sopra!
+      																																								
+      Quindi DispatcherServlet.handlerMappings contiene RequestMappingHandlerMapping caricato con tutti i request patterns e relativi AbstractHandlerMethodMapping da invocare in caso di match.
+   
+   
+   
+#######################  Porcessamento reuest     ##########################
+   
+DispatcherServlet.doDispatch()                                                                              Quello instanziato e configurato su!!
+mappedHandler = DispatcherServlet.getHandler(HttpServletRequest request) => HandlerExecutionChain handler = RequestMappingHandlerMapping.getHandler(request) => AbstractHandlerMethodMapping.getHandlerInternal() => String lookupPath = getUrlPathHelper().getLookupPathForRequest(request)
+																																																	 "/licensingservice/default"
+																																																	 HandlerMethod handlerMethod = lookupHandlerMethod(lookupPath, request) => List<Match> matches = new ArrayList<Match>();
+																																										 																		   							   List<T> directPathMatches =  this.mappingRegistry.getMappingsByUrl(lookupPath) => this.mappingRegistry.urlLookup.get(urlPath)
+																																											 																		   
+																																																	 																		   directPathMatches == null => this.mappingRegistry.mappingLookup.keySet().get(lookupPath)  mappingLookup e' una Map<RequestMappingInfo,HandlerMethod>
+																																																	 																		   								se uno o piu match e' trovato tra lookupPath e mappingLookup.keySet matches.add(new Match(RequestMappingInfo,HandlerMethod)
+																																																	 																		   
+																																																	 																		   if(matches.notEmpty())
+																																																	 																		   MatchComparator sorta i matches 
+																																																	 																		   Match bestMatch = matches.get(0)
+																																																	 																		   RequestMappingInfoHandlerMapping.handleMatch(bestMatch.mapping, lookupPath, request) => request.setAttribute(HandlerMapping.PATH_WITHIN_HANDLER_MAPPING_ATTRIBUTE, lookupPath);
+																																																	 																		   return bestMatch.handlerMethod;
+																																																	 																		   
+																																																	 Ho un 		handlerMethod!!
+																																																	 handlerMethod.createWithResolvedBean()  => Object handler = this.bean;	 HandlerMethod.bean = "nome bean a che dichiara questo handlermethod"
+																																																	 											handler = this.beanFactory.getBean(beanName);
+																																																	 											return new HandlerMethod(this, handler)
+																																																	 											
+																																																	 											
+																																				Ho un HandlerMethod		!!	
+																																				HandlerExecutionChain chain = AbstractHandlerMethodMapping.getHandlerExecutionChain(handlerMethod, request) =>  lookupPath = this.urlPathHelper.getLookupPathForRequest(request);
+																																																														  		HandlerExecutionChain chain = new HandlerExecutionChain(handlerMethod));
+																																																														  		chain.addInterceptor(RequestMappingHandlerMapping.adaptedInterceptors )
+																																																														        return chain
+																																				Ho una 		HandlerExecutionChain che contiene HandlerMethod del LicenseServiceController!!
+																																				
+																																																												        
+mappedHandler = HandlerExecutionChain che contiene metodo LicenseServiceController che processera' request!!	
+
+Esempio http://localhost:8080/v1/organizations/442adb6e-fa58-47f3-9ca2-ed1fecdfe86c/licenses/08dbe05-606e-4dad-9d33-90ef10e334f9
+	
+mappedHandler = HandlerExecutionChain[LicenseServiceController.getLicenses(String,String)]
+
+
+RequestMappingHandlerAdapter ha = getHandlerAdapter(mappedHandler.getHandler());
+
+RequestMappingHandlerAdapter.handle(processedRequest, response, mappedHandler.getHandler()) => ... =>   ServletInvocableHandlerMethod.invokeAndHandle()  =>
+																																							Object returnValue =  invokeForRequest(webRequest, mavContainer, providedArgs) => doInvoke(Object... args) => getBridgedMethod().invoke(getBean(), args)=> return LicenseServiceController.getLicenses(String,String) FINALMENTE!! ritorna instanza License
+																																																														        
+																																							returnValue = license																																					
+###############################   Uso properties dal configserver ###############################
+
+In config_properties_ripescaggio.txt le properties che provengono da configserver vengono settate in entry SpringApllication.environment.propertysources entry name ="bootstrapProperties"
+																																																																												
+Dove sono usate?
+
+LicenseServiceController.getLicenses(String,String) =>  LicenseService.getLicense(String,String) => LicenseRepository.findByOrganizationIdAndLicenseId(String,String) => SimpleJpaRepository
+
+
+LicenseRepository e' annotata @Repository ed extends CrudRepository<License,String> 
+
+Ma dove JPA prende le coordinate del database?
+	
+	
+Il pom aggiunge dep "spring-boot-autoconfigure" che ha HibernateJpaAutoConfiguration in META-INF/spring.factories
+
+HibernateJpaAutoConfiguration e' annotato @AutoConfigureAfter({ DataSourceAutoConfiguration.class })
+@AutoConfigureAfter({ DataSourceAutoConfiguration.class })
+public class HibernateJpaAutoConfiguration extends JpaBaseConfiguration {
+
+
+
+Il costruttore HibernateJpaAutoConfiguration riferisce DataSource dataSource.
+
+Spring trova tale bean in DataSourceConfiguration$Tomcat
+
+	@ConditionalOnClass(org.apache.tomcat.jdbc.pool.DataSource.class)
+	@ConditionalOnProperty(name = "spring.datasource.type", havingValue = "org.apache.tomcat.jdbc.pool.DataSource", matchIfMissing = true)
+	static class Tomcat extends DataSourceConfiguration {
+
+        @Bean
+		@ConfigurationProperties("spring.datasource.tomcat")
+		public org.apache.tomcat.jdbc.pool.DataSource dataSource(
+				DataSourceProperties properties) {  ..}
+				
+Quindi anche DataSourceProperties viene risolto e trovato in org.springframework.boot.autoconfigure.jdbc.DataSourceProperties.
+Esso e' annotata @ConfigurationProperties(prefix = "spring.datasource") ergo ConfigurationPropertiesBindingPostProcessor.postProcessBeforeInitialization()
+va a pescare le properties in ConfigurationPropertiesBindingPostProcessor.PropertySources con prefisso "spring.datasource" e cerca di assegnarle alle properties di DataSourceProperties:  
+
+spring.datasource.platform
+spring.database.driverClassName
+spring.datasource.url
+spring.datasource.username
+spring.datasource.password
+spring.datasource.testWhileIdle
+spring.datasource.validationQuery
+
+
+Costruttore DataSourceConfiguration$Tomcat ( DataSourceProperties ) => DataSourceConfiguration$Tomcat.createDataSource(dataSourceProperties) => DataSourceBuilder dataSourceBuilder = DataSourceProperties.initializeDataSourceBuilder()
+																																				dataSourceBuilder.build() => DataSource result = new org.apache.tomcat.jdbc.pool.DataSource()
+																																				                             DataSourceBuilder.bind(result) => DataBinder.doBind(dataSourceProperties)  ora result e' caricato con le dataSourceProperties!!
+																																				                             
+																																				                             
+																		A sto punto ho una org.apache.tomcat.jdbc.pool.DataSource	creata con le properties definite dal configserver!!
+
+Ora altro trick:  DataSourceAutoConfiguration e' annotata @Import({ Registrar.class, DataSourcePoolMetadataProvidersConfiguration.class })
+org.springframework.boot.autoconfigure.jdbc.DataSourceInitializerPostProcessor.Registrar registra un DataSourceInitializerPostProcessor.java.
+DataSourceInitializerPostProcessor.postProcessAfterInitialization() instanzia org.springframework.boot.autoconfigure.jdbc.DataSourceInitializer al primo bean che e' instanza DataSource.[In questo caso org.apache.tomcat.jdbc.pool.DataSource]
+
+
+@PostConstruct DataSourceInitializer.init() => DataSourceInitializer.runSchemaScripts() => cerca schema.sql nel classpath e lo esegue con la datasource gia creata.
+																						   ResourceDatabasePopulator().execute(populator, dataSource) => ResourceDatabasePopulator.populate() => ScriptUtils.executeSqlScript(connection, encodedScript)  : schema.sql eseguito verso DB!!
+
+Si puo disabilitare con spring.datasource.initialize=false
+
+
+Ora ho Datasource ed eseguto schma.sql.
+Datasource e' passata al costruttore HibernateJpaAutoConfiguration insieme a JpaProperties [hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect] e jtaTransactionManagerProvider .
+
+
+##################   @Repository  in  LicenseRepository ###############
+
+A bootstrap Spring vede che LicenseService ha LicenseRepository @Autowired quindi cerca di instanziarlo.
+
+LicenseRepository e' annotato @Repository .
+
+AbstractBeanFactory.doGetBean(requiredType = LicenseRepository) => RootBeanDefinition mbd =  AbstractBeanFactory.getMergedLocalBeanDefinition(String beanName) => ...
+																   						
+																   																																								 																																					 instanceWrapper e' istanza JpaRepositoryFactoryBean!!
+																   sharedInstance =  createBean(beanName, mbd, args)                                                                                          => AbstractAutowireCapableBeanFactory.createBean("licenseRepository",JpaRepositoryFactoryBean,) => AbstractAutowireCapableBeanFactory.populateBean("licenseRepository",instanceWrapper) => 
+																   org.springframework.data.jpa.repository.support.JpaRepositoryFactoryBean]                                                                                            																																							   boolean hasInstAwareBpps = hasInstantiationAwareBeanPostProcessors();
+																																				                                                                                           																																						    	BeanPostProcessor bp : getBeanPostProcessors() 
+																																				                                                                                               																																							PersistenceAnnotationBeanPostProcessor.postProcessPropertyValues(instanceWrapper) => InjectionMetadata metadata = findPersistenceMetadata(beanName, instanceWrapper.getClass(),)
+																																				                                                                                               																																																								  metadata.inject(bean, beanName, pvs)         => injetta JpaRepositoryFactoryBean.setEntityManager @PersistenContext      
+																																				                                                                                               																																																													                                                                                LocalContainerEntityManagerFactoryBean
+																							                                                                                               																																																													                                                                                
+			                                                                                               																									initializeBean(beanName, exposedObject, mbd) => (InitializingBean) bean.afterPropertiesSet() => JpaRepositoryFactoryBean.afterPropertiesSet() => RepositoryFactoryBeanSupport.afterPropertiesSet()	=> this.factory = return new JpaRepositoryFactory(entityManager)
+			                                                                                               																																																																											   factory.addRepositoryProxyPostProcessor(PersistenceExceptionTranslationRepositoryProxyPostProcessor);
+			                                                                                               																																																																											   factory.addRepositoryProxyPostProcessor(TransactionalRepositoryProxyPostProcessor);
+			                                                                                               																																																																											   factory.setQueryLookupStrategyKey("CREATE_IF_NOT_FOUND");
+			                                                                                               																																																																											   factory.setNamedQueries(PropertiesBasedNamedQueries);
+			                                                                                               																																																																											   factory.setEvaluationContextProvider(ExtensionAwareEvaluationContextProvider);
+																																																																																																						factory.setRepositoryBaseClass(null);
+																																																																																																						factory.setBeanClassLoader(URLClassLoader);
+																																																																																																						factory.setBeanFactory(beanFactory);																																																																																																																
+																																																																																																						repositoryMetadata = this.factory.getRepositoryMetadata(com.thoughtmechanix.licenses.repository.LicenseRepository);
+																																																																																																						RepositoryFactoryBeanSupport.initAndReturn() => 	this.repository = this.factory.getRepository(repositoryInterface, customImplementation) =>          Object target = getTargetRepository(information);   [SimpleJpaRepository!!]
+																																																																																																																																												ProxyFactory result = new ProxyFactory(); 
+																																																																																																																																												result.setTarget(target);
+																																																																																																																																												CrudMethodMetadataPostProcessor.postProcess(result)		                            => result.addAdvice(CrudMethodMetadataPopulatingMethodInterceptor.INSTANCE)	
+																																																																																																																																												PersistenceExceptionTranslationRepositoryProxyPostProcessor.postProcess(result)		=> result.addAdvice(PersistenceExceptionTranslationInterceptor);
+																																																																																																																																												TransactionalRepositoryProxyPostProcessor.postProcess(result)		                =>  TransactionInterceptor transactionInterceptor = new TransactionInterceptor()
+																																																																																																																																																				   													    result.addAdvice(transactionInterceptor);
+																																																																																																																																												result.addAdvice(new QueryExecutorMethodInterceptor(information, customImplementation, target));
+																																																																																																																																												return (T) result.getProxy(classLoader) => ProxyFactory.createAopProxy().getProxy(classLoader) => DefaultAopProxyFactory.createAopProxy() => return new JdkDynamicAopProxy(config) [SimpleJpaRepository]
+																																																																																																																																												
+																																																																																																						RepositoryFactoryBeanSupport.repository =SimpleJpaRepository!!																																				
+																																																																																																																																												
+											                		bean = AbstractBeanFactory.getObjectForBeanInstance(sharedInstance, "licenseRepository", "licenseRepository", JpaRepositoryFactoryBean) =>  return  object = FactoryBeanRegistrySupport.getObjectFromFactoryBean("JpaRepositoryFactoryBean", licenseRepository) => object = FactoryBeanRegistrySupport.doGetObjectFromFactoryBean(JpaRepositoryFactoryBean, licenseRepository) => JpaRepositoryFactoryBean.getObject() => RepositoryFactoryBeanSupport.initAndReturn() => return   RepositoryFactoryBeanSupport.repository  [E' istanza SimpleJpaRepository !!]
+													        
+													
+																																																					
+																	Qui ho bean = LicenseRepository bean creato ed iniettato in licenseService!!Esso e' istanza SimpleJpaRepository!!
+
+Ora il trucco e' nel fatto che SimpleJpaRepository e' ottenuto con JdkDynamicAopProxy con una serie di advices.
+																																																																		findByOrganizationIdAndLicenseId(), SimpleJpaRepository
+licenseService.findByOrganizationIdAndLicenseId(String,String) => JdkDynamicAopProxy.invoke(SimpleJpaRepository,LicenseRepository.findByOrganizationIdAndLicenseId(String,String),args) => List<Object> chain = this.advised.getInterceptorsAndDynamicInterceptionAdvice(method,                            targetClass);   => AdvisedSupport.getInterceptorsAndDynamicInterceptionAdvice(method,targetClass)  
+  																																														   chain contiene ExposeInvocationInterceptor,CrudMethodMetadataPostProcessor,PersistenceExceptionTranslationInterceptor,TransactionInterceptor,DefaultMethodInvokingMethodInterceptor,QueryExecutorMethodInterceptor
+  																																														   invocation = new ReflectiveMethodInvocation(SimpleJpaRepository, SimpleJpaRepository, findByOrganizationIdAndLicenseId(java.lang.String,java.lang.String), args, SimpleJpaRepository, chain) 
+  																																														   retVal = invocation.proceed() => Itera per tutti gli advice nella chain:
+  																																														   
+  																																														   In particolare :
+  																																														   
+  																																														   Setup dell EntityManager:
+  																																														   DispatcherServlet.doDispatch() =>HandlerExecutionChain.applyPreHandle() =>WebRequestHandlerInterceptorAdapter.preHandle()=> OpenEntityManagerInViewInterceptor.preHandle() => OpenEntityManagerInViewInterceptor.createEntityManager() => LocalContainerEntityManagerFactoryBean.invokeProxyMethod() => EntityManagerFactoryImpl.createEntityManager()  Hibernate EntityManager creato!!
+  																																														   																																																											 ExtendedEntityManagerCreator.createApplicationManagedEntityManager(entityManager) =>  ExtendedEntityManagerCreator$ExtendedEntityManagerInvocationHandler viene iniettato di target=EntityManagerImpl
+  																																														   																																												 EntityManagerHolder emHolder = new EntityManagerHolder(EntityManagerImpl);
+  																																														   																																												 TransactionSynchronizationManager.bindResource(getEntityManagerFactory(), emHolder);
+  																																														   
+  																																														  																																																			 
+  																																														   Ergo dopo prehandle la nuova entityManager e' iniettata in ExtendedEntityManagerCreator$ExtendedEntityManagerInvocationHandler e TransactionSynchronizationManager.resource!!
+  																																														   
+  						   																																								   Invocazione EntityManager:
+  																																														   QueryExecutorMethodInterceptor.doInvoke(MethodInvocation invocation) =>  queries.get(method) => JpaQueryExecution$SingleEntityExecution.doExecute() => query = PartTreeJpaQuery.createQuery() => PartTreeJpaQuery$QueryPreparer.getEntityManager().createQuery() => SharedEntityManagerInvocationHandler.invoke() => EntityManagerFactoryUtils.doGetTransactionalEntityManager() => TransactionSynchronizationManager.getResource() => return EntityManagerHolder creato in preamble()!!
+  																																														   																																																																								  entityManagerImpl = emHolder.getEntityManager();  Ritorna entityManager creata in preamble() 
+  																																														   																																															
+  																																														   																																																																								  
+  																																														   																																																																								  CriteriaQueryTypeQueryAdapter query = method.invoke(entityManagerImpl, CriteriaQueryImpl) => AbstractEntityManagerImpl.createQuery(CriteriaQueryImpl)   
+  																																														   																																																																								  return query
+  																																														   																																																																								  
+  																																														   																																							query.getSingleResult() => QueryImpl.getSingleResult() => List<X> result = QueryImpl.list() => org.hibernate.internal.QueryImpl.list() => getSession().list(expandParameterLists( namedParams ),getQueryParameters( namedParams )) =>Qui parte la vera hibernate query che va trovare matching License!!
+  																																														   																																																																									  return List<License>
+  																																														   																																																					  return result.get( 0 )
+  																																														   																								   return result
+  																																														   return result
+  																																														   Eventualmente result bubbles up a licenseRepository.findByOrganizationIdAndLicenseId(organizationId, licenseId)																							   
+  																																														   																																	
+  																																														   																																													
+  																																														   																																																					  
+  																																														   																																																																								  
+  																																														   																																																																								  
+  																																														   
+  																																														   
+
+
+
+
+
+																																																																																																																																															
+																																																																																																																																																
+																																																																																																																																																
+																																																																																																																																																 
+																																																																																																																																																
+																																																																																																																																																
+																																																																																																																																																
+																																																																																																																																																
+																																																																																																																																																							                                                                                               																																																																											   
+																																																																																																																			
+																																																																																																																																	                                                                                               																																																																																																							                 
+																                                                                                               																																							
+																 
+																    
+																                                                                                               																																							
+
+
+
+
+
+
+
+
+
+
+
+
+OpenEntityManagerInViewInterceptor  extends EntityManagerFactoryAccessor implements AsyncWebRequestInterceptor 	 e' assegnato come interceptor di RequestMappingHandlerMapping (vedi su).
+
+DispatcherServlet.doDispatch() => mappedHandler.applyPreHandle(processedRequest, response)	=> HandlerExecutionChain.applyPreHandle(processedRequest, response) => WebRequestHandlerInterceptorAdapter.preHandle(new DispatcherServletWebRequest(request, response) => OpenEntityManagerInViewInterceptor.preHandle(WebRequest request) => 	String participateAttributeName =  OpenEntityManagerInViewInterceptor.getParticipateAttributeName() => getEntityManagerFactory().toString() + PARTICIPATE_SUFFIX	
+																																																																																			"org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean@49e1e4b.PARTICIPATE"
+																																																																																			WebAsyncManager asyncManager = WebAsyncUtils.getAsyncManager(request);
+																																																																																			EntityManagerImpl em = createEntityManager() => EntityManagerFactoryAccessor.createEntityManager() => EntityManagerFactory emf = getEntityManagerFactory()
+																																																																																																											  return  emf.createEntityManager()  (EntityManagerImpl)
+																																																																																			EntityManagerHolder emHolder = new EntityManagerHolder(em)
+																																																																																			org.springframework.orm.jpa.support.AsyncRequestInterceptor interceptor = new AsyncRequestInterceptor(getEntityManagerFactory(), emHolder)
+																																																																																			asyncManager.registerCallableInterceptor(participateAttributeName, interceptor);
+																																																																																			asyncManager.registerDeferredResultInterceptor(participateAttributeName, interceptor);
+																						
+A sto punto ho un asyncManager	che ha registrato 	org.springframework.orm.jpa.support.AsyncRequestInterceptor contenente una 	nuova EntityManagerImpl x request come 	CallableInterceptor	e 	DeferredResultInterceptor																																																			
+class AsyncRequestInterceptor extends CallableProcessingInterceptorAdapter implements DeferredResultProcessingInterceptor 
+
+
+
+
+
+																																																																																			
+																																																																																			
+
+								 															
+																																				
+																																				
+
+
+
+
+
+
+
+
+
+
+
+
+

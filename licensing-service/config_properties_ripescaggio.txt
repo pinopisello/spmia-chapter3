@@ -1,0 +1,51 @@
+bootstrap.yml definisce url del configserver:
+
+  application:
+    name: licensingservice
+  profiles:
+    active:
+      default
+  cloud:
+    config:
+      uri: http://localhost:8888
+      
+indica una GET verso http://localhost:8888/licensingservice/default [nota spring:application:profiles:active = default]
+
+
+Dove avviene questa request?
+
+spring-cloud-config-client/META-INF/spring.factories => ConfigServiceBootstrapConfiguration => @Beans
+																							   @ConditionalOnProperty(value = "spring.cloud.config.enabled", matchIfMissing = true)
+																								public ConfigServicePropertySourceLocator configServicePropertySource(ConfigClientProperties properties) 
+										
+Nota in bootstra.yml la variabile "spring.cloud.config.enabled = true"!!Se non ci fosse le properties non sarebbero richieste dal config server!!
+ConfigServicePropertySourceLocator e' annotato @Bean e  annotato @Order(0) e implements PropertySourceLocator ergo ConfigServicePropertySourceLocator.locate(environment) viene invocato a bottstrap.
+
+SpringApplication.applyInitializers() => PropertySourceBootstrapConfiguration.initialize(context) =>    ConfigurableEnvironment environment = applicationContext.getEnvironment(); [dipende da  bootstra.yml spring:application:profiles:active:default]
+																										composite = PropertySourceBootstrapConfiguration.propertySourceLocators.locate(environment) => ConfigServicePropertySourceLocator.locate(environment) =>        CompositePropertySource composite = new CompositePropertySource("configService");
+																																																																	 ConfigServicePropertySourceLocator.getRemoteEnvironment() => RestTemplate.exchange(http://localhost:8888/licenseservice/default)
+																																																																															Environment result = response.getBody()
+																																																																															return result
+																																																																	 composite.addPropertySource(result.getPropertySources())														
+																																																															          return composite
+																										composite contiene le pros scaricate dal configserver dipendentemente environment selezionato in !!
+																															
+																															
+																										MutablePropertySources propertySources = environment.getPropertySources(); [quindi le properties sono in environment!!]																																          
+																										insertPropertySources( propertySources,composite) => PropertySourceBootstrapProperties remoteProperties = new PropertySourceBootstrapProperties();
+																																							 propertySources.addFirst(composite);  Aggiunge una entry "bootstrapProperties" in propertySources che viene usato dopo dal service.
+																																																															  
+																																																															  
+Alla fine della fiera le props dal configserver sono in SpringApllication.environment.propertysources entry name ="bootstrapProperties"!!
+
+
+
+
+
+
+
+
+
+
+
+

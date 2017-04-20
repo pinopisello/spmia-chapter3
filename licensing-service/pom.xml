@@ -31,7 +31,15 @@
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-data-jpa</artifactId>
+      <exclusions>
+        <exclusion>
+      	<groupId>org.springframework.boot</groupId>
+      	<artifactId>spring-boot-starter-logging</artifactId>
+      </exclusion>
+      </exclusions>
     </dependency>
+    
+    
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-web</artifactId>
@@ -49,10 +57,11 @@
       <groupId>org.springframework.cloud</groupId>
       <artifactId>spring-cloud-config-client</artifactId>
     </dependency>
-    <dependency>
+    <!-- Che cazzo ce faccio?Uso postres... -->
+    <!--  <dependency>
       <groupId>com.h2database</groupId>
       <artifactId>h2</artifactId>
-    </dependency>
+    </dependency>-->
 
     <dependency>
       <groupId>postgresql</groupId>
@@ -63,6 +72,14 @@
         <groupId>org.springframework.security</groupId>
         <artifactId>spring-security-rsa</artifactId>
     </dependency>
+    
+    
+    <!-- uso log4j2 come logging -->
+    <dependency>
+	    <groupId>org.springframework.boot</groupId>
+	    <artifactId>spring-boot-starter-log4j2</artifactId>
+	</dependency>
+	
   </dependencies>
 
   <properties>

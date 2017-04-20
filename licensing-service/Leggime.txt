@@ -1,6 +1,26 @@
 Questa Spring Boot app si connette allo Spring Cloud Config Server definito in configurationserver_chapter3
 
 
+Le config properties (quale db connettersi) sono prese da:  http://localhost:8888/licensingservice/default 
+dato che bootstrap.yml definisce:
+
+spring: cloud: config: uri: http://localhost:8888
+spring: application: name: licensingservice
+spring: profiles: active: default
+
+
+Vedi config_properties_ripescaggio.txt per capire come le props sono ripescate dal config server.
+
+Vedi processamento_request.txt per capire come le requets sono trattate.
+
+
+
+
+
+
+
+
+
 
 
 
