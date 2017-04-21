@@ -1,0 +1,23 @@
+###########   Spring Properties reload.   ###########
+Questa e' una funzionalita offerta da SpringActuator, quindi aggiungerlo nel pom.
+
+Occorre annotare @RefreshScope tutte le classi che usano properties che voglio refreshabili.
+
+Questo permette di forzare l applicazione a ricaricare dal configserver le custom properties !!
+
+Per triggerare il refresh inviare una post a http://127.0.0.1:8080/refresh :  curl -X POST http://localhost:8080/refresh  
+
+In questo esempio @RefreshScope annota ServiceConfig .
+
+Per verificare il funzionamento, cambiare la prop "example.property" (git o native ..,dipende come config server e' cong), 
+poi invocare http://localhost:8080/v1/organizations/e254f8c-c442-4ebe-a82a-e2fc1d1ff78a/licenses/f3831f8c-c338-4ebe-a82a-e2fc1d1ff78a
+vedere il vecchio valore.
+
+Poi curl -X POST http://localhost:8080/refresh 
+
+Ricarica http://localhost:8080/v1/organizations/e254f8c-c442-4ebe-a82a-e2fc1d1ff78a/licenses/f3831f8c-c338-4ebe-a82a-e2fc1d1ff78a  e verifica nuovo valore.
+
+
+
+
+

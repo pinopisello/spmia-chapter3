@@ -1,3 +1,5 @@
+Config Server urls:
+
 http://localhost:8888/licensingservice/dev 
 http://localhost:8888/licensingservice/prod
 http://localhost:8888/licensingservice/default

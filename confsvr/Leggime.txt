@@ -79,5 +79,21 @@ Tomcat e' finalmente lanciati in  TomcatEmbeddedServletContainer.start() che e' 
 Senza questa annotazione, il server ritorna 404 per le config urls .
 
 
+##############  native vs Git repo   ##############
+application.xml contiene due setups: native e git
+
+native cerca congig files nel filesystem localet
+
+git invece si connette ad un repo git
+
+
+
+
+
+
+
+
+
+
 
 

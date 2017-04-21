@@ -1,0 +1,59 @@
+Da default tutte le properties nei config files (git o native) sono unencypted.
+
+Voglio cryptare la prop spring.datasource.password nel file licensingservice-prod.yml ma averla decriptata in http://localhost:8888/licensingservice/prod
+
+Per farlo occorrono seguenti:
+
+####################   Pwd criptata in GIT e decriptata dal config server  ################
+
+1) Setta ENCRYPT_KEY env variable quando si lancia configservervia Maven (Mvn => Debug Configuration => Parameter Name/Value : ENCRYPT_KEY pippopippopippo)
+
+2) Aggiungere jce_policy-8.zip in JDK 
+    unzip jce_policy-8.zip
+    cd UnlimitedJCEPolicyJDK8/
+    sudo  cp ./* /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre/lib/security
+    
+3) Cryptare passwd: inviare POST verso http://localhost:8888/encrypt con body  => postgres
+																		 header=> Content-Type: text/plain   
+   Ritorna :  32443030de8efad0581b73fcdbc6ba1991bade208ce4e7d9761e23d395316695
+    
+
+4) Decryptare :      inviare POST verso http://localhost:8888/encrypt con body  => 32443030de8efad0581b73fcdbc6ba1991bade208ce4e7d9761e23d395316695
+																	      header=> Content-Type: text/plain 
+
+
+5) Aggiungi in licensingservice-prod.yml :spring.datasource.password: "{cipher}32443030de8efad0581b73fcdbc6ba1991bade208ce4e7d9761e23d395316695"
+
+
+6) Setta spring:cloud:config:server:encrypt.enabled:true in configserver application.yml
+
+Alla fine di cio', http://localhost:8888/licensingservice/prod ritornera' la pwd decriptata.
+
+####################   Pwd criptata in GIT e decriptata dal licensing server  ################
+
+Per evitare che la pwd viaggi decriptata dal config server, si puo' disabilitare decription nel config server ed abilitarla nel license server.
+
+1) Setta spring:cloud:config:server:encrypt.enabled:false in configserver application.yml
+
+2) In licenseService pom, aggiungi dep spring-security-rsa
+
+3) Setta ENCRYPT_KEY env variable quando si lancia configservervia Maven (Mvn => Debug Configuration => Parameter Name/Value : ENCRYPT_KEY pippopippopippo)
+
+Il decrypt e' fatto in 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
