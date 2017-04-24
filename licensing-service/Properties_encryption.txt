@@ -37,9 +37,15 @@ Per evitare che la pwd viaggi decriptata dal config server, si puo' disabilitare
 
 2) In licenseService pom, aggiungi dep spring-security-rsa
 
-3) Setta ENCRYPT_KEY env variable quando si lancia configservervia Maven (Mvn => Debug Configuration => Parameter Name/Value : ENCRYPT_KEY pippopippopippo)
+3) Setta ENCRYPT_KEY env variable quando si lancia configservervia Maven (Mvn => Debug Configuration => Parameter Name/Value : encrypt.key = pippopippopippo)
 
-Il decrypt e' fatto in 
+Il giusto decryptor e' HexEncodingTextEncryptor ed e' definito in EnvironmentDecryptApplicationInitializer con la condizione @Conditional(KeyCondition.class) e @ConditionalOnMissingClass("org.springframework.security.rsa.crypto.RsaSecretEncryptor") 
+
+Occorre quindi  rimuovere spring-security-rsa da spring-cloud-starter-config e definire encrypt.key: pippopippopippo in bootstrap.yml
+
+Il decrypt e' fatto in EnvironmentDecryptApplicationInitializer.decrypt(PropertySource<?> source, Map<String, Object> overrides)
+
+
 
 
 

@@ -6,3 +6,4 @@ spring:
     config:
       uri: http://localhost:8888
       enabled: true  #Abilita properties retrieval in ConfigServicePropertySourceLocator
+#encrypt.key: pippopippopippo
