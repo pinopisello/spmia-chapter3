@@ -45,7 +45,3 @@ Alla fine della fiera le props dal configserver sono in SpringApllication.enviro
 
 
 
-
-
-
-
